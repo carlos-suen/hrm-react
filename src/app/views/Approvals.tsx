@@ -1,9 +1,8 @@
-import type {Approval, TestApproval} from "../components/ApprovalsDragableCard.tsx";
 import {ApprovalColumn} from "../components/ApprovalsColumn.tsx";
 import {useEffect, useState} from "react";
 import {CommonButton} from "../components/CommonButton.tsx";
 import {supabase} from "../../lib/supabase.ts";
-import {InfoDialog} from "../components/InfoDialog.tsx";
+import type {Approval} from "../components/ApprovalsDragableCard.tsx";
 
 const testPendingApprovalsData: Approval[] = [
     {
@@ -63,7 +62,7 @@ export const Approvals = () => {
     // 已拒絕
     const [rejectedApprovals, setRejectedApprovals] = useState<Approval[]>([]);
 
-    const [isAddApprovalDialogOpen, setIsAddApprovalDialogOpen] = useState<boolean>(false);
+    // const [isAddApprovalDialogOpen, setIsAddApprovalDialogOpen] = useState<boolean>(false);
 
     const handleDragEnd = async (cardId: string, targetColumn: "pending" | "approved" | "rejected") => {
         let draggedCard: Approval | undefined;

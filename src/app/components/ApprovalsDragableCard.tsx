@@ -57,6 +57,7 @@ export const ApprovalsDraggableCard = ({
     const [isDragging, setIsDragging] = useState(false);
 
     const handleDragStart = (e: React.DragEvent) => {
+        if (!data.id) return;
         setIsDragging(true);
         e.dataTransfer.effectAllowed = "move";
         e.dataTransfer.setData("text/plain", data.id.toString());

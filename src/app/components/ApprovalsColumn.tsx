@@ -2,12 +2,14 @@ import {ApprovalsDraggableCard, type Approval} from "./ApprovalsDragableCard.tsx
 import {useState} from "react";
 import * as React from "react";
 
+type ColumnKey = "pending" | "approved" | "rejected";
+
 interface ApprovalsColumnProps {
     title: string;
     approvals: Approval[];
     className?: string;
-    columnKey: string;
-    onDragEnd?: (cardId: string, targetColumn: string) => void;
+    columnKey: ColumnKey;
+    onDragEnd?: (cardId: string, targetColumn: ColumnKey) => void | Promise<void>;
     onApprove?: (id: number) => void;
     onReject?: (id: number) => void;
 }
