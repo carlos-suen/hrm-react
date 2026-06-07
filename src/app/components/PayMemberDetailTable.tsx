@@ -20,6 +20,7 @@ interface PayDetailTableProps {
     selectedIds: number[];
     onToggleSelect: (id: number) => void;
     onToggleSelectAll: () => void;
+    onConfirm: (id: number) => void;
 }
 
 const statusBadgeClasses: Record<PayStatus, string> = {
@@ -32,7 +33,7 @@ const avatarColors = ["bg-blue-500", "bg-indigo-500", "bg-purple-500", "bg-pink-
 const tHeadClass = 'text-left py-3 px-4 font-medium text-slate-500 dark:text-slate-400';
 
 
-export const PayDetailTable = ({data, selectedIds, onToggleSelect, onToggleSelectAll}: PayDetailTableProps) => {
+export const PayDetailTable = ({data, selectedIds, onToggleSelect, onToggleSelectAll, onConfirm}: PayDetailTableProps) => {
     const allSelected = data.length > 0 && selectedIds.length === data.length;
     const someSelected = selectedIds.length > 0 && selectedIds.length < data.length;
 
@@ -100,6 +101,7 @@ export const PayDetailTable = ({data, selectedIds, onToggleSelect, onToggleSelec
                         <td className="py-3 px-4">
                             {record.status === 'Draft' ? (
                                 <button
+                                    onClick={() => onConfirm(record.id)}
                                     className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm font-medium">
                                     確認
                                 </button>

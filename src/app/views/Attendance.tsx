@@ -2,6 +2,8 @@ import {DataCard, type DataCardItem} from "../components/DataCard.tsx";
 import {ChartCard} from "../components/ChartCard.tsx";
 import {AttendanceCalendar} from "../components/AttendanceCalendar.tsx";
 import {AttendanceRecordTable, type AttendanceRecord} from "../components/AttendanceRecordTable.tsx";
+import {attendanceApi} from "../../server/lib/api.ts";
+import {useEffect, useState} from "react";
 
 
 const attendanceItems: DataCardItem[] = [
@@ -44,16 +46,103 @@ const calendarData = [
     {title: "20", type: "Future" as const},
 ];
 
-const recordTableData: AttendanceRecord[] = [
-    {id: 1, name: "張偉", email: "zhangwei@co.com", avatar: "張", date: "2026-06-03", clockIn: "08:15", clockOut: "18:30", status: "Normal", hours: "9.5h"},
-    {id: 2, name: "李娜", email: "lina@co.com", avatar: "李", date: "2026-06-03", clockIn: "09:45", clockOut: "18:20", status: "Late", hours: "7.8h"},
-    {id: 3, name: "王強", email: "wangqiang@co.com", avatar: "王", date: "2026-06-03", clockIn: null, clockOut: null, status: "Absent", hours: "0h"},
-    {id: 4, name: "趙敏", email: "zhaomin@co.com", avatar: "趙", date: "2026-06-03", clockIn: "08:05", clockOut: "16:30", status: "EarlyLeave", hours: "7.2h"},
-    {id: 5, name: "陳思", email: "chensi@co.com", avatar: "陳", date: "2026-06-03", clockIn: "08:20", clockOut: "18:00", status: "Normal", hours: "8.5h"},
+const testAttendanceData = [
+    {
+        name: "張偉",
+        email: "zhangwei@co.com",
+        record_date: "2026-06-03",
+        clock_in: "08:15",
+        clock_out: "18:30",
+        status: "Normal",
+        hours: "9.5h"
+    },
+    {
+        name: "李娜",
+        email: "lina@co.com",
+        record_date: "2026-06-03",
+        clock_in: "09:45",
+        clock_out: "18:20",
+        status: "Late",
+        hours: "7.8h"
+    },
+    {
+        name: "王強",
+        email: "wangqiang@co.com",
+        record_date: "2026-06-03",
+        clock_in: null,
+        clock_out: null,
+        status: "Absent",
+        hours: "0h"
+    },
+    {
+        name: "趙敏",
+        email: "zhaomin@co.com",
+        record_date: "2026-06-03",
+        clock_in: "08:05",
+        clock_out: "16:30",
+        status: "EarlyLeave",
+        hours: "7.2h"
+    },
+    {
+        name: "陳思",
+        email: "chensi@co.com",
+        record_date: "2026-06-03",
+        clock_in: "08:20",
+        clock_out: "18:00",
+        status: "Normal",
+        hours: "8.5h"
+    },
 ];
 
 /// 頁面
 export const Attendance = () => {
+    const [records, setRecords] = useState<AttendanceRecord[]>([]);
+
+    // 獲取考勤記錄
+    const fetchRecords = async () => {
+        try {
+            const data = await attendanceApi.getAll();
+            const formatted: AttendanceRecord[] = data.map(item => ({
+                id: item.id,
+                name: item.name,
+                email: item.email,
+                avatar: item.name.charAt(0),
+                date: item.record_date,
+                clockIn: item.clock_in,
+                clockOut: item.clock_out,
+                status: item.status as AttendanceRecord['status'],
+                hours: item.hours,
+            }));
+            setRecords(formatted);
+        } catch (err) {
+            console.error('獲取考勤記錄失敗:', err);
+        }
+    };
+
+    // 生成測試數據
+    const generateTestData = async () => {
+        try {
+            const data = await attendanceApi.generateRecords(testAttendanceData);
+            const formatted: AttendanceRecord[] = data.map(item => ({
+                id: item.id,
+                name: item.name,
+                email: item.email,
+                avatar: item.name.charAt(0),
+                date: item.record_date,
+                clockIn: item.clock_in,
+                clockOut: item.clock_out,
+                status: item.status as AttendanceRecord['status'],
+                hours: item.hours,
+            }));
+            setRecords(formatted);
+        } catch (err) {
+            console.error('生成測試數據失敗:', err);
+        }
+    };
+
+    useEffect(() => {
+        fetchRecords();
+    }, []);
 
 
     return (
@@ -79,7 +168,7 @@ export const Attendance = () => {
             <AttendanceCalendar headerTitle={'考勤日曆'} data={calendarData}/>
 
             {/* 考勤記錄表 */}
-            <AttendanceRecordTable data={recordTableData}/>
+            <AttendanceRecordTable data={records} onGenerateData={generateTestData}/>
 
         </section>
     );

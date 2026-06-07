@@ -39,7 +39,7 @@ const isFull = (course: TrainingCourseInfo) => {
     return course.currentJoin >= course.maxPeople;
 };
 
-export const TrainingCard = ({ course, onEnroll: _onEnroll, onDetail }: TrainingCardProps) => {
+export const TrainingCard = ({ course, onEnroll, onDetail }: TrainingCardProps) => {
     const full = isFull(course);
     const progressPercent = course.maxPeople && course.currentJoin
         ? Math.round((course.currentJoin / course.maxPeople) * 100)
@@ -98,10 +98,7 @@ export const TrainingCard = ({ course, onEnroll: _onEnroll, onDetail }: Training
 
             {/* Actions */}
             <div className="flex gap-3">
-            
-                <CommonButton title={`${full ? '已滿' : '報名'}`} bgColor={full ? 'red' : 'blue'} />
-            
-
+                <CommonButton title={`${full ? '已滿' : '報名'}`} bgColor={full ? 'grey' : 'blue'} onPressed={() => onEnroll?.(course.id)} />
                 <CommonButton title="詳情" onPressed={() => onDetail?.(course.id)} bgColor="green" />
             </div>
         </div>

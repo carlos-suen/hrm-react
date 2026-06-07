@@ -12,7 +12,7 @@ export const Content = ({title, subtitle, children}: ContentProps) => {
         <div className="flex flex-col h-full">
             <ContentHeader title={title} subtitle={subtitle} />
 
-            <div className="flex-1 p-6 overflow-y-auto">
+            <div className="flex-1 p-6 overflow-y-auto min-h-0">
                 {children}
             </div>
         </div>

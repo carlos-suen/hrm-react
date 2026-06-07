@@ -5,8 +5,9 @@ import {ToolbarTextField} from "../components/ToolbarTextField.tsx";
 import {departmentOptions, statusOptions} from "./Directory.tsx";
 import {PayDetailTable, type PayRecord} from "../components/PayMemberDetailTable.tsx";
 import {MemberPayDetailCard} from "../components/MemberPayDetailCard.tsx";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {CommonButton} from "../components/CommonButton.tsx";
+import {payrollApi} from "../../server/lib/api.ts";
 
 
 const payRollData: DataCardItem[] = [
@@ -32,48 +33,105 @@ const salaryCompositionData = [
     {name: "個稅", value: 5},
 ];
 
-const payTableData: PayRecord[] = [
-    {
-        id: 1,
-        name: "張偉",
-        email: "zhangwei@co.com",
-        avatar: "張",
-        department: "Eng",
-        baseSalary: "¥28,000",
-        bonus: "+¥3,200",
-        deduction: "-¥560",
-        netPay: "¥26,068",
-        status: "Draft"
-    },
-    {
-        id: 2,
-        name: "李娜",
-        email: "lina@co.com",
-        avatar: "李",
-        department: "HR",
-        baseSalary: "¥25,000",
-        bonus: "+¥2,500",
-        deduction: "-¥0",
-        netPay: "¥23,935",
-        status: "Confirmed"
-    },
+const formatPayRecord = (item: any): PayRecord => ({
+    id: item.id,
+    name: item.name,
+    email: '',
+    avatar: item.name.charAt(0),
+    department: '',
+    baseSalary: `¥${item.bsalary.toLocaleString()}`,
+    bonus: `+¥${item.bonus.toLocaleString()}`,
+    deduction: `-¥${item.deduction.toLocaleString()}`,
+    netPay: `¥${item.asalary.toLocaleString()}`,
+    status: item.status === 'Draft' ? 'Draft' : 'Confirmed',
+});
+
+const testPayrollData = [
+    {name: "張偉", bsalary: 28000, bonus: 3200, deduction: 560, asalary: 26068, status: "Draft"},
+    {name: "李娜", bsalary: 25000, bonus: 2500, deduction: 0, asalary: 23935, status: "Draft"},
+    {name: "王強", bsalary: 22000, bonus: 1800, deduction: 440, asalary: 20892, status: "Draft"},
+    {name: "趙敏", bsalary: 20000, bonus: 2000, deduction: 400, asalary: 18960, status: "Draft"},
+    {name: "陳思", bsalary: 18000, bonus: 1500, deduction: 360, asalary: 17028, status: "Draft"},
 ];
 
 
 export const Payroll = () => {
+    const [records, setRecords] = useState<PayRecord[]>([]);
     const [selectedIds, setSelectedIds] = useState<number[]>([]);
+    const [selectedDetail, setSelectedDetail] = useState<PayRecord | null>(null);
+
+    // 獲取所有薪資記錄
+    const fetchRecords = async () => {
+        try {
+            const data = await payrollApi.getAll();
+            const formatted = data.map(formatPayRecord);
+            setRecords(formatted);
+        } catch (err) {
+            console.error('獲取薪資記錄失敗:', err);
+        }
+    };
+
+    // 生成測試數據
+    const generatePayroll = async () => {
+        try {
+            const data = await payrollApi.generateRecords(testPayrollData);
+            const formatted = data.map(formatPayRecord);
+            setRecords(formatted);
+        } catch (err) {
+            console.error('生成測試數據失敗:', err);
+        }
+    };
+
+    // 確認單條記錄
+    const handleConfirm = async (id: number) => {
+        try {
+            const data = await payrollApi.updateStatus(id, { status: 'Confirmed' });
+            const formatted = formatPayRecord(data);
+            setRecords(prev => prev.map(r => r.id === id ? formatted : r));
+            if (selectedDetail?.id === id) {
+                setSelectedDetail(formatted);
+            }
+        } catch (err) {
+            console.error('確認失敗:', err);
+        }
+    };
+
+    // 取消選擇
+    const handleCancelSelect = () => {
+        setSelectedIds([]);
+        setSelectedDetail(null);
+    };
 
     const handleToggleSelect = (id: number) => {
-        setSelectedIds(prev =>
-            prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
-        );
+        setSelectedIds(prev => {
+            const next = prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id];
+            // 單選時獲取詳情
+            if (next.length === 1) {
+                const record = records.find(r => r.id === next[0]);
+                if (record) setSelectedDetail(record);
+            } else {
+                setSelectedDetail(null);
+            }
+            return next;
+        });
     };
 
     const handleToggleSelectAll = () => {
-        setSelectedIds(prev =>
-            prev.length === payTableData.length ? [] : payTableData.map(r => r.id)
-        );
+        setSelectedIds(prev => {
+            const next = prev.length === records.length ? [] : records.map(r => r.id);
+            if (next.length === 1) {
+                const record = records.find(r => r.id === next[0]);
+                if (record) setSelectedDetail(record);
+            } else {
+                setSelectedDetail(null);
+            }
+            return next;
+        });
     };
+
+    useEffect(() => {
+        fetchRecords();
+    }, []);
 
     return (
         <section>
@@ -96,10 +154,10 @@ export const Payroll = () => {
                 <ToolbarTextField type="select" prefixIcon={`部門`} options={departmentOptions}/>
                 <ToolbarTextField type="select" prefixIcon={`狀態`} options={statusOptions}/>
                 <div className="flex-1"/>
-                <button
-                    className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 justify-center">
-                    生成薪資單
-                </button>
+                {records.length === 0 && (
+                    <CommonButton title={'生成測試數據'} bgColor="purple" onPressed={generatePayroll}/>
+                )}
+                <CommonButton title={'生成薪資單'} bgColor="blue" onPressed={generatePayroll}/>
 
             </div>
 
@@ -112,7 +170,7 @@ export const Payroll = () => {
                     <div className="flex gap-3">
                         <CommonButton title={"批量確認"} bgColor={`blue`}/>
                         <CommonButton title={`批量發放`} bgColor={`green`}/>
-                        <CommonButton title={`取消選擇`} bgColor={`red`}/>
+                        <CommonButton title={`取消選擇`} bgColor={`red`} onPressed={handleCancelSelect}/>
                     </div>
                 </div>
             )}
@@ -120,27 +178,36 @@ export const Payroll = () => {
 
             {/* 表格 */}
             <div className="mt-6">
-                <PayDetailTable
-                    data={payTableData}
-                    selectedIds={selectedIds}
-                    onToggleSelect={handleToggleSelect}
-                    onToggleSelectAll={handleToggleSelectAll}
-                />
+                {records.length > 0 ? (
+                    <PayDetailTable
+                        data={records}
+                        selectedIds={selectedIds}
+                        onToggleSelect={handleToggleSelect}
+                        onToggleSelectAll={handleToggleSelectAll}
+                        onConfirm={handleConfirm}
+                    />
+                ) : (
+                    <div className={`${cardClasses} flex flex-col items-center justify-center py-16`}>
+                        <span className="text-6xl mb-4">💰</span>
+                        <p className="text-lg font-medium text-slate-900 dark:text-slate-50 mb-2">
+                            還沒有薪資記錄
+                        </p>
+                        <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">
+                            點擊「生成薪資單」開始進行測試吧!
+                        </p>
+                    </div>
+                )}
             </div>
 
             {/* 單選時顯示薪資明細看板 */}
-            {selectedIds.length === 1 && (() => {
-                const selectedRecord = payTableData.find(r => r.id === selectedIds[0]);
-                if (!selectedRecord) return null;
-                return (
-                    <MemberPayDetailCard
-                        record={selectedRecord}
-                        onCollapse={() => setSelectedIds([])}
-                        onConfirm={() => console.log("確認", selectedRecord.id)}
-                        onPay={() => console.log("發放", selectedRecord.id)}
-                    />
-                );
-            })()}
+            {selectedDetail && (
+                <MemberPayDetailCard
+                    record={selectedDetail}
+                    onCollapse={handleCancelSelect}
+                    onConfirm={() => handleConfirm(selectedDetail.id)}
+                    onPay={() => console.log("發放", selectedDetail.id)}
+                />
+            )}
 
         </section>
     );

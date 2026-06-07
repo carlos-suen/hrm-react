@@ -11,6 +11,7 @@ export interface RecruitmentJob {
     salaryMax: string;
     applicantCount: number;
     type: '全職' | '實習' | '兼職';
+    status: RecruitmentStatus;
 }
 
 interface RecruitmentColumnProps {
@@ -18,6 +19,7 @@ interface RecruitmentColumnProps {
     jobs: RecruitmentJob[];
     status: RecruitmentStatus;
     className?: string;
+    onEdit?: (id: number) => void;
 }
 
 const columnBgClasses: Record<RecruitmentStatus, string> = {
@@ -39,7 +41,7 @@ const textColorClass: Record<string, string> = {
 }
 
 
-export const RecruitmentColumn = ({title, jobs, status, className}: RecruitmentColumnProps) => {
+export const RecruitmentColumn = ({title, jobs, status, className, onEdit}: RecruitmentColumnProps) => {
     return (
         <div className={`${columnBgClasses[status]} rounded-xl p-4 border flex flex-col h-full ${className}`}>
             {/* 標題 */}
@@ -64,6 +66,7 @@ export const RecruitmentColumn = ({title, jobs, status, className}: RecruitmentC
                         salaryMax={job.salaryMax}
                         applicantCount={job.applicantCount}
                         type={job.type}
+                        onEdit={onEdit}
                     />
                 ))}
             </div>

@@ -1,0 +1,16 @@
+eid,department,pos,created_at,sal,status
+E001,Engineering,Senior Developer,2024-01-15 09:00:00+00,85000.00,1
+E002,Engineering,Junior Developer,2024-03-20 10:30:00+00,55000.00,1
+E003,Marketing,Marketing Manager,2023-11-05 08:00:00+00,72000.00,1
+E004,HR,HR Specialist,2024-02-10 14:00:00+00,58000.00,1
+E005,Engineering,Tech Lead,2023-06-18 09:30:00+00,95000.00,1
+E006,Sales,Sales Representative,2024-04-01 11:00:00+00,52000.00,2
+E007,Marketing,Content Writer,2024-05-12 13:00:00+00,48000.00,1
+E008,Engineering,DevOps Engineer,2023-09-25 10:00:00+00,82000.00,1
+E009,HR,Recruiter,2024-01-30 09:00:00+00,54000.00,3
+E010,Sales,Sales Manager,2023-08-14 08:30:00+00,78000.00,1
+E011,Engineering,QA Engineer,2024-06-01 10:00:00+00,65000.00,1
+E012,Finance,Accountant,2023-12-20 09:00:00+00,62000.00,1
+E013,Engineering,Frontend Developer,2024-02-28 11:30:00+00,70000.00,2
+E014,Marketing,SEO Specialist,2024-07-10 14:00:00+00,56000.00,1
+E015,HR,HR Manager,2023-05-08 08:00:00+00,80000.00,1

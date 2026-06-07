@@ -1,7 +1,7 @@
 import {ApprovalColumn} from "../components/ApprovalsColumn.tsx";
 import {useEffect, useState} from "react";
 import {CommonButton} from "../components/CommonButton.tsx";
-import {supabase} from "../../lib/supabase.ts";
+import {approvalApi} from "../../server/lib/api.ts";
 import type {Approval} from "../components/ApprovalsDragableCard.tsx";
 
 const testPendingApprovalsData: Approval[] = [
@@ -99,132 +99,109 @@ export const Approvals = () => {
         };
 
         const newStatus = statusMap[targetColumn];
-        const {data, error} = await supabase
-            .from("approvals")
-            .update({status: newStatus})
-            .eq("id", Number(cardId))
-            .select();
 
-        if (error) {
-            console.error("拖動更新失敗:", error);
-            return;
-        }
+        try {
+            const data = await approvalApi.updateStatus(Number(cardId), { status: newStatus });
 
-        switch (sourceColumn) {
-            case "pending":
-                setPendingApprovals(prev => prev.filter(c => c.id !== Number(cardId)));
-                break;
-            case "approved":
-                setApprovedApprovals(prev => prev.filter(c => c.id !== Number(cardId)));
-                break;
-            case "rejected":
-                setRejectedApprovals(prev => prev.filter(c => c.id !== Number(cardId)));
-                break;
-        }
-
-        if (data && data[0]) {
-            switch (targetColumn) {
+            switch (sourceColumn) {
                 case "pending":
-                    setPendingApprovals(prev => [...prev, data[0]]);
+                    setPendingApprovals(prev => prev.filter(c => c.id !== Number(cardId)));
                     break;
                 case "approved":
-                    setApprovedApprovals(prev => [...prev, data[0]]);
+                    setApprovedApprovals(prev => prev.filter(c => c.id !== Number(cardId)));
                     break;
                 case "rejected":
-                    setRejectedApprovals(prev => [...prev, data[0]]);
+                    setRejectedApprovals(prev => prev.filter(c => c.id !== Number(cardId)));
                     break;
             }
+
+            switch (targetColumn) {
+                case "pending":
+                    setPendingApprovals(prev => [...prev, data]);
+                    break;
+                case "approved":
+                    setApprovedApprovals(prev => [...prev, data]);
+                    break;
+                case "rejected":
+                    setRejectedApprovals(prev => [...prev, data]);
+                    break;
+            }
+        } catch (err) {
+            console.error("拖動更新失敗:", err);
         }
     };
 
 
     // 獲取所有待處理
     const fetchAllPendingApprovals = async () => {
-        const {data, error} = await supabase.from("approvals").select("*").eq("status", 0);
-
-        if (error) {
-            console.error('獲取待處理的事項失敗, 原因:', error);
-            return;
+        try {
+            const data = await approvalApi.getPending();
+            setPendingApprovals(data);
+        } catch (err) {
+            console.error('獲取待處理的事項失敗, 原因:', err);
         }
-
-        setPendingApprovals(data || []);
-
     }
 
     // 獲取所有已批准
     const fetchAllApprovedApprovals = async () => {
-        const {data, error} = await supabase.from("approvals").select("*").eq("status", 1);
-
-        if (error) {
-            console.error('獲取已批准的事項失敗, 原因:', error);
-            return;
+        try {
+            const data = await approvalApi.getApproved();
+            setApprovedApprovals(data);
+        } catch (err) {
+            console.error('獲取已批准的事項失敗, 原因:', err);
         }
-
-        setApprovedApprovals(data || []);
     }
 
     // 獲取所有已拒絕
     const fetchAllRejectedApprovals = async () => {
-        const {data, error} = await supabase.from("approvals").select("*").eq("status", 2);
-
-        if (error) {
-            console.error('獲取已拒絕的事項失敗, 原因:', error);
-            return;
+        try {
+            const data = await approvalApi.getRejected();
+            setRejectedApprovals(data);
+        } catch (err) {
+            console.error('獲取已拒絕的事項失敗, 原因:', err);
         }
-
-        setRejectedApprovals(data || []);
     }
 
     // 清空所有的內容
     const clearAllData = async () => {
-
-        const {error} = await supabase.from("approvals").delete().neq("id", 0);
-
-        if (error) {
-            console.error("清空失敗, 原因: ", error);
-            return;
+        try {
+            await approvalApi.clearAll();
+            setPendingApprovals([]);
+            setApprovedApprovals([]);
+            setRejectedApprovals([]);
+        } catch (err) {
+            console.error("清空失敗, 原因: ", err);
         }
-
-        setPendingApprovals([]);
-        setApprovedApprovals([]);
-        setRejectedApprovals([]);
     }
 
     // 生成待處理數據
     const generatePendingApprovals = async () => {
-
-        const {data, error} = await supabase.from("approvals").insert(testPendingApprovalsData).select();
-
-
-        if (error) {
-            console.error('生成測試數據失敗:', error);
-            return;
+        try {
+            // 移除 id 字段，讓後端自動生成
+            const dataToInsert = testPendingApprovalsData.map(({ id, ...rest }) => rest);
+            const data = await approvalApi.generateApprovals(dataToInsert);
+            setPendingApprovals(prev => [...data, ...prev]);
+        } catch (err) {
+            console.error('生成測試數據失敗:', err);
         }
-
-        setPendingApprovals(prev => [...(data || []), ...prev]);
     }
 
 
     //
     const updatePendingApprovalStatus = async (approvalId: number, newStatus: number) => {
-        const {
-            data,
-            error
-        } = await supabase.from("approvals").update({status: newStatus}).eq("id", approvalId).select();
+        try {
+            const data = await approvalApi.updateStatus(approvalId, { status: newStatus });
 
-        if (error) {
-            console.error("更新失敗, 原因: ", error);
-            return;
+            if (newStatus === 1) {
+                setApprovedApprovals(prev => [...prev, data]);
+            } else if (newStatus === 2) {
+                setRejectedApprovals(prev => [...prev, data]);
+            }
+
+            setPendingApprovals(prev => prev.filter(item => item.id !== approvalId));
+        } catch (err) {
+            console.error("更新失敗, 原因: ", err);
         }
-
-        if (newStatus === 1) {
-            setApprovedApprovals(prev => [...prev, ...(data || [])]);
-        } else if (newStatus === 2) {
-            setRejectedApprovals(prev => [...prev, ...(data || [])]);
-        }
-
-        setPendingApprovals(prev => prev.filter(item => item.id !== approvalId));
-
     }
 
 
