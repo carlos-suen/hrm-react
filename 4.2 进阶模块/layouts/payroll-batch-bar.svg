@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 48" font-family="system-ui,-apple-system,sans-serif">
+  <defs>
+    <style>
+      .bar { fill: #eff6ff; rx: 8; }
+      .bar-dark { fill: #172554; rx: 8; }
+      .check { fill: #3b82f6; font-size: 12px; }
+      .selected-count { fill: #1e293b; font-size: 12px; font-weight: 600; }
+      .btn-batch { fill: #3b82f6; rx: 6; }
+      .btn-batch-text { fill: #fff; font-size: 11px; font-weight: 600; text-anchor: middle; }
+      .btn-batch-green { fill: #10b981; rx: 6; }
+      .btn-batch-green-text { fill: #fff; font-size: 11px; font-weight: 600; text-anchor: middle; }
+      .btn-cancel { fill: none; stroke: #cbd5e1; stroke-width: 1; rx: 6; }
+      .btn-cancel-text { fill: #64748b; font-size: 11px; text-anchor: middle; }
+      .note { fill: #94a3b8; font-size: 9px; }
+    </style>
+  </defs>
+
+  <!-- Light mode -->
+  <rect width="520" height="48" class="bar"/>
+
+  <text x="16" y="28" class="check">☑</text>
+  <text x="32" y="28" class="selected-count">已選擇 3 項</text>
+
+  <rect x="120" y="12" width="72" height="24" class="btn-batch"/>
+  <text x="156" y="28" class="btn-batch-text">批量確認</text>
+
+  <rect x="200" y="12" width="72" height="24" class="btn-batch-green"/>
+  <text x="236" y="28" class="btn-batch-green-text">批量發放</text>
+
+  <rect x="280" y="12" width="72" height="24" class="btn-cancel"/>
+  <text x="316" y="28" class="btn-cancel-text">取消選擇</text>
+
+  <text x="520" y="44" class="note" text-anchor="end">bg-blue-50 dark:bg-blue-950 rounded-lg px-4 py-2</text>
+</svg>

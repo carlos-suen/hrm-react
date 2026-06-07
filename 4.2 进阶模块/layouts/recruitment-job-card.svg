@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 160" font-family="system-ui,-apple-system,sans-serif">
+  <defs>
+    <style>
+      .card { fill: #fff; stroke: #e2e8f0; stroke-width: 1; rx: 8; }
+      .title { fill: #1e293b; font-size: 13px; font-weight: 600; }
+      .badge-ft { fill: #dbeafe; rx: 3; }
+      .badge-ft-text { fill: #1d4ed8; font-size: 9px; font-weight: 600; text-anchor: middle; }
+      .meta { fill: #64748b; font-size: 10px; }
+      .salary { fill: #3b82f6; font-size: 12px; font-weight: 600; }
+      .applicants { fill: #94a3b8; font-size: 10px; }
+      .divider { stroke: #f1f5f9; stroke-width: 1; }
+      .btn-outline { fill: none; stroke: #e2e8f0; stroke-width: 1; rx: 4; }
+      .btn-text { fill: #64748b; font-size: 10px; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <rect width="260" height="160" class="card"/>
+
+  <!-- Title + Badge -->
+  <text x="16" y="28" class="title">高級前端工程師</text>
+  <rect x="200" y="16" width="36" height="16" class="badge-ft"/>
+  <text x="218" y="28" class="badge-ft-text">全職</text>
+
+  <!-- Department + Location -->
+  <text x="16" y="52" class="meta">Engineering · 北京</text>
+
+  <!-- Salary -->
+  <text x="16" y="76" class="salary">¥25,000 - ¥35,000</text>
+
+  <!-- Applicants -->
+  <text x="16" y="100" class="applicants">👤 12 位候選人</text>
+
+  <!-- Divider -->
+  <line x1="16" y1="112" x2="244" y2="112" class="divider"/>
+
+  <!-- Buttons -->
+  <rect x="16" y="122" width="52" height="22" class="btn-outline"/>
+  <text x="42" y="137" class="btn-text">編輯</text>
+  <rect x="76" y="122" width="52" height="22" class="btn-outline"/>
+  <text x="102" y="137" class="btn-text">詳情</text>
+</svg>

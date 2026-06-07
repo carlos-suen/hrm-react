@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" font-family="system-ui,-apple-system,sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .card { fill: #fff; stroke: #e2e8f0; stroke-width: 1; rx: 10; }
+      .stat-card { fill: #fff; stroke: #e2e8f0; stroke-width: 1; rx: 10; }
+      .stat-label { fill: #94a3b8; font-size: 11px; }
+      .stat-value { fill: #1e293b; font-size: 20px; font-weight: 700; }
+      .stat-icon { font-size: 16px; }
+      .chart-area { fill: #fff; stroke: #e2e8f0; stroke-width: 1; rx: 10; }
+      .chart-title { fill: #94a3b8; font-size: 11px; font-weight: 500; }
+      .grid-line { stroke: #f1f5f9; stroke-width: 1; }
+      .axis-label { fill: #94a3b8; font-size: 9px; text-anchor: middle; }
+      .axis-y-label { fill: #cbd5e1; font-size: 9px; text-anchor: end; }
+      .area-primary { fill: #3b82f6; fill-opacity: 0.1; stroke: #3b82f6; stroke-width: 2; }
+      .area-secondary { fill: #f59e0b; fill-opacity: 0.1; stroke: #f59e0b; stroke-width: 2; }
+      .legend-text { fill: #64748b; font-size: 10px; }
+      .cal-header { fill: #94a3b8; font-size: 10px; text-anchor: middle; font-weight: 600; }
+      .cal-day { fill: #1e293b; font-size: 10px; text-anchor: middle; }
+      .cal-normal { fill: #dcfce7; }
+      .cal-late { fill: #fef9c3; }
+      .cal-absent { fill: #fee2e2; }
+      .cal-leave { fill: #dbeafe; }
+      .cal-future { fill: #f8fafc; }
+      .cal-weekend { fill: #f1f5f9; }
+      .label { fill: #64748b; font-size: 10px; }
+    </style>
+  </defs>
+
+  <rect width="800" height="560" class="bg" rx="12"/>
+
+  <!-- Title -->
+  <text x="20" y="30" style="fill:#1e293b;font-size:16px;font-weight:700">考勤概覽</text>
+
+  <!-- ============ Stats Cards ============ -->
+  <rect x="20" y="44" width="182" height="72" class="stat-card"/>
+  <text x="36" y="64" class="stat-label">今日出勤率</text>
+  <text x="178" y="64" class="stat-icon">🕐</text>
+  <text x="36" y="92" class="stat-value">87.5%</text>
+
+  <rect x="216" y="44" width="182" height="72" class="stat-card"/>
+  <text x="232" y="64" class="stat-label">遲到人數</text>
+  <text x="374" y="64" class="stat-icon">⚠</text>
+  <text x="232" y="92" class="stat-value">3</text>
+
+  <rect x="412" y="44" width="182" height="72" class="stat-card"/>
+  <text x="428" y="64" class="stat-label">早退人數</text>
+  <text x="570" y="64" class="stat-icon">🚪</text>
+  <text x="428" y="92" class="stat-value">1</text>
+
+  <rect x="608" y="44" width="172" height="72" class="stat-card"/>
+  <text x="624" y="64" class="stat-label">缺勤人數</text>
+  <text x="756" y="64" class="stat-icon">❌</text>
+  <text x="624" y="92" class="stat-value">2</text>
+
+  <!-- ============ Area Chart: Attendance Trend ============ -->
+  <rect x="20" y="130" width="760" height="180" class="chart-area"/>
+  <text x="36" y="154" class="chart-title">考勤趨勢（近7天）</text>
+
+  <!-- Grid -->
+  <line x1="60" y1="175" x2="740" y2="175" class="grid-line"/>
+  <line x1="60" y1="200" x2="740" y2="200" class="grid-line"/>
+  <line x1="60" y1="225" x2="740" y2="225" class="grid-line"/>
+  <line x1="60" y1="250" x2="740" y2="250" class="grid-line"/>
+  <line x1="60" y1="275" x2="740" y2="275" class="grid-line"/>
+
+  <!-- Y-axis -->
+  <text x="54" y="179" class="axis-y-label">40</text>
+  <text x="54" y="204" class="axis-y-label">30</text>
+  <text x="54" y="229" class="axis-y-label">20</text>
+  <text x="54" y="254" class="axis-y-label">10</text>
+  <text x="54" y="279" class="axis-y-label">0</text>
+
+  <!-- Area: Attendance (blue) -->
+  <path d="M100,205 L210,200 L320,210 L430,195 L540,200 L650,190 L740,195 L740,275 L100,275 Z" class="area-primary"/>
+  <!-- Area: Late (orange) -->
+  <path d="M100,265 L210,260 L320,268 L430,258 L540,262 L650,255 L740,260 L740,275 L100,275 Z" class="area-secondary"/>
+
+  <!-- X-axis -->
+  <text x="100" y="293" class="axis-label">5/28</text>
+  <text x="210" y="293" class="axis-label">5/29</text>
+  <text x="320" y="293" class="axis-label">5/30</text>
+  <text x="430" y="293" class="axis-label">5/31</text>
+  <text x="540" y="293" class="axis-label">6/1</text>
+  <text x="650" y="293" class="axis-label">6/2</text>
+  <text x="740" y="293" class="axis-label">6/3</text>
+
+  <!-- Legend -->
+  <line x1="560" y1="150" x2="580" y2="150" stroke="#3b82f6" stroke-width="2"/>
+  <text x="584" y="154" class="legend-text">出勤</text>
+  <line x1="620" y1="150" x2="640" y2="150" stroke="#f59e0b" stroke-width="2"/>
+  <text x="644" y="154" class="legend-text">遲到</text>
+
+  <!-- ============ Calendar View ============ -->
+  <rect x="20" y="324" width="760" height="220" class="chart-area"/>
+  <text x="36" y="348" class="chart-title">考勤日曆 — 2026年6月</text>
+
+  <!-- Calendar header -->
+  <text x="74" y="372" class="cal-header">日</text>
+  <text x="174" y="372" class="cal-header">一</text>
+  <text x="274" y="372" class="cal-header">二</text>
+  <text x="374" y="372" class="cal-header">三</text>
+  <text x="474" y="372" class="cal-header">四</text>
+  <text x="574" y="372" class="cal-header">五</text>
+  <text x="674" y="372" class="cal-header">六</text>
+
+  <!-- Week 1: June starts on Monday -->
+  <rect x="124" y="380" width="96" height="36" class="cal-normal" rx="4"/>
+  <text x="174" y="403" class="cal-day">1</text>
+  <rect x="224" y="380" width="96" height="36" class="cal-normal" rx="4"/>
+  <text x="274" y="403" class="cal-day">2</text>
+  <rect x="324" y="380" width="96" height="36" class="cal-late" rx="4"/>
+  <text x="374" y="403" class="cal-day">3</text>
+  <rect x="424" y="380" width="96" height="36" class="cal-normal" rx="4"/>
+  <text x="474" y="403" class="cal-day">4</text>
+  <rect x="524" y="380" width="96" height="36" class="cal-absent" rx="4"/>
+  <text x="574" y="403" class="cal-day">5</text>
+  <rect x="624" y="380" width="96" height="36" class="cal-weekend" rx="4"/>
+  <text x="674" y="403" class="cal-day">6</text>
+
+  <!-- Week 2 -->
+  <rect x="24" y="424" width="96" height="36" class="cal-weekend" rx="4"/>
+  <text x="74" y="447" class="cal-day">7</text>
+  <rect x="124" y="424" width="96" height="36" class="cal-normal" rx="4"/>
+  <text x="174" y="447" class="cal-day">8</text>
+  <rect x="224" y="424" width="96" height="36" class="cal-leave" rx="4"/>
+  <text x="274" y="447" class="cal-day">9</text>
+  <rect x="324" y="424" width="96" height="36" class="cal-normal" rx="4"/>
+  <text x="374" y="447" class="cal-day">10</text>
+  <rect x="424" y="424" width="96" height="36" class="cal-normal" rx="4"/>
+  <text x="474" y="447" class="cal-day">11</text>
+  <rect x="524" y="424" width="96" height="36" class="cal-late" rx="4"/>
+  <text x="574" y="447" class="cal-day">12</text>
+  <rect x="624" y="424" width="96" height="36" class="cal-weekend" rx="4"/>
+  <text x="674" y="447" class="cal-day">13</text>
+
+  <!-- Week 3 -->
+  <rect x="24" y="468" width="96" height="36" class="cal-weekend" rx="4"/>
+  <text x="74" y="491" class="cal-day">14</text>
+  <rect x="124" y="468" width="96" height="36" class="cal-normal" rx="4"/>
+  <text x="174" y="491" class="cal-day">15</text>
+  <rect x="224" y="468" width="96" height="36" class="cal-normal" rx="4"/>
+  <text x="274" y="491" class="cal-day">16</text>
+  <rect x="324" y="468" width="96" height="36" class="cal-normal" rx="4"/>
+  <text x="374" y="491" class="cal-day">17</text>
+  <rect x="424" y="468" width="96" height="36" class="cal-future" rx="4" stroke="#e2e8f0"/>
+  <text x="474" y="491" class="cal-day">18</text>
+  <rect x="524" y="468" width="96" height="36" class="cal-future" rx="4" stroke="#e2e8f0"/>
+  <text x="574" y="491" class="cal-day">19</text>
+  <rect x="624" y="468" width="96" height="36" class="cal-future" rx="4" stroke="#e2e8f0"/>
+  <text x="674" y="491" class="cal-day">20</text>
+
+  <!-- Legend -->
+  <rect x="36" y="518" width="12" height="12" class="cal-normal" rx="2"/>
+  <text x="52" y="528" class="label">正常</text>
+  <rect x="96" y="518" width="12" height="12" class="cal-late" rx="2"/>
+  <text x="112" y="528" class="label">遲到</text>
+  <rect x="156" y="518" width="12" height="12" class="cal-absent" rx="2"/>
+  <text x="172" y="528" class="label">缺勤</text>
+  <rect x="216" y="518" width="12" height="12" class="cal-leave" rx="2"/>
+  <text x="232" y="528" class="label">請假</text>
+  <rect x="276" y="518" width="12" height="12" class="cal-future" rx="2" stroke="#e2e8f0"/>
+  <text x="292" y="528" class="label">未來</text>
+
+  <text x="20" y="552" class="label">統計卡片 grid-cols-4 | 面積圖全寬 | 日曆 grid-cols-7</text>
+</svg>

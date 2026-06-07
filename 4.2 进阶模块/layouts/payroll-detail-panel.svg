@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" font-family="system-ui,-apple-system,sans-serif">
+  <defs>
+    <style>
+      .panel { fill: #fff; stroke: #e2e8f0; stroke-width: 1; rx: 12; }
+      .header-bg { fill: #f8fafc; rx: 12 12 0 0; }
+      .header-text { fill: #1e293b; font-size: 13px; font-weight: 600; }
+      .collapse-btn { fill: #3b82f6; font-size: 11px; }
+      .detail-panel { fill: #f8fafc; stroke: #e2e8f0; stroke-width: 1; rx: 8; }
+      .label { fill: #64748b; font-size: 11px; }
+      .value { fill: #1e293b; font-size: 12px; }
+      .value-green { fill: #16a34a; font-size: 12px; }
+      .value-red { fill: #dc2626; font-size: 12px; }
+      .value-muted { fill: #64748b; font-size: 12px; }
+      .divider { stroke: #e2e8f0; stroke-width: 1; stroke-dasharray: 4 2; }
+      .net-label { fill: #1e293b; font-size: 13px; font-weight: 700; }
+      .net-value { fill: #1e293b; font-size: 16px; font-weight: 700; }
+      .btn-confirm { fill: #3b82f6; rx: 6; }
+      .btn-confirm-text { fill: #fff; font-size: 11px; font-weight: 600; text-anchor: middle; }
+      .btn-pay { fill: #10b981; rx: 6; }
+      .btn-pay-text { fill: #fff; font-size: 11px; font-weight: 600; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- Outer panel -->
+  <rect width="520" height="280" class="panel"/>
+
+  <!-- Header -->
+  <rect x="1" y="1" width="518" height="36" class="header-bg"/>
+  <text x="16" y="24" class="header-text">張偉 · Engineering · 2026-01</text>
+  <text x="480" y="24" class="collapse-btn">▼ 收起</text>
+
+  <!-- Detail panel -->
+  <rect x="16" y="48" width="488" height="216" class="detail-panel"/>
+
+  <text x="32" y="72" style="fill:#1e293b;font-size:14px;font-weight:700">薪資明細</text>
+
+  <!-- Base salary -->
+  <text x="32" y="100" class="label">基本工資</text>
+  <text x="440" y="100" class="value" text-anchor="end">¥28,000</text>
+
+  <!-- Bonus -->
+  <text x="32" y="124" class="label">績效獎金</text>
+  <text x="440" y="124" class="value-green" text-anchor="end">+¥3,200</text>
+  <text x="480" y="124" style="fill:#16a34a;font-size:9px">← text-green-600</text>
+
+  <!-- Divider -->
+  <line x1="32" y1="136" x2="440" y2="136" class="divider"/>
+
+  <!-- Deductions -->
+  <text x="32" y="156" class="label">扣款</text>
+  <text x="440" y="156" class="value-red" text-anchor="end">-¥560</text>
+  <text x="480" y="156" style="fill:#dc2626;font-size:9px">← text-red-600</text>
+
+  <text x="32" y="180" class="label">五險一金</text>
+  <text x="440" y="180" class="value-muted" text-anchor="end">-¥2,940</text>
+  <text x="480" y="180" style="fill:#64748b;font-size:9px">← text-slate-500</text>
+
+  <text x="32" y="204" class="label">個人所得稅</text>
+  <text x="440" y="204" class="value-muted" text-anchor="end">-¥1,632</text>
+  <text x="480" y="204" style="fill:#64748b;font-size:9px">← text-slate-500</text>
+
+  <!-- Double divider -->
+  <line x1="32" y1="216" x2="440" y2="216" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Net salary -->
+  <text x="32" y="240" class="net-label">實發工資</text>
+  <text x="440" y="240" class="net-value" text-anchor="end">¥26,068</text>
+  <text x="480" y="240" style="fill:#1e293b;font-size:9px">← text-lg font-bold</text>
+
+  <!-- Buttons -->
+  <rect x="32" y="252" width="72" height="28" class="btn-confirm"/>
+  <text x="68" y="270" class="btn-confirm-text">確認</text>
+  <rect x="116" y="252" width="72" height="28" class="btn-pay"/>
+  <text x="152" y="270" class="btn-pay-text">發放</text>
+</svg>

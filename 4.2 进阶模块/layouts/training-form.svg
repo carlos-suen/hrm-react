@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 560" font-family="system-ui,-apple-system,sans-serif">
+  <defs>
+    <style>
+      .bg { fill: rgba(0,0,0,0.3); }
+      .dialog { fill: #fff; stroke: #e2e8f0; stroke-width: 1; rx: 16; }
+      .dialog-title { fill: #1e293b; font-size: 16px; font-weight: 700; }
+      .close-btn { fill: #94a3b8; font-size: 14px; }
+      .field-label { fill: #374151; font-size: 11px; font-weight: 600; }
+      .field-required { fill: #ef4444; font-size: 11px; }
+      .input-box { fill: #fff; stroke: #cbd5e1; stroke-width: 1; rx: 6; }
+      .input-placeholder { fill: #94a3b8; font-size: 10px; }
+      .select-box { fill: #fff; stroke: #cbd5e1; stroke-width: 1; rx: 6; }
+      .select-value { fill: #1e293b; font-size: 10px; }
+      .select-arrow { fill: #94a3b8; font-size: 10px; }
+      .btn-cancel { fill: #f1f5f9; rx: 8; }
+      .btn-cancel-text { fill: #475569; font-size: 12px; font-weight: 600; text-anchor: middle; }
+      .btn-submit { fill: #3b82f6; rx: 8; }
+      .btn-submit-text { fill: #fff; font-size: 12px; font-weight: 600; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- Overlay -->
+  <rect width="480" height="560" class="bg"/>
+
+  <!-- Dialog -->
+  <rect x="40" y="20" width="400" height="520" class="dialog"/>
+
+  <!-- Header -->
+  <text x="60" y="52" class="dialog-title">新增課程</text>
+  <text x="412" y="52" class="close-btn">✕</text>
+  <line x1="60" y1="66" x2="420" y2="66" stroke="#f1f5f9"/>
+
+  <!-- Field 1: 課程名稱 -->
+  <text x="60" y="90" class="field-label">課程名稱</text>
+  <text x="120" y="90" class="field-required">*</text>
+  <rect x="60" y="98" width="360" height="32" class="input-box"/>
+  <text x="72" y="118" class="input-placeholder">請輸入課程名稱</text>
+
+  <!-- Field 2: 講師 + 類別 (2 cols) -->
+  <text x="60" y="150" class="field-label">講師</text>
+  <text x="88" y="150" class="field-required">*</text>
+  <rect x="60" y="158" width="172" height="32" class="input-box"/>
+  <text x="72" y="178" class="input-placeholder">請輸入講師姓名</text>
+
+  <text x="248" y="150" class="field-label">類別</text>
+  <text x="276" y="150" class="field-required">*</text>
+  <rect x="248" y="158" width="172" height="32" class="select-box"/>
+  <text x="260" y="178" class="select-value">Technical</text>
+  <text x="400" y="178" class="select-arrow">▾</text>
+
+  <!-- Field 3: 開始日期 + 結束日期 (2 cols) -->
+  <text x="60" y="210" class="field-label">開始日期</text>
+  <text x="108" y="210" class="field-required">*</text>
+  <rect x="60" y="218" width="172" height="32" class="input-box"/>
+  <text x="72" y="238" class="input-placeholder">YYYY-MM-DD</text>
+
+  <text x="248" y="210" class="field-label">結束日期</text>
+  <text x="300" y="210" class="field-required">*</text>
+  <rect x="248" y="218" width="172" height="32" class="input-box"/>
+  <text x="260" y="238" class="input-placeholder">YYYY-MM-DD</text>
+
+  <!-- Field 4: 時長 + 容量 (2 cols) -->
+  <text x="60" y="270" class="field-label">時長（小時）</text>
+  <text x="140" y="270" class="field-required">*</text>
+  <rect x="60" y="278" width="172" height="32" class="input-box"/>
+  <text x="72" y="298" class="input-placeholder">例: 24</text>
+
+  <text x="248" y="270" class="field-label">容量</text>
+  <text x="276" y="270" class="field-required">*</text>
+  <rect x="248" y="278" width="172" height="32" class="input-box"/>
+  <text x="260" y="298" class="input-placeholder">例: 25</text>
+
+  <!-- Field 5: 地點 -->
+  <text x="60" y="330" class="field-label">地點</text>
+  <text x="88" y="330" class="field-required">*</text>
+  <rect x="60" y="338" width="360" height="32" class="input-box"/>
+  <text x="72" y="358" class="input-placeholder">請輸入培訓地點</text>
+
+  <!-- Field 6: 課程描述 -->
+  <text x="60" y="390" class="field-label">課程描述</text>
+  <text x="120" y="390" class="field-required">*</text>
+  <rect x="60" y="398" width="360" height="80" class="input-box"/>
+  <text x="72" y="418" class="input-placeholder">請輸入課程描述...</text>
+
+  <!-- Footer buttons -->
+  <rect x="260" y="496" width="72" height="32" class="btn-cancel"/>
+  <text x="296" y="516" class="btn-cancel-text">取消</text>
+  <rect x="344" y="496" width="72" height="32" class="btn-submit"/>
+  <text x="380" y="516" class="btn-submit-text">提交</text>
+</svg>

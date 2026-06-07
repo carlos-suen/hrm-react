@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" font-family="system-ui,-apple-system,sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .card { fill: #fff; stroke: #e2e8f0; stroke-width: 1; rx: 10; }
+      .stat-card { fill: #fff; stroke: #e2e8f0; stroke-width: 1; rx: 10; }
+      .stat-label { fill: #94a3b8; font-size: 11px; }
+      .stat-value { fill: #1e293b; font-size: 20px; font-weight: 700; }
+      .stat-icon { font-size: 16px; }
+      .chart-area { fill: #fff; stroke: #e2e8f0; stroke-width: 1; rx: 10; }
+      .chart-title { fill: #94a3b8; font-size: 11px; font-weight: 500; }
+      .grid-line { stroke: #f1f5f9; stroke-width: 1; }
+      .axis-label { fill: #94a3b8; font-size: 9px; text-anchor: middle; }
+      .axis-y-label { fill: #cbd5e1; font-size: 9px; text-anchor: end; }
+      .bar { fill: #3b82f6; rx: 3; }
+      .pie-slice-1 { fill: #3b82f6; }
+      .pie-slice-2 { fill: #10b981; }
+      .pie-slice-3 { fill: #ef4444; }
+      .pie-slice-4 { fill: #8b5cf6; }
+      .pie-slice-5 { fill: #f59e0b; }
+      .pie-label { fill: #64748b; font-size: 10px; }
+      .pie-pct { fill: #1e293b; font-size: 11px; font-weight: 600; }
+      .label { fill: #64748b; font-size: 10px; }
+    </style>
+  </defs>
+
+  <rect width="800" height="480" class="bg" rx="12"/>
+
+  <!-- Title -->
+  <text x="20" y="30" style="fill:#1e293b;font-size:16px;font-weight:700">薪資概覽</text>
+
+  <!-- ============ Stats Cards ============ -->
+  <rect x="20" y="44" width="182" height="72" class="stat-card"/>
+  <text x="36" y="64" class="stat-label">本月薪資總額</text>
+  <text x="178" y="64" class="stat-icon">💰</text>
+  <text x="36" y="92" class="stat-value">¥528K</text>
+
+  <rect x="216" y="44" width="182" height="72" class="stat-card"/>
+  <text x="232" y="64" class="stat-label">平均薪資</text>
+  <text x="374" y="64" class="stat-icon">📈</text>
+  <text x="232" y="92" class="stat-value">¥24,200</text>
+
+  <rect x="412" y="44" width="182" height="72" class="stat-card"/>
+  <text x="428" y="64" class="stat-label">最高薪資</text>
+  <text x="570" y="64" class="stat-icon">⬆</text>
+  <text x="428" y="92" class="stat-value">¥30,000</text>
+
+  <rect x="608" y="44" width="172" height="72" class="stat-card"/>
+  <text x="624" y="64" class="stat-label">待確認薪資單</text>
+  <text x="756" y="64" class="stat-icon">📄</text>
+  <text x="624" y="92" class="stat-value">3</text>
+
+  <!-- ============ Bar Chart: Department Salary ============ -->
+  <rect x="20" y="132" width="380" height="328" class="chart-area"/>
+  <text x="36" y="156" class="chart-title">部門平均薪資對比</text>
+
+  <!-- Grid -->
+  <line x1="80" y1="180" x2="370" y2="180" class="grid-line"/>
+  <line x1="80" y1="220" x2="370" y2="220" class="grid-line"/>
+  <line x1="80" y1="260" x2="370" y2="260" class="grid-line"/>
+  <line x1="80" y1="300" x2="370" y2="300" class="grid-line"/>
+  <line x1="80" y1="340" x2="370" y2="340" class="grid-line"/>
+  <line x1="80" y1="380" x2="370" y2="380" class="grid-line"/>
+
+  <!-- Y-axis -->
+  <text x="74" y="184" class="axis-y-label">30K</text>
+  <text x="74" y="224" class="axis-y-label">24K</text>
+  <text x="74" y="264" class="axis-y-label">18K</text>
+  <text x="74" y="304" class="axis-y-label">12K</text>
+  <text x="74" y="344" class="axis-y-label">6K</text>
+  <text x="74" y="384" class="axis-y-label">0</text>
+
+  <!-- Bars -->
+  <rect x="100" y="210" width="36" height="170" class="bar"/>
+  <text x="118" y="402" class="axis-label">Eng</text>
+  <text x="118" y="204" style="fill:#3b82f6;font-size:9px;font-weight:600;text-anchor:middle">28K</text>
+
+  <rect x="160" y="290" width="36" height="90" class="bar"/>
+  <text x="178" y="402" class="axis-label">HR</text>
+  <text x="178" y="284" style="fill:#3b82f6;font-size:9px;font-weight:600;text-anchor:middle">20.5K</text>
+
+  <rect x="220" y="310" width="36" height="70" class="bar"/>
+  <text x="238" y="402" class="axis-label">Mkt</text>
+  <text x="238" y="304" style="fill:#3b82f6;font-size:9px;font-weight:600;text-anchor:middle">18.5K</text>
+
+  <rect x="280" y="320" width="36" height="60" class="bar"/>
+  <text x="298" y="402" class="axis-label">Sales</text>
+  <text x="298" y="314" style="fill:#3b82f6;font-size:9px;font-weight:600;text-anchor:middle">18K</text>
+
+  <rect x="340" y="270" width="36" height="110" class="bar"/>
+  <text x="358" y="402" class="axis-label">Fin</text>
+  <text x="358" y="264" style="fill:#3b82f6;font-size:9px;font-weight:600;text-anchor:middle">22K</text>
+
+  <!-- ============ Pie Chart: Salary Composition ============ -->
+  <rect x="416" y="132" width="364" height="328" class="chart-area"/>
+  <text x="432" y="156" class="chart-title">薪資構成佔比</text>
+
+  <!-- Pie -->
+  <path d="M598,290 L598,210 A80,80 0 0,1 662,330 Z" class="pie-slice-1"/>
+  <path d="M598,290 L662,330 A80,80 0 0,1 598,370 Z" class="pie-slice-2"/>
+  <path d="M598,290 L598,370 A80,80 0 0,1 534,330 Z" class="pie-slice-3"/>
+  <path d="M598,290 L534,330 A80,80 0 0,1 540,250 Z" class="pie-slice-4"/>
+  <path d="M598,290 L540,250 A80,80 0 0,1 598,210 Z" class="pie-slice-5"/>
+
+  <!-- Inner circle (donut) -->
+  <circle cx="598" cy="290" r="44" fill="#fff"/>
+
+  <!-- Labels -->
+  <text x="656" y="248" class="pie-pct">65%</text>
+  <text x="656" y="260" class="pie-label">基本工資</text>
+  <text x="624" y="370" class="pie-pct">12%</text>
+  <text x="624" y="382" class="pie-label">獎金</text>
+  <text x="520" y="356" class="pie-pct">8%</text>
+  <text x="520" y="368" class="pie-label">扣款</text>
+  <text x="504" y="272" class="pie-pct">10%</text>
+  <text x="504" y="284" class="pie-label">五險一金</text>
+  <text x="556" y="218" class="pie-pct">5%</text>
+  <text x="556" y="230" class="pie-label">個稅</text>
+
+  <!-- Color legend -->
+  <rect x="432" y="410" width="10" height="10" class="pie-slice-1" rx="2"/>
+  <text x="446" y="419" class="pie-label">基本工資</text>
+  <rect x="510" y="410" width="10" height="10" class="pie-slice-2" rx="2"/>
+  <text x="524" y="419" class="pie-label">獎金</text>
+  <rect x="570" y="410" width="10" height="10" class="pie-slice-3" rx="2"/>
+  <text x="584" y="419" class="pie-label">扣款</text>
+  <rect x="622" y="410" width="10" height="10" class="pie-slice-4" rx="2"/>
+  <text x="636" y="419" class="pie-label">五險一金</text>
+  <rect x="700" y="410" width="10" height="10" class="pie-slice-5" rx="2"/>
+  <text x="714" y="419" class="pie-label">個稅</text>
+
+  <text x="20" y="472" class="label">統計卡片 grid-cols-4 | 柱狀圖: 部門平均薪資 | 餅圖: 薪資構成佔比</text>
+</svg>

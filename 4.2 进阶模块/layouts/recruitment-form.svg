@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 520" font-family="system-ui,-apple-system,sans-serif">
+  <defs>
+    <style>
+      .bg { fill: rgba(0,0,0,0.3); }
+      .dialog { fill: #fff; stroke: #e2e8f0; stroke-width: 1; rx: 16; }
+      .dialog-title { fill: #1e293b; font-size: 16px; font-weight: 700; }
+      .close-btn { fill: #94a3b8; font-size: 14px; }
+      .field-label { fill: #374151; font-size: 11px; font-weight: 600; }
+      .field-required { fill: #ef4444; font-size: 11px; }
+      .input-box { fill: #fff; stroke: #cbd5e1; stroke-width: 1; rx: 6; }
+      .input-placeholder { fill: #94a3b8; font-size: 10px; }
+      .select-box { fill: #fff; stroke: #cbd5e1; stroke-width: 1; rx: 6; }
+      .select-value { fill: #1e293b; font-size: 10px; }
+      .select-arrow { fill: #94a3b8; font-size: 10px; }
+      .textarea-box { fill: #fff; stroke: #cbd5e1; stroke-width: 1; rx: 6; }
+      .btn-cancel { fill: #f1f5f9; rx: 8; }
+      .btn-cancel-text { fill: #475569; font-size: 12px; font-weight: 600; text-anchor: middle; }
+      .btn-submit { fill: #3b82f6; rx: 8; }
+      .btn-submit-text { fill: #fff; font-size: 12px; font-weight: 600; text-anchor: middle; }
+      .label { fill: #64748b; font-size: 10px; }
+    </style>
+  </defs>
+
+  <!-- Overlay -->
+  <rect width="480" height="520" class="bg" rx="0"/>
+
+  <!-- Dialog -->
+  <rect x="40" y="30" width="400" height="460" class="dialog"/>
+
+  <!-- Header -->
+  <text x="60" y="62" class="dialog-title">新增職位</text>
+  <text x="412" y="62" class="close-btn">✕</text>
+  <line x1="60" y1="76" x2="420" y2="76" stroke="#f1f5f9"/>
+
+  <!-- Field 1: 職位名稱 -->
+  <text x="60" y="100" class="field-label">職位名稱</text>
+  <text x="120" y="100" class="field-required">*</text>
+  <rect x="60" y="108" width="360" height="32" class="input-box"/>
+  <text x="72" y="128" class="input-placeholder">請輸入職位名稱</text>
+
+  <!-- Field 2: 部門 + 職位類型 (2 cols) -->
+  <text x="60" y="160" class="field-label">部門</text>
+  <text x="88" y="160" class="field-required">*</text>
+  <rect x="60" y="168" width="172" height="32" class="select-box"/>
+  <text x="72" y="188" class="select-value">Engineering</text>
+  <text x="212" y="188" class="select-arrow">▾</text>
+
+  <text x="248" y="160" class="field-label">職位類型</text>
+  <text x="300" y="160" class="field-required">*</text>
+  <rect x="248" y="168" width="172" height="32" class="select-box"/>
+  <text x="260" y="188" class="select-value">Full-time</text>
+  <text x="400" y="188" class="select-arrow">▾</text>
+
+  <!-- Field 3: 工作地點 -->
+  <text x="60" y="220" class="field-label">工作地點</text>
+  <text x="108" y="220" class="field-required">*</text>
+  <rect x="60" y="228" width="360" height="32" class="input-box"/>
+  <text x="72" y="248" class="input-placeholder">請輸入工作地點</text>
+
+  <!-- Field 4: 薪資範圍 (2 cols) -->
+  <text x="60" y="280" class="field-label">最低薪資</text>
+  <text x="120" y="280" class="field-required">*</text>
+  <rect x="60" y="288" width="172" height="32" class="input-box"/>
+  <text x="72" y="308" class="input-placeholder">¥ 最低</text>
+
+  <text x="248" y="280" class="field-label">最高薪資</text>
+  <text x="300" y="280" class="field-required">*</text>
+  <rect x="248" y="288" width="172" height="32" class="input-box"/>
+  <text x="260" y="308" class="input-placeholder">¥ 最高</text>
+
+  <!-- Field 5: 職位描述 -->
+  <text x="60" y="340" class="field-label">職位描述</text>
+  <text x="108" y="340" class="field-required">*</text>
+  <rect x="60" y="348" width="360" height="56" class="textarea-box"/>
+  <text x="72" y="368" class="input-placeholder">請輸入職位描述...</text>
+
+  <!-- Field 6: 任職要求 -->
+  <text x="60" y="420" class="field-label">任職要求</text>
+  <text x="108" y="420" class="field-required">*</text>
+  <rect x="60" y="428" width="360" height="32" class="textarea-box"/>
+  <text x="72" y="448" class="input-placeholder">請輸入任職要求...</text>
+
+  <!-- Footer buttons -->
+  <rect x="260" y="468" width="72" height="32" class="btn-cancel"/>
+  <text x="296" y="488" class="btn-cancel-text">取消</text>
+  <rect x="344" y="468" width="72" height="32" class="btn-submit"/>
+  <text x="380" y="488" class="btn-submit-text">提交</text>
+</svg>

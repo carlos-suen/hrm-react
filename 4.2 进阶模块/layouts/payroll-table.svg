@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="system-ui,-apple-system,sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .card { fill: #fff; stroke: #e2e8f0; stroke-width: 1; rx: 10; }
+      .toolbar { fill: #fff; stroke: #e2e8f0; stroke-width: 1; rx: 8; }
+      .input-box { fill: #fff; stroke: #cbd5e1; stroke-width: 1; rx: 6; }
+      .btn { fill: #3b82f6; rx: 6; }
+      .btn-text { fill: #fff; font-size: 11px; font-weight: 600; text-anchor: middle; }
+      .input-text { fill: #94a3b8; font-size: 10px; }
+      .table-header { fill: #f8fafc; }
+      .header-text { fill: #64748b; font-size: 10px; font-weight: 600; }
+      .cell-text { fill: #1e293b; font-size: 10px; }
+      .cell-muted { fill: #94a3b8; font-size: 10px; }
+      .cell-green { fill: #16a34a; font-size: 10px; }
+      .cell-red { fill: #dc2626; font-size: 10px; }
+      .badge-draft { fill: #f1f5f9; }
+      .badge-confirmed { fill: #dbeafe; }
+      .badge-paid { fill: #dcfce7; }
+      .badge-text-draft { fill: #475569; font-size: 9px; font-weight: 600; }
+      .badge-text-confirmed { fill: #1d4ed8; font-size: 9px; font-weight: 600; }
+      .badge-text-paid { fill: #166534; font-size: 9px; font-weight: 600; }
+      .avatar { fill: #3b82f6; }
+      .avatar-text { fill: #fff; font-size: 9px; text-anchor: middle; }
+      .border-b { stroke: #f1f5f9; stroke-width: 1; }
+      .detail-panel { fill: #f8fafc; stroke: #e2e8f0; stroke-width: 1; rx: 8; }
+      .detail-label { fill: #64748b; font-size: 10px; }
+      .detail-value { fill: #1e293b; font-size: 11px; font-weight: 600; }
+      .detail-green { fill: #16a34a; font-size: 11px; font-weight: 600; }
+      .detail-red { fill: #dc2626; font-size: 11px; font-weight: 600; }
+      .detail-muted { fill: #94a3b8; font-size: 11px; }
+      .batch-bar { fill: #eff6ff; stroke: #bfdbfe; stroke-width: 1; rx: 8; }
+      .label { fill: #64748b; font-size: 10px; }
+    </style>
+  </defs>
+
+  <rect width="800" height="400" class="bg" rx="12"/>
+
+  <!-- Toolbar -->
+  <rect x="20" y="16" width="760" height="44" class="toolbar"/>
+  <rect x="32" y="26" width="140" height="28" class="input-box"/>
+  <text x="44" y="44" class="input-text">📅 選擇月份...</text>
+  <rect x="182" y="26" width="120" height="28" class="input-box"/>
+  <text x="194" y="44" class="input-text">部門: 全部 ▾</text>
+  <rect x="312" y="26" width="120" height="28" class="input-box"/>
+  <text x="324" y="44" class="input-text">狀態: 全部 ▾</text>
+  <rect x="620" y="26" width="148" height="28" class="btn"/>
+  <text x="694" y="44" class="btn-text">💰 生成薪資單</text>
+
+  <!-- Batch bar -->
+  <rect x="20" y="68" width="760" height="32" class="batch-bar"/>
+  <text x="36" y="88" style="fill:#1d4ed8;font-size:11px">☑ 已選擇 2 項</text>
+  <rect x="130" y="76" width="72" height="20" fill="#3b82f6" rx="4"/>
+  <text x="166" y="90" style="fill:#fff;font-size:9px;font-weight:600;text-anchor:middle">批量確認</text>
+  <rect x="210" y="76" width="72" height="20" fill="#10b981" rx="4"/>
+  <text x="246" y="90" style="fill:#fff;font-size:9px;font-weight:600;text-anchor:middle">批量發放</text>
+
+  <!-- Table -->
+  <rect x="20" y="108" width="760" height="100" class="card"/>
+
+  <!-- Table Header -->
+  <rect x="20" y="108" width="760" height="28" class="table-header" rx="10"/>
+  <text x="36" y="126" class="header-text">☐</text>
+  <text x="72" y="126" class="header-text">員工</text>
+  <text x="200" y="126" class="header-text">部門</text>
+  <text x="280" y="126" class="header-text">基本工資</text>
+  <text x="360" y="126" class="header-text">獎金</text>
+  <text x="420" y="126" class="header-text">扣款</text>
+  <text x="490" y="126" class="header-text">實發</text>
+  <text x="580" y="126" class="header-text">狀態</text>
+  <text x="660" y="126" class="header-text">操作</text>
+
+  <!-- Row 1 (selected) -->
+  <rect x="20" y="136" width="760" height="28" fill="#eff6ff"/>
+  <text x="36" y="154" style="fill:#3b82f6;font-size:11px">☑</text>
+  <circle cx="60" cy="150" r="8" class="avatar"/>
+  <text x="60" y="153" class="avatar-text" font-size="7">張</text>
+  <text x="72" y="154" class="cell-text" font-weight="600">張偉</text>
+  <text x="200" y="154" class="cell-muted">Eng</text>
+  <text x="280" y="154" class="cell-text">¥28,000</text>
+  <text x="360" y="154" class="cell-green">+¥3,200</text>
+  <text x="420" y="154" class="cell-red">-¥560</text>
+  <text x="490" y="154" class="cell-text" font-weight="700">¥26,068</text>
+  <rect x="568" y="142" width="56" height="18" class="badge-draft" rx="4"/>
+  <text x="596" y="155" class="badge-text-draft" text-anchor="middle">Draft</text>
+  <text x="660" y="154" style="fill:#3b82f6;font-size:10px">確認 ▾</text>
+
+  <!-- Row 2 (selected) -->
+  <rect x="20" y="164" width="760" height="28" fill="#eff6ff"/>
+  <line x1="20" y1="164" x2="780" y2="164" class="border-b"/>
+  <text x="36" y="182" style="fill:#3b82f6;font-size:11px">☑</text>
+  <circle cx="60" cy="178" r="8" class="avatar"/>
+  <text x="60" y="181" class="avatar-text" font-size="7">李</text>
+  <text x="72" y="182" class="cell-text" font-weight="600">李娜</text>
+  <text x="200" y="182" class="cell-muted">HR</text>
+  <text x="280" y="182" class="cell-text">¥25,000</text>
+  <text x="360" y="182" class="cell-green">+¥2,500</text>
+  <text x="420" y="182" class="cell-red">-¥0</text>
+  <text x="490" y="182" class="cell-text" font-weight="700">¥23,935</text>
+  <rect x="568" y="170" width="56" height="18" class="badge-confirmed" rx="4"/>
+  <text x="596" y="183" class="badge-text-confirmed" text-anchor="middle">Confirmed</text>
+  <text x="660" y="182" style="fill:#10b981;font-size:10px">發放</text>
+
+  <!-- ============ Expanded Detail Panel ============ -->
+  <rect x="20" y="216" width="760" height="168" class="detail-panel"/>
+
+  <!-- Header -->
+  <text x="36" y="240" style="fill:#1e293b;font-size:13px;font-weight:700">張偉 · Engineering · 2026-01</text>
+  <text x="740" y="240" style="fill:#3b82f6;font-size:11px;text-anchor:end">▼ 收起</text>
+
+  <!-- Detail content -->
+  <rect x="36" y="252" width="340" height="120" fill="#fff" rx="8" stroke="#e2e8f0"/>
+  <text x="52" y="274" class="detail-label">基本工資</text>
+  <text x="340" y="274" class="detail-value" text-anchor="end">¥28,000</text>
+  <text x="52" y="296" class="detail-label">績效獎金</text>
+  <text x="340" y="296" class="detail-green" text-anchor="end">+¥3,200</text>
+  <line x1="52" y1="306" x2="340" y2="306" stroke="#e2e8f0"/>
+  <text x="52" y="324" class="detail-label">扣款</text>
+  <text x="340" y="324" class="detail-red" text-anchor="end">-¥560</text>
+  <text x="52" y="344" class="detail-label">五險一金</text>
+  <text x="340" y="344" class="detail-muted" text-anchor="end">-¥2,940</text>
+  <text x="52" y="364" class="detail-label">個人所得稅</text>
+  <text x="340" y="364" class="detail-muted" text-anchor="end">-¥1,632</text>
+
+  <!-- Right side: net + actions -->
+  <rect x="396" y="252" width="368" height="120" fill="#fff" rx="8" stroke="#e2e8f0"/>
+  <text x="412" y="280" class="detail-label">實發工資</text>
+  <text x="740" y="280" style="fill:#1e293b;font-size:22px;font-weight:700;text-anchor:end">¥26,068</text>
+
+  <line x1="412" y1="296" x2="740" y2="296" stroke="#e2e8f0"/>
+
+  <text x="412" y="318" class="detail-label">薪資狀態</text>
+  <rect x="540" y="306" width="56" height="18" class="badge-draft" rx="4"/>
+  <text x="568" y="319" class="badge-text-draft" text-anchor="middle">Draft</text>
+
+  <rect x="412" y="340" width="80" height="28" fill="#3b82f6" rx="6"/>
+  <text x="452" y="358" style="fill:#fff;font-size:11px;font-weight:600;text-anchor:middle">確認</text>
+  <rect x="504" y="340" width="80" height="28" fill="#10b981" rx="6"/>
+  <text x="544" y="358" style="fill:#fff;font-size:11px;font-weight:600;text-anchor:middle">發放</text>
+
+  <text x="20" y="392" class="label">批量操作欄 + 表格 + 展開詳情面板（grid-rows 動畫）</text>
+</svg>

@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" font-family="system-ui,-apple-system,sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .col-bg-1 { fill: #f0fdf4; stroke: #bbf7d0; stroke-width: 1; rx: 12; }
+      .col-bg-2 { fill: #fefce8; stroke: #fef08a; stroke-width: 1; rx: 12; }
+      .col-bg-3 { fill: #f8fafc; stroke: #e2e8f0; stroke-width: 1; rx: 12; }
+      .col-header { font-size: 13px; font-weight: 700; }
+      .col-count { fill: #94a3b8; font-size: 11px; }
+      .dot-green { fill: #22c55e; }
+      .dot-yellow { fill: #eab308; }
+      .dot-gray { fill: #94a3b8; }
+      .job-card { fill: #fff; stroke: #e2e8f0; stroke-width: 1; rx: 8; }
+      .job-title { fill: #1e293b; font-size: 12px; font-weight: 600; }
+      .job-meta { fill: #64748b; font-size: 10px; }
+      .job-salary { fill: #3b82f6; font-size: 11px; font-weight: 600; }
+      .badge-ft { fill: #dbeafe; }
+      .badge-ft-text { fill: #1d4ed8; font-size: 8px; font-weight: 600; }
+      .badge-pt { fill: #f3e8ff; }
+      .badge-pt-text { fill: #7c3aed; font-size: 8px; font-weight: 600; }
+      .badge-int { fill: #dcfce7; }
+      .badge-int-text { fill: #166534; font-size: 8px; font-weight: 600; }
+      .applicants { fill: #94a3b8; font-size: 9px; }
+      .btn-outline { fill: none; stroke: #e2e8f0; stroke-width: 1; rx: 4; }
+      .btn-text { fill: #64748b; font-size: 9px; text-anchor: middle; }
+      .label { fill: #64748b; font-size: 10px; }
+    </style>
+  </defs>
+
+  <rect width="800" height="440" class="bg" rx="12"/>
+
+  <!-- Title -->
+  <text x="20" y="30" style="fill:#1e293b;font-size:16px;font-weight:700">招聘看板</text>
+
+  <!-- ============ Column 1: Open ============ -->
+  <rect x="20" y="48" width="248" height="380" class="col-bg-1"/>
+  <circle cx="36" cy="70" r="5" class="dot-green"/>
+  <text x="48" y="74" class="col-header" fill="#166534">開放中</text>
+  <text x="244" y="74" class="col-count">3</text>
+
+  <!-- Card 1 -->
+  <rect x="32" y="88" width="224" height="110" class="job-card"/>
+  <text x="44" y="108" class="job-title">高級前端工程師</text>
+  <rect x="180" y="96" width="36" height="16" class="badge-ft" rx="3"/>
+  <text x="198" y="108" class="badge-ft-text" text-anchor="middle">全職</text>
+  <text x="44" y="126" class="job-meta">Engineering · 北京</text>
+  <text x="44" y="144" class="job-salary">¥25K - ¥35K</text>
+  <text x="44" y="162" class="applicants">👤 12 位候選人</text>
+  <line x1="44" y1="170" x2="244" y2="170" stroke="#f1f5f9"/>
+  <rect x="44" y="178" width="48" height="18" class="btn-outline"/>
+  <text x="68" y="190" class="btn-text">編輯</text>
+  <rect x="100" y="178" width="48" height="18" class="btn-outline"/>
+  <text x="124" y="190" class="btn-text">詳情</text>
+
+  <!-- Card 2 -->
+  <rect x="32" y="208" width="224" height="110" class="job-card"/>
+  <text x="44" y="228" class="job-title">產品經理</text>
+  <rect x="180" y="216" width="36" height="16" class="badge-ft" rx="3"/>
+  <text x="198" y="228" class="badge-ft-text" text-anchor="middle">全職</text>
+  <text x="44" y="246" class="job-meta">Marketing · 上海</text>
+  <text x="44" y="264" class="job-salary">¥20K - ¥30K</text>
+  <text x="44" y="282" class="applicants">👤 8 位候選人</text>
+  <line x1="44" y1="290" x2="244" y2="290" stroke="#f1f5f9"/>
+  <rect x="44" y="298" width="48" height="18" class="btn-outline"/>
+  <text x="68" y="310" class="btn-text">編輯</text>
+  <rect x="100" y="298" width="48" height="18" class="btn-outline"/>
+  <text x="124" y="310" class="btn-text">詳情</text>
+
+  <!-- Card 3 -->
+  <rect x="32" y="328" width="224" height="88" class="job-card"/>
+  <text x="44" y="348" class="job-title">實習設計師</text>
+  <rect x="180" y="336" width="36" height="16" class="badge-int" rx="3"/>
+  <text x="198" y="348" class="badge-int-text" text-anchor="middle">實習</text>
+  <text x="44" y="366" class="job-meta">Marketing · 廣州</text>
+  <text x="44" y="384" class="job-salary">¥4K - ¥6K</text>
+  <text x="44" y="402" class="applicants">👤 5 位候選人</text>
+
+  <!-- ============ Column 2: On Hold ============ -->
+  <rect x="280" y="48" width="248" height="380" class="col-bg-2"/>
+  <circle cx="296" cy="70" r="5" class="dot-yellow"/>
+  <text x="308" y="74" class="col-header" fill="#854d0e">暫停</text>
+  <text x="504" y="74" class="col-count">1</text>
+
+  <!-- Card 4 -->
+  <rect x="292" y="88" width="224" height="110" class="job-card"/>
+  <text x="304" y="108" class="job-title">後端工程師</text>
+  <rect x="440" y="96" width="36" height="16" class="badge-ft" rx="3"/>
+  <text x="458" y="108" class="badge-ft-text" text-anchor="middle">全職</text>
+  <text x="304" y="126" class="job-meta">Engineering · 深圳</text>
+  <text x="304" y="144" class="job-salary">¥22K - ¥32K</text>
+  <text x="304" y="162" class="applicants">👤 6 位候選人</text>
+  <line x1="304" y1="170" x2="504" y2="170" stroke="#f1f5f9"/>
+  <rect x="304" y="178" width="48" height="18" class="btn-outline"/>
+  <text x="328" y="190" class="btn-text">編輯</text>
+  <rect x="360" y="178" width="48" height="18" class="btn-outline"/>
+  <text x="384" y="190" class="btn-text">詳情</text>
+
+  <!-- ============ Column 3: Closed ============ -->
+  <rect x="540" y="48" width="240" height="380" class="col-bg-3"/>
+  <circle cx="556" cy="70" r="5" class="dot-gray"/>
+  <text x="568" y="74" class="col-header" fill="#475569">已關閉</text>
+  <text x="756" y="74" class="col-count">1</text>
+
+  <!-- Card 5 -->
+  <rect x="552" y="88" width="216" height="110" class="job-card"/>
+  <text x="564" y="108" class="job-title">兼職文案</text>
+  <rect x="688" y="96" width="36" height="16" class="badge-pt" rx="3"/>
+  <text x="706" y="108" class="badge-pt-text" text-anchor="middle">兼職</text>
+  <text x="564" y="126" class="job-meta">Marketing · 遠程</text>
+  <text x="564" y="144" class="job-salary">¥8K - ¥12K</text>
+  <text x="564" y="162" class="applicants">👤 3 位候選人</text>
+  <line x1="564" y1="170" x2="756" y2="170" stroke="#f1f5f9"/>
+  <rect x="564" y="178" width="48" height="18" class="btn-outline"/>
+  <text x="588" y="190" class="btn-text">編輯</text>
+  <rect x="620" y="178" width="48" height="18" class="btn-outline"/>
+  <text x="644" y="190" class="btn-text">詳情</text>
+
+  <!-- Drag indicator -->
+  <text x="400" y="432" class="label">三欄看板: DragDropContext + Droppable + Draggable（同 4.1 請假看板）</text>
+</svg>

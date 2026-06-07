@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 200" font-family="system-ui,-apple-system,sans-serif">
+  <defs>
+    <style>
+      .card { fill: #fff; stroke: #e2e8f0; stroke-width: 1; rx: 8; }
+      .badge-tech { fill: #dbeafe; rx: 3; }
+      .badge-tech-text { fill: #1d4ed8; font-size: 9px; font-weight: 600; text-anchor: middle; }
+      .badge-upcoming { fill: #dcfce7; rx: 3; }
+      .badge-upcoming-text { fill: #166534; font-size: 9px; font-weight: 600; text-anchor: middle; }
+      .title { fill: #1e293b; font-size: 14px; font-weight: 600; }
+      .instructor { fill: #64748b; font-size: 11px; }
+      .detail { fill: #94a3b8; font-size: 10px; }
+      .progress-label { fill: #64748b; font-size: 9px; }
+      .progress-value { fill: #64748b; font-size: 9px; text-anchor: end; }
+      .track { fill: #f1f5f9; rx: 4; }
+      .fill { fill: #3b82f6; rx: 4; }
+      .btn-primary { fill: #3b82f6; rx: 6; }
+      .btn-primary-text { fill: #fff; font-size: 10px; font-weight: 600; text-anchor: middle; }
+      .btn-outline { fill: none; stroke: #e2e8f0; stroke-width: 1; rx: 6; }
+      .btn-outline-text { fill: #64748b; font-size: 10px; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <rect width="260" height="200" class="card"/>
+
+  <!-- Category + Status badges -->
+  <rect x="16" y="14" width="36" height="16" class="badge-tech"/>
+  <text x="34" y="26" class="badge-tech-text">技術</text>
+  <rect x="196" y="14" width="48" height="16" class="badge-upcoming"/>
+  <text x="220" y="26" class="badge-upcoming-text">即將開始</text>
+
+  <!-- Title -->
+  <text x="16" y="52" class="title">React 進階實戰</text>
+
+  <!-- Instructor -->
+  <text x="16" y="72" class="instructor">講師：張偉</text>
+
+  <!-- Date + Location -->
+  <text x="16" y="96" class="detail">📅 6/15 ~ 6/20  📍 3F會議室</text>
+
+  <!-- Progress -->
+  <text x="16" y="120" class="progress-label">報名人數</text>
+  <text x="244" y="120" class="progress-value">18/25</text>
+  <rect x="16" y="128" width="228" height="8" class="track"/>
+  <rect x="16" y="128" width="164" height="8" class="fill"/>
+
+  <!-- Buttons -->
+  <rect x="16" y="152" width="80" height="28" class="btn-primary"/>
+  <text x="56" y="170" class="btn-primary-text">報名</text>
+  <rect x="104" y="152" width="56" height="28" class="btn-outline"/>
+  <text x="132" y="170" class="btn-outline-text">詳情</text>
+</svg>

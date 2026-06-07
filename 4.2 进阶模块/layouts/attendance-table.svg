@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" font-family="system-ui,-apple-system,sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .card { fill: #fff; stroke: #e2e8f0; stroke-width: 1; rx: 10; }
+      .toolbar { fill: #fff; stroke: #e2e8f0; stroke-width: 1; rx: 8; }
+      .input-box { fill: #fff; stroke: #cbd5e1; stroke-width: 1; rx: 6; }
+      .btn { fill: #3b82f6; rx: 6; }
+      .btn-text { fill: #fff; font-size: 11px; font-weight: 600; text-anchor: middle; }
+      .input-text { fill: #94a3b8; font-size: 10px; }
+      .table-header { fill: #f8fafc; }
+      .header-text { fill: #64748b; font-size: 10px; font-weight: 600; }
+      .cell-text { fill: #1e293b; font-size: 10px; }
+      .cell-muted { fill: #94a3b8; font-size: 10px; }
+      .badge-green { fill: #dcfce7; }
+      .badge-yellow { fill: #fef9c3; }
+      .badge-red { fill: #fee2e2; }
+      .badge-text-green { fill: #166534; font-size: 9px; font-weight: 600; }
+      .badge-text-yellow { fill: #854d0e; font-size: 9px; font-weight: 600; }
+      .badge-text-red { fill: #991b1b; font-size: 9px; font-weight: 600; }
+      .avatar { fill: #3b82f6; }
+      .avatar-text { fill: #fff; font-size: 9px; text-anchor: middle; }
+      .row-hover { fill: #f8fafc; }
+      .border-b { stroke: #f1f5f9; stroke-width: 1; }
+      .label { fill: #64748b; font-size: 10px; }
+    </style>
+  </defs>
+
+  <rect width="800" height="340" class="bg" rx="12"/>
+
+  <!-- Toolbar -->
+  <rect x="20" y="16" width="760" height="44" class="toolbar"/>
+  <rect x="32" y="26" width="140" height="28" class="input-box"/>
+  <text x="44" y="44" class="input-text">📅 選擇日期...</text>
+  <rect x="182" y="26" width="120" height="28" class="input-box"/>
+  <text x="194" y="44" class="input-text">部門: 全部 ▾</text>
+  <rect x="312" y="26" width="120" height="28" class="input-box"/>
+  <text x="324" y="44" class="input-text">狀態: 全部 ▾</text>
+  <rect x="640" y="26" width="128" height="28" class="btn"/>
+  <text x="704" y="44" class="btn-text">🕐 模擬打卡</text>
+
+  <!-- Table -->
+  <rect x="20" y="72" width="760" height="252" class="card"/>
+
+  <!-- Table Header -->
+  <rect x="20" y="72" width="760" height="32" class="table-header" rx="10"/>
+  <text x="60" y="92" class="header-text">員工</text>
+  <text x="220" y="92" class="header-text">日期</text>
+  <text x="320" y="92" class="header-text">上班打卡</text>
+  <text x="420" y="92" class="header-text">下班打卡</text>
+  <text x="520" y="92" class="header-text">狀態</text>
+  <text x="640" y="92" class="header-text" text-anchor="end">工時</text>
+
+  <!-- Row 1 -->
+  <line x1="20" y1="136" x2="780" y2="136" class="border-b"/>
+  <circle cx="44" cy="118" r="12" class="avatar"/>
+  <text x="44" y="122" class="avatar-text">張</text>
+  <text x="62" y="115" class="cell-text" font-weight="600">張偉</text>
+  <text x="62" y="128" class="cell-muted" font-size="9">zhangwei@co.com</text>
+  <text x="220" y="120" class="cell-muted" style="font-family:monospace">2026-06-03</text>
+  <text x="320" y="120" style="fill:#16a34a;font-size:10px">08:15</text>
+  <text x="420" y="120" style="fill:#16a34a;font-size:10px">18:30</text>
+  <rect x="508" y="108" width="56" height="20" class="badge-green" rx="4"/>
+  <text x="536" y="122" class="badge-text-green" text-anchor="middle">Normal</text>
+  <text x="640" y="120" class="cell-text" text-anchor="end">9.5h</text>
+
+  <!-- Row 2 -->
+  <line x1="20" y1="172" x2="780" y2="172" class="border-b"/>
+  <circle cx="44" cy="154" r="12" class="avatar"/>
+  <text x="44" y="158" class="avatar-text">李</text>
+  <text x="62" y="151" class="cell-text" font-weight="600">李娜</text>
+  <text x="62" y="164" class="cell-muted" font-size="9">lina@co.com</text>
+  <text x="220" y="156" class="cell-muted" style="font-family:monospace">2026-06-03</text>
+  <text x="320" y="156" style="fill:#d97706;font-size:10px">09:45</text>
+  <text x="420" y="156" style="fill:#16a34a;font-size:10px">18:20</text>
+  <rect x="508" y="144" width="56" height="20" class="badge-yellow" rx="4"/>
+  <text x="536" y="158" class="badge-text-yellow" text-anchor="middle">Late</text>
+  <text x="640" y="156" class="cell-text" text-anchor="end">7.8h</text>
+
+  <!-- Row 3 -->
+  <line x1="20" y1="208" x2="780" y2="208" class="border-b"/>
+  <circle cx="44" cy="190" r="12" class="avatar"/>
+  <text x="44" y="194" class="avatar-text">王</text>
+  <text x="62" y="187" class="cell-text" font-weight="600">王強</text>
+  <text x="62" y="200" class="cell-muted" font-size="9">wangqiang@co.com</text>
+  <text x="220" y="192" class="cell-muted" style="font-family:monospace">2026-06-03</text>
+  <text x="320" y="192" class="cell-muted">—</text>
+  <text x="420" y="192" class="cell-muted">—</text>
+  <rect x="508" y="180" width="56" height="20" class="badge-red" rx="4"/>
+  <text x="536" y="194" class="badge-text-red" text-anchor="middle">Absent</text>
+  <text x="640" y="192" class="cell-text" text-anchor="end">0h</text>
+
+  <!-- Row 4 -->
+  <line x1="20" y1="244" x2="780" y2="244" class="border-b"/>
+  <circle cx="44" cy="226" r="12" class="avatar"/>
+  <text x="44" y="230" class="avatar-text">趙</text>
+  <text x="62" y="223" class="cell-text" font-weight="600">趙敏</text>
+  <text x="62" y="236" class="cell-muted" font-size="9">zhaomin@co.com</text>
+  <text x="220" y="228" class="cell-muted" style="font-family:monospace">2026-06-03</text>
+  <text x="320" y="228" style="fill:#16a34a;font-size:10px">08:05</text>
+  <text x="420" y="228" style="fill:#d97706;font-size:10px">16:30</text>
+  <rect x="496" y="216" width="80" height="20" fill="#ffedd5" rx="4"/>
+  <text x="536" y="230" style="fill:#9a3412;font-size:9px;font-weight:600" text-anchor="middle">Early Leave</text>
+  <text x="640" y="228" class="cell-text" text-anchor="end">7.2h</text>
+
+  <!-- Row 5 -->
+  <circle cx="44" cy="262" r="12" class="avatar"/>
+  <text x="44" y="266" class="avatar-text">陳</text>
+  <text x="62" y="259" class="cell-text" font-weight="600">陳思</text>
+  <text x="62" y="272" class="cell-muted" font-size="9">chensi@co.com</text>
+  <text x="220" y="264" class="cell-muted" style="font-family:monospace">2026-06-03</text>
+  <text x="320" y="264" style="fill:#16a34a;font-size:10px">08:20</text>
+  <text x="420" y="264" style="fill:#16a34a;font-size:10px">18:00</text>
+  <rect x="508" y="252" width="56" height="20" class="badge-green" rx="4"/>
+  <text x="536" y="266" class="badge-text-green" text-anchor="middle">Normal</text>
+  <text x="640" y="264" class="cell-text" text-anchor="end">8.5h</text>
+
+  <text x="20" y="332" class="label">工具欄: 日期+部門+狀態篩選+模擬打卡 | 表格: 員工/日期/打卡/狀態/工時</text>
+</svg>
