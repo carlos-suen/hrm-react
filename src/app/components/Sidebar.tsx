@@ -31,26 +31,50 @@ const themeLabelMap: Record<ThemeMode, string> = {
 };
 
 export const Sidebar = ({items, activeIndex, onIndexChange, theme, onToggleTheme}: SidebarProps) => {
+
+    const basicNavItems: NavItem[] = items.slice(0, 3);
+
+    const highLevelNavItems: NavItem[] = items.slice(3);
+
+
     return (
         <aside
             className="hidden md:flex md:flex-col md:fixed md:inset-y-0 md:w-64 bg-white dark:bg-zinc-900 border-r border-slate-200 dark:border-zinc-800">
             {/* Logo 區域 */}
             <div className="p-6 border-b border-slate-200 dark:border-zinc-800">
                 <h1 className="text-lg font-bold text-slate-900 dark:text-slate-50">
-                     HRM System
+                    HRM System
                 </h1>
             </div>
 
             {/* 導航菜單列表 */}
-            <nav className="flex-1 overflow-y-auto p-4 space-y-1">
-                {items.map((item, index) => (
+            <nav className="overflow-y-auto p-4 space-y-2">
+                <div className={'dark:text-slate-600 text-gray-400 text-sm mb-2'}>基礎模塊</div>
+                {basicNavItems.map((item, index) => (
                     <button
                         key={item.id}
                         onClick={() => onIndexChange(index)}
-                        className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                            activeIndex === index
-                                ? "bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400"
-                                : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                        className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${activeIndex === index
+                            ? "bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400"
+                            : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                        }`}
+                    >
+                        <span className="text-lg">{item.icon}</span>
+                        <span>{item.title}</span>
+                    </button>
+                ))}
+            </nav>
+
+            {/* 進階模塊 */}
+            <nav className="flex-1 overflow-y-auto p-4 space-y-2">
+                <div className={'dark:text-slate-600 text-gray-400 text-sm mb-2'}>進階模塊</div>
+                {highLevelNavItems.map((item, index) => (
+                    <button
+                        key={item.id}
+                        onClick={() => onIndexChange(index + 3)}
+                        className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${activeIndex === index + 3
+                            ? "bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400"
+                            : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
                         }`}
                     >
                         <span className="text-lg">{item.icon}</span>
@@ -60,7 +84,7 @@ export const Sidebar = ({items, activeIndex, onIndexChange, theme, onToggleTheme
             </nav>
 
             {/* 主題切換按鈕 */}
-            <div className="p-4 border-t border-slate-200 dark:border-zinc-800">
+            <div className="relative p-4 border-t border-slate-200 dark:border-zinc-800">
                 <button
                     onClick={onToggleTheme}
                     className="w-full flex items-center justify-between px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"

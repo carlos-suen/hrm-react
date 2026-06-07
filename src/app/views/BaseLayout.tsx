@@ -4,13 +4,21 @@ import {Dashboard} from "./Dashboard.tsx";
 import {Directory} from "./Directory.tsx";
 import {Approvals} from "./Approvals.tsx";
 import {Sidebar} from "../components/Sidebar.tsx";
-import {MobileNav} from "../components/MobileNav.tsx";
+import {MobileSideBar} from "../components/MobileSideBar.tsx";
+import {Attendance} from "./Attendance.tsx";
+import {Payroll} from "./Payroll.tsx";
+import {Recruitment} from "./Recruitment.tsx";
+import {Training} from "./Training.tsx";
 
 // 導航菜單配置
 const navItems = [
     {id: "dashboard", icon: "📊", title: "數據大盤", label: "Dashboard"},
     {id: "directory", icon: "👥", title: "員工名冊", label: "Directory"},
-    {id: "approvals", icon: "✅", title: "請假審批", label: "Approvals"}
+    {id: "approvals", icon: "✅", title: "請假審批", label: "Approvals"},
+    {id: "Attendance", icon: "🕐", title: "考勤管理", label: "Attendance"},
+    {id: "Payroll", icon: "💰", title: "薪資管理", label: "Payroll"},
+    {id: "Recruitment", icon: "📋", title: "招聘管理", label: "Recruitment"},
+    {id: "Training", icon: "🎓", title: "培訓管理", label: "Training"},
 ];
 
 // 主題模式類型：只能是 "light"（亮色）或 "dark"（暗色）
@@ -66,6 +74,14 @@ export const BaseLayout = () => {
                 return <Directory/>;
             case 2:
                 return <Approvals/>;
+            case 3:
+                return <Attendance/>
+            case 4:
+                return <Payroll/>
+            case 5:
+                return <Recruitment/>
+            case 6:
+                return <Training/>
             default:
                 return <Dashboard/>;
         }
@@ -81,7 +97,7 @@ export const BaseLayout = () => {
                 onToggleTheme={toggleTheme}
             />
 
-            <MobileNav
+            <MobileSideBar
                 items={navItems}
                 activeIndex={tabIndex}
                 onIndexChange={setTabIndex}

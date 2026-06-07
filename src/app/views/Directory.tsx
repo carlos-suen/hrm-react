@@ -7,7 +7,7 @@ import {supabase} from "../../lib/supabase.ts";
 import {EditEmployeeForm} from "../components/EditEmployeeForm.tsx";
 
 // 下拉測試數據
-const departmentOptions: SelectOption[] = [
+export const departmentOptions: SelectOption[] = [
     {value: "all", label: "全部"},
     {value: "Engineering", label: "Engineering"},
     {value: "HR", label: "HR"},
@@ -16,7 +16,7 @@ const departmentOptions: SelectOption[] = [
     {value: "Finance", label: "Finance"},
 ];
 
-const statusOptions: SelectOption[] = [
+export const statusOptions: SelectOption[] = [
     {value: 0, label: "全部"},
     {value: -1, label: "On Leave"},
     {value: 1, label: "Active"},
