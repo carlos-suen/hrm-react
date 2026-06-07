@@ -1,13 +1,10 @@
-import {Hono} from 'hono'
-import {supabaseAdmin} from '../lib/supabase'
 import {router} from "../lib/api";
-
-
-
+import {getSupabaseAdmin} from "../lib/supabase";
 
 
 /// 獲取部門人數統計（餅圖數據）
 router.get('/department-stats', async (c) => {
+    const supabaseAdmin = getSupabaseAdmin(c)
     const {data, error} = await supabaseAdmin
         .from('workers')
         .select('department')
@@ -32,6 +29,7 @@ router.get('/department-stats', async (c) => {
 
 /// 獲取部門平均薪資統計（柱狀圖數據）
 router.get('/salary-stats', async (c) => {
+    const supabaseAdmin = getSupabaseAdmin(c)
     const {data, error} = await supabaseAdmin
         .from('workers')
         .select('department, sal')

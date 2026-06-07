@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <style>
+      .card { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; rx: 8; }
+      .title { fill: #1e293b; font-size: 16px; font-weight: 700; }
+      .label { fill: #64748b; font-size: 11px; font-weight: 500; }
+      .required { fill: #ef4444; font-size: 11px; }
+      .input { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; rx: 6; }
+      .input-text { fill: #1e293b; font-size: 12px; }
+      .select { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; rx: 6; }
+      .select-text { fill: #1e293b; font-size: 12px; }
+      .th-text { fill: #64748b; font-size: 10px; font-weight: 600; }
+      .td-text { fill: #1e293b; font-size: 11px; }
+      .td-input { fill: #f8fafc; stroke: #e2e8f0; stroke-width: 1; rx: 4; }
+      .delete-btn { fill: #ef4444; font-size: 11px; }
+      .add-link { fill: #3b82f6; font-size: 11px; font-weight: 500; }
+      .btn-primary { fill: #3b82f6; rx: 6; }
+      .btn-outline { fill: none; stroke: #e2e8f0; stroke-width: 1; rx: 6; }
+      .btn-text { fill: #ffffff; font-size: 12px; font-weight: 600; }
+      .btn-outline-text { fill: #64748b; font-size: 12px; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="20" y="28" class="title">薪資設置</text>
+
+  <!-- Form card -->
+  <rect x="20" y="44" width="560" height="340" class="card"/>
+
+  <!-- Row 1: 發薪日 -->
+  <text x="36" y="72" class="label">發薪日 <tspan class="required">*</tspan></text>
+  <rect x="36" y="80" width="120" height="36" class="input"/>
+  <text x="52" y="103" class="input-text">15</text>
+  <text x="164" y="103" fill="#94a3b8" font-size="11">號（1-28）</text>
+
+  <!-- Row 2: 貨幣 -->
+  <text x="36" y="136" class="label">貨幣</text>
+  <rect x="36" y="144" width="120" height="36" class="select"/>
+  <text x="52" y="167" class="select-text">CNY ¥</text>
+
+  <!-- Row 3: 稅率表 -->
+  <text x="36" y="204" class="label">稅率表</text>
+
+  <!-- Table header -->
+  <rect x="36" y="212" width="528" height="24" fill="#f8fafc" rx="4"/>
+  <text x="52" y="228" class="th-text">區間下限</text>
+  <text x="180" y="228" class="th-text">區間上限</text>
+  <text x="320" y="228" class="th-text">稅率(%)</text>
+  <text x="460" y="228" class="th-text">操作</text>
+
+  <!-- Row 1 -->
+  <text x="52" y="256" class="td-text">¥0</text>
+  <rect x="160" y="244" width="100" height="20" class="td-input"/>
+  <text x="170" y="258" class="td-text">3,000</text>
+  <rect x="300" y="244" width="80" height="20" class="td-input"/>
+  <text x="310" y="258" class="td-text">3%</text>
+  <text x="460" y="256" class="delete-btn">刪除</text>
+
+  <!-- Row 2 -->
+  <rect x="36" y="268" width="528" height="24" fill="#f8fafc" rx="2"/>
+  <text x="52" y="284" class="td-text">¥3,000</text>
+  <rect x="160" y="272" width="100" height="20" class="td-input"/>
+  <text x="170" y="286" class="td-text">12,000</text>
+  <rect x="300" y="272" width="80" height="20" class="td-input"/>
+  <text x="310" y="286" class="td-text">10%</text>
+  <text x="460" y="284" class="delete-btn">刪除</text>
+
+  <!-- Row 3 -->
+  <text x="52" y="312" class="td-text">¥12,000</text>
+  <rect x="160" y="300" width="100" height="20" class="td-input"/>
+  <text x="170" y="314" class="td-text">25,000</text>
+  <rect x="300" y="300" width="80" height="20" class="td-input"/>
+  <text x="310" y="314" class="td-text">20%</text>
+  <text x="460" y="312" class="delete-btn">刪除</text>
+
+  <!-- Add row -->
+  <text x="52" y="340" class="add-link">+ 添加稅率區間</text>
+
+  <!-- Buttons -->
+  <rect x="380" y="352" width="80" height="32" class="btn-outline"/>
+  <text x="404" y="373" class="btn-outline-text">取消</text>
+  <rect x="472" y="352" width="92" height="32" class="btn-primary"/>
+  <text x="490" y="373" class="btn-text">保存設置</text>
+</svg>

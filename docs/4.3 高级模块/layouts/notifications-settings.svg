@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 520" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <style>
+      .card { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; rx: 8; }
+      .title { fill: #1e293b; font-size: 16px; font-weight: 700; }
+      .section-title { fill: #1e293b; font-size: 13px; font-weight: 600; }
+      .label { fill: #64748b; font-size: 11px; }
+      .value { fill: #1e293b; font-size: 12px; }
+      .switch-on { fill: #3b82f6; rx: 10; }
+      .switch-off { fill: #e2e8f0; rx: 10; }
+      .switch-knob-on { fill: #ffffff; }
+      .switch-knob-off { fill: #ffffff; }
+      .radio-outer { fill: none; stroke: #3b82f6; stroke-width: 2; }
+      .radio-inner { fill: #3b82f6; }
+      .radio-outer-unselected { fill: none; stroke: #e2e8f0; stroke-width: 2; }
+      .divider { stroke: #f1f5f9; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="20" y="28" class="title">通知設置</text>
+
+  <!-- Section 1: 通知渠道 -->
+  <rect x="20" y="44" width="560" height="140" class="card"/>
+  <text x="36" y="68" class="section-title">通知渠道</text>
+
+  <!-- Email switch (on) -->
+  <text x="36" y="96" class="label">郵件通知</text>
+  <rect x="460" y="82" width="44" height="24" class="switch-on"/>
+  <circle cx="492" cy="94" r="9" class="switch-knob-on"/>
+
+  <!-- Push switch (off) -->
+  <text x="36" y="132" class="label">推送通知</text>
+  <rect x="460" y="118" width="44" height="24" class="switch-off"/>
+  <circle cx="472" cy="130" r="9" class="switch-knob-off"/>
+
+  <!-- Digest frequency -->
+  <text x="36" y="168" class="label">摘要頻率</text>
+  <circle cx="200" cy="164" r="8" class="radio-outer"/>
+  <circle cx="200" cy="164" r="4" class="radio-inner"/>
+  <text x="214" y="168" class="value">實時</text>
+  <circle cx="270" cy="164" r="8" class="radio-outer-unselected"/>
+  <text x="284" y="168" class="label">每日</text>
+  <circle cx="340" cy="164" r="8" class="radio-outer-unselected"/>
+  <text x="354" y="168" class="label">每週</text>
+
+  <!-- Section 2: 通知類別 -->
+  <rect x="20" y="200" width="560" height="300" class="card"/>
+  <text x="36" y="224" class="section-title">通知類別</text>
+
+  <!-- Leave notifications -->
+  <text x="36" y="254" fill="#3b82f6" font-size="12" font-weight="600">📅 請假通知</text>
+  <line x1="36" y1="264" x2="564" y2="264" class="divider"/>
+
+  <text x="52" y="284" class="label">新申請通知</text>
+  <rect x="460" y="270" width="44" height="24" class="switch-on"/>
+  <circle cx="492" cy="282" r="9" class="switch-knob-on"/>
+
+  <text x="52" y="316" class="label">審批結果通知</text>
+  <rect x="460" y="302" width="44" height="24" class="switch-on"/>
+  <circle cx="492" cy="314" r="9" class="switch-knob-on"/>
+
+  <!-- Attendance notifications -->
+  <text x="36" y="348" fill="#f97316" font-size="12" font-weight="600">🕐 考勤通知</text>
+  <line x1="36" y1="358" x2="564" y2="358" class="divider"/>
+
+  <text x="52" y="378" class="label">異常打卡通知</text>
+  <rect x="460" y="364" width="44" height="24" class="switch-on"/>
+  <circle cx="492" cy="376" r="9" class="switch-knob-on"/>
+
+  <!-- Payroll notifications -->
+  <text x="36" y="408" fill="#22c55e" font-size="12" font-weight="600">💰 薪資通知</text>
+  <line x1="36" y1="418" x2="564" y2="418" class="divider"/>
+
+  <text x="52" y="438" class="label">薪資確認通知</text>
+  <rect x="460" y="424" width="44" height="24" class="switch-off"/>
+  <circle cx="472" cy="436" r="9" class="switch-knob-off"/>
+
+  <!-- Performance notifications -->
+  <text x="36" y="468" fill="#8b5cf6" font-size="12" font-weight="600">🏆 績效通知</text>
+  <line x1="36" y1="478" x2="564" y2="478" class="divider"/>
+
+  <text x="52" y="498" class="label">評估待辦通知</text>
+  <rect x="460" y="484" width="44" height="24" class="switch-on"/>
+  <circle cx="492" cy="496" r="9" class="switch-knob-on"/>
+</svg>

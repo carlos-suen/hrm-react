@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 480" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <style>
+      .card { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; rx: 8; }
+      .title { fill: #1e293b; font-size: 16px; font-weight: 700; }
+      .label { fill: #64748b; font-size: 11px; font-weight: 500; }
+      .required { fill: #ef4444; font-size: 11px; }
+      .input { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; rx: 6; }
+      .input-text { fill: #1e293b; font-size: 12px; }
+      .input-placeholder { fill: #94a3b8; font-size: 12px; }
+      .checkbox-checked { fill: #3b82f6; rx: 3; }
+      .checkbox-unchecked { fill: none; stroke: #cbd5e1; stroke-width: 1.5; rx: 3; }
+      .check-mark { fill: #ffffff; font-size: 10px; }
+      .day-label { fill: #1e293b; font-size: 11px; }
+      .btn-primary { fill: #3b82f6; rx: 6; }
+      .btn-outline { fill: none; stroke: #e2e8f0; stroke-width: 1; rx: 6; }
+      .btn-text { fill: #ffffff; font-size: 12px; font-weight: 600; }
+      .btn-outline-text { fill: #64748b; font-size: 12px; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="20" y="28" class="title">公司信息設置</text>
+
+  <!-- Form card -->
+  <rect x="20" y="44" width="560" height="420" class="card"/>
+
+  <!-- Row 1: 公司名稱 -->
+  <text x="36" y="72" class="label">公司名稱 <tspan class="required">*</tspan></text>
+  <rect x="36" y="80" width="528" height="36" class="input"/>
+  <text x="52" y="103" class="input-text">ABC 科技有限公司</text>
+
+  <!-- Row 2: Logo URL -->
+  <text x="36" y="136" class="label">Logo URL</text>
+  <rect x="36" y="144" width="528" height="36" class="input"/>
+  <text x="52" y="167" class="input-placeholder">輸入公司 Logo 圖片 URL...</text>
+
+  <!-- Row 3: 財年起始 -->
+  <text x="36" y="200" class="label">財年起始 (MM-DD)</text>
+  <rect x="36" y="208" width="160" height="36" class="input"/>
+  <text x="52" y="231" class="input-text">01-01</text>
+
+  <!-- Row 4: 上班時間 + 下班時間 -->
+  <text x="36" y="264" class="label">上班時間</text>
+  <rect x="36" y="272" width="120" height="36" class="input"/>
+  <text x="52" y="295" class="input-text">09:00</text>
+
+  <text x="180" y="264" class="label">下班時間</text>
+  <rect x="180" y="272" width="120" height="36" class="input"/>
+  <text x="196" y="295" class="input-text">18:00</text>
+
+  <!-- Row 5: 工作日 -->
+  <text x="36" y="330" class="label">工作日</text>
+
+  <!-- Monday - checked -->
+  <rect x="36" y="340" width="16" height="16" class="checkbox-checked"/>
+  <text x="39" y="353" class="check-mark">✓</text>
+  <text x="58" y="353" class="day-label">週一</text>
+
+  <!-- Tuesday - checked -->
+  <rect x="106" y="340" width="16" height="16" class="checkbox-checked"/>
+  <text x="109" y="353" class="check-mark">✓</text>
+  <text x="128" y="353" class="day-label">週二</text>
+
+  <!-- Wednesday - checked -->
+  <rect x="176" y="340" width="16" height="16" class="checkbox-checked"/>
+  <text x="179" y="353" class="check-mark">✓</text>
+  <text x="198" y="353" class="day-label">週三</text>
+
+  <!-- Thursday - checked -->
+  <rect x="246" y="340" width="16" height="16" class="checkbox-checked"/>
+  <text x="249" y="353" class="check-mark">✓</text>
+  <text x="268" y="353" class="day-label">週四</text>
+
+  <!-- Friday - checked -->
+  <rect x="316" y="340" width="16" height="16" class="checkbox-checked"/>
+  <text x="319" y="353" class="check-mark">✓</text>
+  <text x="338" y="353" class="day-label">週五</text>
+
+  <!-- Saturday - unchecked -->
+  <rect x="386" y="340" width="16" height="16" class="checkbox-unchecked"/>
+  <text x="408" y="353" class="day-label">週六</text>
+
+  <!-- Sunday - unchecked -->
+  <rect x="456" y="340" width="16" height="16" class="checkbox-unchecked"/>
+  <text x="478" y="353" class="day-label">週日</text>
+
+  <!-- Divider -->
+  <line x1="36" y1="376" x2="564" y2="376" stroke="#f1f5f9" stroke-width="1"/>
+
+  <!-- Preview -->
+  <text x="36" y="400" fill="#94a3b8" font-size="10">預覽：工作時間 09:00-18:00，週一至週五</text>
+
+  <!-- Buttons -->
+  <rect x="380" y="420" width="80" height="32" class="btn-outline"/>
+  <text x="404" y="441" class="btn-outline-text">取消</text>
+  <rect x="472" y="420" width="92" height="32" class="btn-primary"/>
+  <text x="490" y="441" class="btn-text">保存設置</text>
+</svg>

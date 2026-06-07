@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <style>
+      .card { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; rx: 8; }
+      .chart-area { fill: #f8fafc; stroke: #e2e8f0; rx: 8; }
+      .chart-title { fill: #1e293b; font-size: 13px; font-weight: 600; }
+      .metric-card { rx: 8; }
+      .metric-value { fill: #1e293b; font-size: 22px; font-weight: 700; }
+      .metric-label { fill: #64748b; font-size: 11px; }
+      .axis-text { fill: #94a3b8; font-size: 10px; }
+      .grid-line { stroke: #f1f5f9; stroke-width: 1; }
+      .bar-avg { fill: #3b82f6; rx: 4; }
+      .bar-median { fill: #22c55e; rx: 4; }
+      .dist-bar { rx: 4; }
+    </style>
+  </defs>
+
+  <!-- Summary cards -->
+  <rect x="20" y="16" width="280" height="72" class="metric-card" fill="#eff6ff"/>
+  <text x="36" y="42" class="metric-label">💰 全公司平均薪資</text>
+  <text x="36" y="70" class="metric-value">¥18,500</text>
+
+  <rect x="310" y="16" width="280" height="72" class="metric-card" fill="#f0fdf4"/>
+  <text x="326" y="42" class="metric-label">📊 全公司中位數</text>
+  <text x="326" y="70" class="metric-value">¥17,200</text>
+
+  <rect x="600" y="16" width="280" height="72" class="metric-card" fill="#faf5ff"/>
+  <text x="616" y="42" class="metric-label">💵 薪資總成本</text>
+  <text x="616" y="70" class="metric-value">¥888,000</text>
+  <text x="780" y="70" fill="#64748b" font-size="11">/月</text>
+
+  <!-- Chart 1: Department salary comparison -->
+  <rect x="20" y="104" width="420" height="380" class="chart-area"/>
+  <text x="36" y="128" class="chart-title">部門薪資對比</text>
+
+  <!-- Legend -->
+  <rect x="280" y="116" width="10" height="10" fill="#3b82f6" rx="2"/>
+  <text x="296" y="126" fill="#64748b" font-size="9">平均</text>
+  <rect x="340" y="116" width="10" height="10" fill="#22c55e" rx="2"/>
+  <text x="356" y="126" fill="#64748b" font-size="9">中位數</text>
+
+  <!-- Department bars -->
+  <text x="36" y="170" fill="#64748b" font-size="11">Engineering</text>
+  <rect x="140" y="158" width="180" height="14" class="bar-avg"/>
+  <rect x="140" y="176" width="160" height="14" class="bar-median"/>
+  <text x="328" y="170" fill="#1e293b" font-size="10" font-weight="600">¥22,000</text>
+  <text x="308" y="188" fill="#64748b" font-size="10">¥20,500</text>
+
+  <text x="36" y="224" fill="#64748b" font-size="11">Marketing</text>
+  <rect x="140" y="212" width="140" height="14" class="bar-avg"/>
+  <rect x="140" y="230" width="120" height="14" class="bar-median"/>
+  <text x="288" y="224" fill="#1e293b" font-size="10" font-weight="600">¥17,500</text>
+  <text x="268" y="242" fill="#64748b" font-size="10">¥16,000</text>
+
+  <text x="36" y="278" fill="#64748b" font-size="11">Sales</text>
+  <rect x="140" y="266" width="150" height="14" class="bar-avg"/>
+  <rect x="140" y="284" width="130" height="14" class="bar-median"/>
+  <text x="298" y="278" fill="#1e293b" font-size="10" font-weight="600">¥18,500</text>
+  <text x="278" y="296" fill="#64748b" font-size="10">¥17,000</text>
+
+  <text x="36" y="332" fill="#64748b" font-size="11">HR</text>
+  <rect x="140" y="320" width="130" height="14" class="bar-avg"/>
+  <rect x="140" y="338" width="110" height="14" class="bar-median"/>
+  <text x="278" y="332" fill="#1e293b" font-size="10" font-weight="600">¥16,000</text>
+  <text x="258" y="350" fill="#64748b" font-size="10">¥15,000</text>
+
+  <text x="36" y="386" fill="#64748b" font-size="11">Finance</text>
+  <rect x="140" y="374" width="120" height="14" class="bar-avg"/>
+  <rect x="140" y="392" width="100" height="14" class="bar-median"/>
+  <text x="268" y="386" fill="#1e293b" font-size="10" font-weight="600">¥15,000</text>
+  <text x="248" y="404" fill="#64748b" font-size="10">¥14,500</text>
+
+  <!-- Chart 2: Salary distribution -->
+  <rect x="460" y="104" width="420" height="380" class="chart-area"/>
+  <text x="476" y="128" class="chart-title">薪資分佈</text>
+
+  <!-- Y axis -->
+  <text x="510" y="460" class="axis-text">0</text>
+  <text x="504" y="400" class="axis-text">5</text>
+  <text x="504" y="340" class="axis-text">10</text>
+  <text x="504" y="280" class="axis-text">15</text>
+  <text x="504" y="220" class="axis-text">20</text>
+
+  <!-- Grid lines -->
+  <line x1="524" y1="456" x2="856" y2="456" class="grid-line"/>
+  <line x1="524" y1="396" x2="856" y2="396" class="grid-line"/>
+  <line x1="524" y1="336" x2="856" y2="336" class="grid-line"/>
+  <line x1="524" y1="276" x2="856" y2="276" class="grid-line"/>
+
+  <!-- Distribution bars -->
+  <rect x="536" y="432" width="44" height="24" class="dist-bar" fill="#dbeafe"/>
+  <text x="544" y="448" fill="#3b82f6" font-size="9" font-weight="600">2</text>
+  <text x="536" y="472" class="axis-text">&lt;10K</text>
+
+  <rect x="600" y="336" width="44" height="120" class="dist-bar" fill="#bfdbfe"/>
+  <text x="608" y="352" fill="#3b82f6" font-size="9" font-weight="600">10</text>
+  <text x="596" y="472" class="axis-text">10-15K</text>
+
+  <rect x="664" y="216" width="44" height="240" class="dist-bar" fill="#93c5fd"/>
+  <text x="672" y="232" fill="#3b82f6" font-size="9" font-weight="600">20</text>
+  <text x="660" y="472" class="axis-text">15-20K</text>
+
+  <rect x="728" y="336" width="44" height="120" class="dist-bar" fill="#bfdbfe"/>
+  <text x="736" y="352" fill="#3b82f6" font-size="9" font-weight="600">10</text>
+  <text x="724" y="472" class="axis-text">20-25K</text>
+
+  <rect x="792" y="408" width="44" height="48" class="dist-bar" fill="#dbeafe"/>
+  <text x="800" y="424" fill="#3b82f6" font-size="9" font-weight="600">4</text>
+  <text x="788" y="472" class="axis-text">25-30K</text>
+</svg>

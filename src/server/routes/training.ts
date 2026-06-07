@@ -1,5 +1,5 @@
 import {Hono} from 'hono'
-import {supabaseAdmin} from '../lib/supabase'
+import {getSupabaseAdmin} from '../lib/supabase'
 
 
 const router = new Hono()
@@ -7,6 +7,7 @@ const router = new Hono()
 
 /// 獲取所有培訓記錄
 router.get('/', async (c) => {
+    const supabaseAdmin = getSupabaseAdmin(c)
     const {data, error} = await supabaseAdmin
         .from('training')
         .select('*')
@@ -22,6 +23,7 @@ router.get('/', async (c) => {
 
 /// 批量插入培訓數據
 router.post('/batch', async (c) => {
+    const supabaseAdmin = getSupabaseAdmin(c)
     const body = await c.req.json()
     const records = Array.isArray(body) ? body : [body]
 
@@ -40,6 +42,7 @@ router.post('/batch', async (c) => {
 
 /// 創建單條培訓記錄
 router.post('/', async (c) => {
+    const supabaseAdmin = getSupabaseAdmin(c)
     const body = await c.req.json()
 
     const {data, error} = await supabaseAdmin
@@ -55,8 +58,9 @@ router.post('/', async (c) => {
 })
 
 
-// 刪除所有的數據
-router.delete('/all', async (c)=>{
+/// 刪除所有的數據
+router.delete('/all', async (c) => {
+    const supabaseAdmin = getSupabaseAdmin(c)
     const {error} = await supabaseAdmin
         .from('training')
         .delete()
@@ -65,11 +69,12 @@ router.delete('/all', async (c)=>{
         return c.json({error: error.message}, 400)
     }
     return c.json({message: '所有培訓記錄已刪除'})
-});
+})
 
 
 /// 獲取單條培訓詳情
 router.get('/:id', async (c) => {
+    const supabaseAdmin = getSupabaseAdmin(c)
     const id = c.req.param('id')
 
     const {data, error} = await supabaseAdmin
@@ -88,6 +93,7 @@ router.get('/:id', async (c) => {
 
 /// 更新培訓記錄
 router.patch('/:id', async (c) => {
+    const supabaseAdmin = getSupabaseAdmin(c)
     const id = c.req.param('id')
     const body = await c.req.json()
 

@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <style>
+      .card { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; rx: 8; }
+      .title { fill: #1e293b; font-size: 16px; font-weight: 700; }
+      .subtitle { fill: #64748b; font-size: 12px; }
+      .label { fill: #64748b; font-size: 11px; }
+      .value { fill: #1e293b; font-size: 13px; font-weight: 600; }
+      .score-big { fill: #3b82f6; font-size: 48px; font-weight: 700; }
+      .grade-badge { rx: 8; }
+      .progress-bg { fill: #e2e8f0; rx: 4; }
+      .progress-fill { rx: 4; }
+      .step-done { fill: #22c55e; }
+      .step-active { fill: #3b82f6; }
+      .step-pending { fill: #e2e8f0; }
+      .step-text { fill: #ffffff; font-size: 10px; font-weight: 600; }
+      .step-label { fill: #64748b; font-size: 9px; }
+      .btn-primary { fill: #3b82f6; rx: 6; }
+      .btn-outline { fill: none; stroke: #e2e8f0; stroke-width: 1; rx: 6; }
+      .btn-text { fill: #ffffff; font-size: 11px; font-weight: 600; }
+      .btn-outline-text { fill: #64748b; font-size: 11px; }
+      .change-up { fill: #22c55e; font-size: 11px; }
+      .change-down { fill: #ef4444; font-size: 11px; }
+      .change-same { fill: #94a3b8; font-size: 11px; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="20" y="28" class="title">績效詳情 — 張偉</text>
+  <text x="20" y="46" class="subtitle">2026-H1 | Engineering | 評審人: 王強</text>
+
+  <!-- Employee info card -->
+  <rect x="20" y="60" width="860" height="60" class="card"/>
+  <circle cx="52" cy="90" r="20" fill="#3b82f6"/>
+  <text x="44" y="96" fill="#fff" font-size="14" font-weight="600">張</text>
+  <text x="82" y="84" fill="#1e293b" font-size="14" font-weight="600">張偉</text>
+  <text x="82" y="102" class="label">Engineering · Senior Developer</text>
+  <text x="780" y="90" class="label">評估週期</text>
+  <text x="780" y="106" class="value">2026-H1</text>
+
+  <!-- Radar chart area -->
+  <rect x="20" y="132" width="420" height="300" class="card"/>
+  <text x="36" y="156" fill="#1e293b" font-size="13" font-weight="600">五維能力雷達圖</text>
+
+  <!-- Simplified radar visualization -->
+  <polygon points="230,200 290,240 280,310 180,310 170,240" fill="#3b82f6" fill-opacity="0.15" stroke="#3b82f6" stroke-width="2"/>
+  <polygon points="230,210 280,245 270,300 190,300 180,245" fill="#94a3b8" fill-opacity="0.08" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+  <!-- Radar axis labels -->
+  <text x="218" y="190" fill="#1e293b" font-size="10" font-weight="600">質量 4.5</text>
+  <text x="296" y="238" fill="#1e293b" font-size="10" font-weight="600">效率 4.0</text>
+  <text x="286" y="322" fill="#1e293b" font-size="10" font-weight="600">協作 4.5</text>
+  <text x="148" y="322" fill="#1e293b" font-size="10" font-weight="600">主動 4.0</text>
+  <text x="140" y="238" fill="#1e293b" font-size="10" font-weight="600">溝通 3.5</text>
+
+  <!-- Legend -->
+  <line x1="36" y1="410" x2="56" y2="410" stroke="#3b82f6" stroke-width="2"/>
+  <text x="62" y="414" fill="#64748b" font-size="10">本期</text>
+  <line x1="110" y1="410" x2="130" y2="410" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="136" y="414" fill="#64748b" font-size="10">上期</text>
+
+  <!-- Score detail table -->
+  <rect x="460" y="132" width="420" height="300" class="card"/>
+  <text x="476" y="156" fill="#1e293b" font-size="13" font-weight="600">評分明細</text>
+
+  <!-- Table headers -->
+  <text x="476" y="184" fill="#64748b" font-size="10" font-weight="600">維度</text>
+  <text x="560" y="184" fill="#64748b" font-size="10" font-weight="600">分數</text>
+  <text x="620" y="184" fill="#64748b" font-size="10" font-weight="600">進度</text>
+  <text x="760" y="184" fill="#64748b" font-size="10" font-weight="600">上期</text>
+  <text x="810" y="184" fill="#64748b" font-size="10" font-weight="600">變化</text>
+
+  <!-- Row 1: 工作質量 -->
+  <text x="476" y="214" class="value">工作質量</text>
+  <text x="560" y="214" class="value">4.5</text>
+  <rect x="620" y="204" width="120" height="8" class="progress-bg"/>
+  <rect x="620" y="204" width="108" height="8" class="progress-fill" fill="#3b82f6"/>
+  <text x="760" y="214" class="label">4.0</text>
+  <text x="810" y="214" class="change-up">+0.5 ↑</text>
+
+  <!-- Row 2: 工作效率 -->
+  <text x="476" y="244" class="value">工作效率</text>
+  <text x="560" y="244" class="value">4.0</text>
+  <rect x="620" y="234" width="120" height="8" class="progress-bg"/>
+  <rect x="620" y="234" width="96" height="8" class="progress-fill" fill="#3b82f6"/>
+  <text x="760" y="244" class="label">4.2</text>
+  <text x="810" y="244" class="change-down">-0.2 ↓</text>
+
+  <!-- Row 3: 團隊協作 -->
+  <text x="476" y="274" class="value">團隊協作</text>
+  <text x="560" y="274" class="value">4.5</text>
+  <rect x="620" y="264" width="120" height="8" class="progress-bg"/>
+  <rect x="620" y="264" width="108" height="8" class="progress-fill" fill="#3b82f6"/>
+  <text x="760" y="274" class="label">4.2</text>
+  <text x="810" y="274" class="change-up">+0.3 ↑</text>
+
+  <!-- Row 4: 主動性 -->
+  <text x="476" y="304" class="value">主動性</text>
+  <text x="560" y="304" class="value">4.0</text>
+  <rect x="620" y="294" width="120" height="8" class="progress-bg"/>
+  <rect x="620" y="294" width="96" height="8" class="progress-fill" fill="#3b82f6"/>
+  <text x="760" y="304" class="label">3.5</text>
+  <text x="810" y="304" class="change-up">+0.5 ↑</text>
+
+  <!-- Row 5: 溝通能力 -->
+  <text x="476" y="334" class="value">溝通能力</text>
+  <text x="560" y="334" class="value">3.5</text>
+  <rect x="620" y="324" width="120" height="8" class="progress-bg"/>
+  <rect x="620" y="324" width="84" height="8" class="progress-fill" fill="#3b82f6"/>
+  <text x="760" y="334" class="label">3.5</text>
+  <text x="810" y="334" class="change-same">0 ─</text>
+
+  <!-- Overall score section -->
+  <rect x="20" y="444" width="860" height="80" class="card"/>
+  <text x="36" y="474" class="label">總評分</text>
+  <text x="36" y="510" class="score-big">4.1</text>
+  <rect x="120" y="480" width="40" height="28" class="grade-badge" fill="#dbeafe"/>
+  <text x="128" y="500" fill="#2563eb" font-size="18" font-weight="700">A</text>
+  <text x="180" y="474" class="label">加權公式</text>
+  <text x="180" y="494" fill="#94a3b8" font-size="10">質量×0.25 + 效率×0.25 + 協作×0.20 + 主動×0.15 + 溝通×0.15</text>
+  <text x="560" y="474" class="label">評審人評語</text>
+  <text x="560" y="494" fill="#1e293b" font-size="12">技術能力突出，團隊協作良好，建議加強溝通表達。</text>
+
+  <!-- Approval flow -->
+  <rect x="20" y="536" width="860" height="64" class="card"/>
+  <text x="36" y="560" fill="#1e293b" font-size="13" font-weight="600">審批流程</text>
+
+  <!-- Step 1: Self Review (done) -->
+  <circle cx="120" cy="580" r="14" class="step-done"/>
+  <text x="115" y="585" class="step-text">✓</text>
+  <text x="100" y="606" class="step-label">自評</text>
+
+  <!-- Connector -->
+  <line x1="140" y1="580" x2="280" y2="580" stroke="#22c55e" stroke-width="2"/>
+
+  <!-- Step 2: Manager Review (done) -->
+  <circle cx="300" cy="580" r="14" class="step-done"/>
+  <text x="295" y="585" class="step-text">✓</text>
+  <text x="278" y="606" class="step-label">主管審核</text>
+
+  <!-- Connector -->
+  <line x1="320" y1="580" x2="460" y2="580" stroke="#22c55e" stroke-width="2"/>
+
+  <!-- Step 3: HR Review (done) -->
+  <circle cx="480" cy="580" r="14" class="step-done"/>
+  <text x="475" y="585" class="step-text">✓</text>
+  <text x="462" y="606" class="step-label">HR 審核</text>
+
+  <!-- Connector -->
+  <line x1="500" y1="580" x2="640" y2="580" stroke="#22c55e" stroke-width="2"/>
+
+  <!-- Step 4: Completed (done) -->
+  <circle cx="660" cy="580" r="14" class="step-done"/>
+  <text x="655" y="585" class="step-text">✓</text>
+  <text x="640" y="606" class="step-label">完成</text>
+
+  <!-- Action buttons (for non-completed state example) -->
+  <rect x="20" y="612" width="860" height="60" class="card"/>
+  <text x="36" y="640" class="label">操作（當前狀態：已完成，只讀）</text>
+  <rect x="700" y="626" width="80" height="32" class="btn-outline"/>
+  <text x="716" y="647" class="btn-outline-text">返回列表</text>
+  <rect x="790" y="626" width="80" height="32" class="btn-primary"/>
+  <text x="806" y="647" class="btn-text">打印</text>
+</svg>

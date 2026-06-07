@@ -1,6 +1,8 @@
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
+import { createLocalSupabaseAdmin } from './lib/supabase'
+import type { SupabaseClient } from '@supabase/supabase-js'
 import employeesRouter from './routes/employees'
 import approvalsRouter from './routes/approvals'
 import dashboardRouter from './routes/dashboard'
@@ -9,10 +11,20 @@ import payrollRouter from './routes/payroll'
 import recruitmentRouter from './routes/recruitment'
 import trainingRouter from './routes/training'
 
-const app = new Hono()
+type Variables = {
+  supabaseAdmin: SupabaseClient
+}
+
+const app = new Hono<{ Variables: Variables }>()
 
 app.use('*', cors())
 app.use('*', logger())
+
+// 注入 Supabase 客戶端到 context（本地開發用 process.env）
+app.use('/api/*', async (c, next) => {
+  c.set('supabaseAdmin', createLocalSupabaseAdmin())
+  await next()
+})
 
 app.get('/api/health', (c) => c.json({ status: 'ok', timestamp: new Date().toISOString() }))
 

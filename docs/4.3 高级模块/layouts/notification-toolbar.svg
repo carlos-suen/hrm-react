@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 44" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <style>
+      .tab-active { fill: #3b82f6; rx: 6; }
+      .tab { fill: #f1f5f9; rx: 6; }
+      .tab-text-active { fill: #ffffff; font-size: 11px; font-weight: 600; }
+      .tab-text { fill: #64748b; font-size: 11px; }
+      .badge { fill: #ef4444; rx: 8; }
+      .badge-text { fill: #ffffff; font-size: 9px; font-weight: 700; }
+      .btn-outline { fill: none; stroke: #e2e8f0; stroke-width: 1; rx: 6; }
+      .btn-text { fill: #64748b; font-size: 11px; }
+    </style>
+  </defs>
+
+  <!-- Tab: 全部 (active) -->
+  <rect x="0" y="6" width="56" height="28" class="tab-active"/>
+  <text x="14" y="25" class="tab-text-active">全部</text>
+
+  <!-- Tab: 請假 -->
+  <rect x="64" y="6" width="48" height="28" class="tab"/>
+  <text x="74" y="25" class="tab-text">請假</text>
+
+  <!-- Tab: 考勤 -->
+  <rect x="120" y="6" width="48" height="28" class="tab"/>
+  <text x="130" y="25" class="tab-text">考勤</text>
+
+  <!-- Tab: 薪資 -->
+  <rect x="176" y="6" width="48" height="28" class="tab"/>
+  <text x="186" y="25" class="tab-text">薪資</text>
+
+  <!-- Tab: 績效 -->
+  <rect x="232" y="6" width="48" height="28" class="tab"/>
+  <text x="242" y="25" class="tab-text">績效</text>
+
+  <!-- Tab: 系統 -->
+  <rect x="288" y="6" width="48" height="28" class="tab"/>
+  <text x="298" y="25" class="tab-text">系統</text>
+
+  <!-- Spacer -->
+  <!-- flex gap-2 annotation -->
+  <text x="360" y="4" fill="#94a3b8" font-size="8">← flex gap-2</text>
+
+  <!-- Bell icon + badge -->
+  <text x="580" y="26" fill="#64748b" font-size="14">🔔</text>
+  <rect x="596" y="10" width="18" height="16" class="badge"/>
+  <text x="600" y="22" class="badge-text">5</text>
+
+  <!-- Button: 全部已讀 -->
+  <rect x="624" y="6" width="72" height="28" class="btn-outline"/>
+  <text x="632" y="25" class="btn-text">全部已讀</text>
+</svg>

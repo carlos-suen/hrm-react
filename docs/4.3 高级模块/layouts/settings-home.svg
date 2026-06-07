@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <style>
+      .card { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; rx: 8; }
+      .title { fill: #1e293b; font-size: 16px; font-weight: 700; }
+      .card-icon-bg { rx: 12; }
+      .card-title { fill: #1e293b; font-size: 14px; font-weight: 600; }
+      .card-desc { fill: #64748b; font-size: 11px; }
+      .card-link { fill: #3b82f6; font-size: 11px; font-weight: 500; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="20" y="28" class="title">系統設置</text>
+
+  <!-- Card 1: 公司信息 -->
+  <rect x="20" y="48" width="420" height="140" class="card"/>
+  <rect x="40" y="68" width="48" height="48" class="card-icon-bg" fill="#dbeafe"/>
+  <text x="50" y="100" font-size="24">🏢</text>
+  <text x="100" y="88" class="card-title">公司信息</text>
+  <text x="100" y="108" class="card-desc">公司名稱、財年、工作時間</text>
+  <text x="100" y="168" class="card-link">進入設置 →</text>
+
+  <!-- Card 2: 假期設置 -->
+  <rect x="460" y="48" width="420" height="140" class="card"/>
+  <rect x="480" y="68" width="48" height="48" class="card-icon-bg" fill="#dcfce7"/>
+  <text x="490" y="100" font-size="24">📅</text>
+  <text x="540" y="88" class="card-title">假期設置</text>
+  <text x="540" y="108" class="card-desc">年假天數、結轉限制、審批流程</text>
+  <text x="540" y="168" class="card-link">進入設置 →</text>
+
+  <!-- Card 3: 考勤設置 -->
+  <rect x="20" y="208" width="420" height="140" class="card"/>
+  <rect x="40" y="228" width="48" height="48" class="card-icon-bg" fill="#ffedd5"/>
+  <text x="50" y="260" font-size="24">🕐</text>
+  <text x="100" y="248" class="card-title">考勤設置</text>
+  <text x="100" y="268" class="card-desc">遲到閾值、早退閾值、加班規則</text>
+  <text x="100" y="328" class="card-link">進入設置 →</text>
+
+  <!-- Card 4: 薪資設置 -->
+  <rect x="460" y="208" width="420" height="140" class="card"/>
+  <rect x="480" y="228" width="48" height="48" class="card-icon-bg" fill="#f3e8ff"/>
+  <text x="490" y="260" font-size="24">💰</text>
+  <text x="540" y="248" class="card-title">薪資設置</text>
+  <text x="540" y="268" class="card-desc">發薪日、稅率表</text>
+  <text x="540" y="328" class="card-link">進入設置 →</text>
+
+  <!-- Card 5: 通知設置 -->
+  <rect x="20" y="368" width="420" height="140" class="card"/>
+  <rect x="40" y="388" width="48" height="48" class="card-icon-bg" fill="#fef3c7"/>
+  <text x="50" y="420" font-size="24">🔔</text>
+  <text x="100" y="408" class="card-title">通知設置</text>
+  <text x="100" y="428" class="card-desc">通知渠道、摘要頻率</text>
+  <text x="100" y="488" class="card-link">進入設置 →</text>
+
+  <!-- Card 6: 數據管理 -->
+  <rect x="460" y="368" width="420" height="140" class="card"/>
+  <rect x="480" y="388" width="48" height="48" class="card-icon-bg" fill="#fee2e2"/>
+  <text x="490" y="420" font-size="24">💾</text>
+  <text x="540" y="408" class="card-title">數據管理</text>
+  <text x="540" y="428" class="card-desc">導出數據、重置數據</text>
+  <text x="540" y="488" class="card-link">進入設置 →</text>
+</svg>

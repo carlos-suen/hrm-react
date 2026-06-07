@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 80" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <style>
+      .step-done { fill: #22c55e; rx: 16; }
+      .step-active { fill: #3b82f6; rx: 16; }
+      .step-pending { fill: #e2e8f0; rx: 16; }
+      .step-text-done { fill: #ffffff; font-size: 11px; font-weight: 600; }
+      .step-text-active { fill: #ffffff; font-size: 11px; font-weight: 600; }
+      .step-text-pending { fill: #94a3b8; font-size: 11px; font-weight: 600; }
+      .step-label { fill: #64748b; font-size: 10px; }
+      .step-label-active { fill: #3b82f6; font-size: 10px; font-weight: 600; }
+      .connector-done { stroke: #22c55e; stroke-width: 2; }
+      .connector-pending { stroke: #e2e8f0; stroke-width: 2; stroke-dasharray: 4 3; }
+    </style>
+  </defs>
+
+  <!-- Step 1: 自評 (done) -->
+  <rect x="0" y="8" width="100" height="32" class="step-done"/>
+  <text x="26" y="29" class="step-text-done">✓ 自評</text>
+  <text x="24" y="60" class="step-label">已完成</text>
+
+  <!-- Connector 1→2 (done) -->
+  <line x1="104" y1="24" x2="156" y2="24" class="connector-done"/>
+  <polygon points="156,20 164,24 156,28" fill="#22c55e"/>
+
+  <!-- Step 2: 主管審核 (active/in progress) -->
+  <rect x="168" y="8" width="120" height="32" class="step-active"/>
+  <text x="188" y="29" class="step-text-active">🔄 主管審核</text>
+  <text x="196" y="60" class="step-label-active">進行中</text>
+
+  <!-- Connector 2→3 (pending) -->
+  <line x1="292" y1="24" x2="344" y2="24" class="connector-pending"/>
+  <polygon points="344,20 352,24 344,28" fill="#e2e8f0"/>
+
+  <!-- Step 3: HR 審核 (pending) -->
+  <rect x="356" y="8" width="110" height="32" class="step-pending"/>
+  <text x="380" y="29" class="step-text-pending">HR 審核</text>
+  <text x="380" y="60" class="step-label">未開始</text>
+
+  <!-- Connector 3→4 (pending) -->
+  <line x1="470" y1="24" x2="522" y2="24" class="connector-pending"/>
+  <polygon points="522,20 530,24 522,28" fill="#e2e8f0"/>
+
+  <!-- Step 4: 完成 (pending) -->
+  <rect x="532" y="8" width="100" height="32" class="step-pending"/>
+  <text x="556" y="29" class="step-text-pending">完成</text>
+  <text x="556" y="60" class="step-label">未開始</text>
+</svg>

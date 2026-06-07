@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" font-family="monospace, system-ui, sans-serif">
+  <defs>
+    <style>
+      .node { fill: #1e293b; font-size: 12px; }
+      .child { fill: #475569; font-size: 11px; }
+      .line { stroke: #cbd5e1; stroke-width: 1.5; }
+      .badge { fill: #94a3b8; font-size: 9px; }
+    </style>
+  </defs>
+
+  <!-- Root node -->
+  <text x="8" y="20" class="node" font-weight="700">PerformanceOverview</text>
+
+  <!-- Branch 1: 統計卡片組 -->
+  <line x1="16" y1="28" x2="16" y2="52" class="line"/>
+  <line x1="16" y1="52" x2="28" y2="52" class="line"/>
+  <text x="32" y="56" class="node">統計卡片組</text>
+  <text x="140" y="56" class="badge">grid-cols-2 md:grid-cols-4</text>
+
+  <!-- Children of 統計卡片組 -->
+  <line x1="40" y1="64" x2="40" y2="84" class="line"/>
+  <line x1="40" y1="84" x2="52" y2="84" class="line"/>
+  <text x="56" y="88" class="child">MetricCard: 本期評估人數</text>
+
+  <line x1="40" y1="92" x2="40" y2="108" class="line"/>
+  <line x1="40" y1="108" x2="52" y2="108" class="line"/>
+  <text x="56" y="112" class="child">MetricCard: 平均績效分</text>
+
+  <line x1="40" y1="116" x2="40" y2="132" class="line"/>
+  <line x1="40" y1="132" x2="52" y2="132" class="line"/>
+  <text x="56" y="136" class="child">MetricCard: S/A 級佔比</text>
+
+  <line x1="40" y1="140" x2="40" y2="156" class="line"/>
+  <line x1="40" y1="156" x2="52" y2="156" class="line"/>
+  <text x="56" y="160" class="child">MetricCard: 待審核數</text>
+
+  <!-- Branch 2: 圖表區 -->
+  <line x1="16" y1="28" x2="16" y2="180" class="line"/>
+  <line x1="16" y1="180" x2="28" y2="180" class="line"/>
+  <text x="32" y="184" class="node">圖表區</text>
+  <text x="90" y="184" class="badge">grid-cols-1 lg:grid-cols-2 gap-6</text>
+
+  <!-- Children of 圖表區 -->
+  <line x1="40" y1="188" x2="40" y2="196" class="line"/>
+  <!-- These would extend further but we keep it compact -->
+</svg>

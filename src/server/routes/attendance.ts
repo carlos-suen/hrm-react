@@ -1,5 +1,5 @@
 import {Hono} from 'hono'
-import {supabaseAdmin} from '../lib/supabase'
+import {getSupabaseAdmin} from '../lib/supabase'
 
 
 const router = new Hono()
@@ -7,6 +7,7 @@ const router = new Hono()
 
 /// 獲取所有考勤記錄
 router.get('/', async (c) => {
+    const supabaseAdmin = getSupabaseAdmin(c)
     const {data, error} = await supabaseAdmin
         .from('attendance')
         .select('*')
@@ -22,10 +23,9 @@ router.get('/', async (c) => {
 
 /// 批量插入考勤測試數據
 router.post('/batch', async (c) => {
+    const supabaseAdmin = getSupabaseAdmin(c)
     const body = await c.req.json()
     const records = Array.isArray(body) ? body : [body]
-
-    console.log('Inserting records:', JSON.stringify(records, null, 2))
 
     const {data, error} = await supabaseAdmin
         .from('attendance')
@@ -33,7 +33,6 @@ router.post('/batch', async (c) => {
         .select()
 
     if (error) {
-        console.error('Insert error:', error)
         return c.json({error: error.message}, 400)
     }
 
@@ -43,6 +42,7 @@ router.post('/batch', async (c) => {
 
 /// 清空所有考勤數據
 router.delete('/all', async (c) => {
+    const supabaseAdmin = getSupabaseAdmin(c)
     const {error} = await supabaseAdmin
         .from('attendance')
         .delete()

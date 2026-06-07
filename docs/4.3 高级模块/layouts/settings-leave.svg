@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 440" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <style>
+      .card { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; rx: 8; }
+      .title { fill: #1e293b; font-size: 16px; font-weight: 700; }
+      .label { fill: #64748b; font-size: 11px; font-weight: 500; }
+      .required { fill: #ef4444; font-size: 11px; }
+      .input { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; rx: 6; }
+      .input-text { fill: #1e293b; font-size: 12px; }
+      .drag-handle { fill: #94a3b8; font-size: 14px; }
+      .drag-item { fill: #f8fafc; stroke: #e2e8f0; stroke-width: 1; rx: 6; }
+      .delete-btn { fill: #ef4444; font-size: 12px; }
+      .add-link { fill: #3b82f6; font-size: 12px; font-weight: 500; }
+      .btn-primary { fill: #3b82f6; rx: 6; }
+      .btn-outline { fill: none; stroke: #e2e8f0; stroke-width: 1; rx: 6; }
+      .btn-text { fill: #ffffff; font-size: 12px; font-weight: 600; }
+      .btn-outline-text { fill: #64748b; font-size: 12px; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="20" y="28" class="title">假期設置</text>
+
+  <!-- Form card -->
+  <rect x="20" y="44" width="560" height="380" class="card"/>
+
+  <!-- Row 1: 默認年假天數 -->
+  <text x="36" y="72" class="label">默認年假天數 <tspan class="required">*</tspan></text>
+  <rect x="36" y="80" width="160" height="36" class="input"/>
+  <text x="52" y="103" class="input-text">10</text>
+  <text x="204" y="103" fill="#94a3b8" font-size="11">天</text>
+
+  <!-- Row 2: 結轉上限 -->
+  <text x="36" y="136" class="label">結轉上限</text>
+  <rect x="36" y="144" width="160" height="36" class="input"/>
+  <text x="52" y="167" class="input-text">5</text>
+  <text x="204" y="167" fill="#94a3b8" font-size="11">天（0 = 不允許結轉）</text>
+
+  <!-- Row 3: 審批流程 -->
+  <text x="36" y="204" class="label">審批流程</text>
+  <text x="36" y="220" fill="#94a3b8" font-size="10">拖拽排序審批環節，點擊 × 刪除</text>
+
+  <!-- Draggable item 1 -->
+  <rect x="36" y="232" width="528" height="40" class="drag-item"/>
+  <text x="48" y="258" class="drag-handle">☰</text>
+  <text x="72" y="256" fill="#1e293b" font-size="12" font-weight="500">1. 主管審批</text>
+  <rect x="524" y="244" width="24" height="20" fill="none" rx="4"/>
+  <text x="528" y="258" class="delete-btn">✕</text>
+
+  <!-- Draggable item 2 -->
+  <rect x="36" y="280" width="528" height="40" class="drag-item"/>
+  <text x="48" y="306" class="drag-handle">☰</text>
+  <text x="72" y="304" fill="#1e293b" font-size="12" font-weight="500">2. HR 審批</text>
+  <rect x="524" y="292" width="24" height="20" fill="none" rx="4"/>
+  <text x="528" y="306" class="delete-btn">✕</text>
+
+  <!-- Add button -->
+  <text x="52" y="344" class="add-link">+ 添加審批環節</text>
+
+  <!-- Divider -->
+  <line x1="36" y1="360" x2="564" y2="360" stroke="#f1f5f9" stroke-width="1"/>
+
+  <!-- Preview -->
+  <text x="36" y="384" fill="#94a3b8" font-size="10">預覽：年假 10 天，可結轉 5 天，審批流程：主管 → HR</text>
+
+  <!-- Buttons -->
+  <rect x="380" y="392" width="80" height="32" class="btn-outline"/>
+  <text x="404" y="413" class="btn-outline-text">取消</text>
+  <rect x="472" y="392" width="92" height="32" class="btn-primary"/>
+  <text x="490" y="413" class="btn-text">保存設置</text>
+</svg>

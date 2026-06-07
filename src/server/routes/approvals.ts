@@ -1,10 +1,10 @@
-import {Hono} from "hono";
-import {supabaseAdmin} from "../lib/supabase";
 import {router} from "../lib/api";
+import {getSupabaseAdmin} from "../lib/supabase";
 
 
 /// 獲取所有待處理
 router.get('/pending', async (c) => {
+    const supabaseAdmin = getSupabaseAdmin(c)
     const {data, error} = await supabaseAdmin.from("approvals").select("*").eq("status", 0);
 
     if (error) {
@@ -17,6 +17,7 @@ router.get('/pending', async (c) => {
 
 /// 獲取所有已批准
 router.get('/approved', async (c) => {
+    const supabaseAdmin = getSupabaseAdmin(c)
     const {data, error} = await supabaseAdmin.from('approvals').select("*").eq("status", 1);
 
     if (error) {
@@ -29,6 +30,7 @@ router.get('/approved', async (c) => {
 
 /// 獲取所有已拒絕
 router.get('/rejected', async (c) => {
+    const supabaseAdmin = getSupabaseAdmin(c)
     const {data, error} = await supabaseAdmin.from('approvals').select("*").eq("status", 2);
 
     if (error) {
@@ -41,6 +43,7 @@ router.get('/rejected', async (c) => {
 
 /// 更新審批狀態
 router.patch('/:id', async (c) => {
+    const supabaseAdmin = getSupabaseAdmin(c)
     const id = c.req.param('id');
     const body = await c.req.json();
 
@@ -60,6 +63,7 @@ router.patch('/:id', async (c) => {
 
 /// 批量插入測試數據
 router.post('/batch', async (c) => {
+    const supabaseAdmin = getSupabaseAdmin(c)
     const body = await c.req.json();
     const records = Array.isArray(body) ? body : [body];
 
@@ -78,6 +82,7 @@ router.post('/batch', async (c) => {
 
 /// 清空所有數據
 router.delete('/all', async (c) => {
+    const supabaseAdmin = getSupabaseAdmin(c)
     const {error} = await supabaseAdmin
         .from('approvals')
         .delete()

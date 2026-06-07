@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 440" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <style>
+      .card { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; rx: 8; }
+      .title { fill: #1e293b; font-size: 16px; font-weight: 700; }
+      .section-title { fill: #1e293b; font-size: 13px; font-weight: 600; }
+      .desc { fill: #64748b; font-size: 11px; }
+      .btn-outline { fill: none; stroke: #e2e8f0; stroke-width: 1; rx: 6; }
+      .btn-outline-text { fill: #64748b; font-size: 12px; }
+      .btn-danger { fill: #ef4444; rx: 6; }
+      .btn-danger-text { fill: #ffffff; font-size: 12px; font-weight: 600; }
+      .modal-overlay { fill: #0f172a; opacity: 0.5; }
+      .modal { fill: #ffffff; rx: 12; }
+      .modal-title { fill: #1e293b; font-size: 14px; font-weight: 700; }
+      .modal-text { fill: #64748b; font-size: 12px; }
+      .modal-input { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; rx: 6; }
+      .modal-input-text { fill: #94a3b8; font-size: 12px; }
+      .btn-cancel { fill: none; stroke: #e2e8f0; stroke-width: 1; rx: 6; }
+      .btn-cancel-text { fill: #64748b; font-size: 12px; }
+      .btn-confirm-danger { fill: #ef4444; rx: 6; }
+      .btn-confirm-text { fill: #ffffff; font-size: 12px; font-weight: 600; }
+      .warning-icon { fill: #f97316; font-size: 20px; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="20" y="28" class="title">數據管理</text>
+
+  <!-- Card 1: 導出數據 -->
+  <rect x="20" y="44" width="560" height="72" class="card"/>
+  <text x="36" y="68" class="section-title">📤 導出數據</text>
+  <text x="36" y="86" class="desc">將所有 HRM 數據導出為 JSON 文件</text>
+  <rect x="460" y="60" width="100" height="32" class="btn-outline"/>
+  <text x="480" y="81" class="btn-outline-text">導出數據</text>
+
+  <!-- Card 2: 導入數據 -->
+  <rect x="20" y="128" width="560" height="72" class="card"/>
+  <text x="36" y="152" class="section-title">📥 導入數據</text>
+  <text x="36" y="170" class="desc">從 JSON 文件導入數據（將覆蓋現有數據）</text>
+  <rect x="460" y="144" width="100" height="32" class="btn-outline"/>
+  <text x="480" y="165" class="btn-outline-text">選擇文件</text>
+
+  <!-- Card 3: 重置數據 -->
+  <rect x="20" y="212" width="560" height="72" class="card"/>
+  <text x="36" y="236" class="section-title">⚠️ 重置數據</text>
+  <text x="36" y="254" class="desc">清除所有數據並恢復為初始狀態（不可撤銷）</text>
+  <rect x="460" y="228" width="100" height="32" class="btn-danger"/>
+  <text x="476" y="249" class="btn-danger-text">重置所有數據</text>
+
+  <!-- Confirmation modal -->
+  <rect x="0" y="300" width="600" height="140" class="modal-overlay"/>
+  <rect x="100" y="300" width="400" height="130" class="modal"/>
+
+  <text x="120" y="328" class="modal-title">⚠️ 確認重置</text>
+  <text x="120" y="350" class="modal-text">此操作將清除所有數據且不可撤銷。</text>
+  <text x="120" y="368" class="modal-text">請輸入 "RESET" 確認操作。</text>
+
+  <rect x="120" y="380" width="240" height="32" class="modal-input"/>
+  <text x="136" y="401" class="modal-input-text">輸入 RESET...</text>
+
+  <rect x="280" y="416" width="80" height="28" class="btn-cancel"/>
+  <text x="300" y="435" class="btn-cancel-text">取消</text>
+  <rect x="372" y="416" width="100" height="28" class="btn-confirm-danger" opacity="0.5"/>
+  <text x="384" y="435" class="btn-confirm-text" opacity="0.5">確認重置</text>
+</svg>

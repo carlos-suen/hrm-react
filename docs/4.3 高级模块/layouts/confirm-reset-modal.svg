@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <style>
+      .modal-overlay { fill: #0f172a; opacity: 0.4; }
+      .modal { fill: #ffffff; rx: 12; }
+      .modal-title { fill: #1e293b; font-size: 14px; font-weight: 700; }
+      .modal-text { fill: #64748b; font-size: 12px; }
+      .input { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1; rx: 6; }
+      .input-placeholder { fill: #94a3b8; font-size: 12px; }
+      .btn-cancel { fill: none; stroke: #e2e8f0; stroke-width: 1; rx: 6; }
+      .btn-cancel-text { fill: #64748b; font-size: 12px; }
+      .btn-danger { fill: #ef4444; rx: 6; opacity: 0.5; }
+      .btn-danger-text { fill: #ffffff; font-size: 12px; font-weight: 600; opacity: 0.5; }
+      .warning { fill: #f97316; font-size: 16px; }
+    </style>
+  </defs>
+
+  <!-- Modal -->
+  <rect x="0" y="0" width="400" height="260" class="modal"/>
+
+  <!-- Warning icon + Title -->
+  <text x="24" y="36" class="warning">⚠️</text>
+  <text x="48" y="36" class="modal-title">確認重置</text>
+
+  <!-- Description -->
+  <text x="24" y="64" class="modal-text">此操作將清除所有數據且不可撤銷。</text>
+  <text x="24" y="84" class="modal-text">請輸入 "RESET" 確認操作。</text>
+
+  <!-- Input field -->
+  <rect x="24" y="100" width="352" height="36" class="input"/>
+  <text x="40" y="123" class="input-placeholder">輸入 RESET...</text>
+
+  <!-- Annotation -->
+  <text x="24" y="156" fill="#94a3b8" font-size="9">確認按鈕在輸入 "RESET" 後才可點擊</text>
+
+  <!-- Buttons -->
+  <rect x="200" y="180" width="80" height="32" class="btn-cancel"/>
+  <text x="220" y="201" class="btn-cancel-text">取消</text>
+
+  <rect x="292" y="180" width="84" height="32" class="btn-danger"/>
+  <text x="304" y="201" class="btn-danger-text">確認重置</text>
+
+  <!-- Disabled indicator -->
+  <line x1="292" y1="220" x2="376" y2="220" stroke="#fca5a5" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="292" y="236" fill="#fca5a5" font-size="9">disabled（需輸入 RESET 啟用）</text>
+</svg>
