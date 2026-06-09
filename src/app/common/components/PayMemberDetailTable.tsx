@@ -1,4 +1,4 @@
-import {cardClasses} from "../common/themeClasses.tsx";
+import {cardClasses} from "../constants/themeClasses.tsx";
 
 export type PayStatus = 'Draft' | 'Confirmed';
 
@@ -30,7 +30,7 @@ const statusBadgeClasses: Record<PayStatus, string> = {
 
 const avatarColors = ["bg-blue-500", "bg-indigo-500", "bg-purple-500", "bg-pink-500", "bg-cyan-500"];
 
-const tHeadClass = 'text-left py-3 px-4 font-medium text-slate-500 dark:text-slate-400';
+export const tHeadClass = 'text-left py-3 px-4 font-medium text-slate-500 dark:text-slate-400';
 
 
 export const PayDetailTable = ({data, selectedIds, onToggleSelect, onToggleSelectAll, onConfirm}: PayDetailTableProps) => {

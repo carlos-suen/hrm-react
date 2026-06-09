@@ -1,14 +1,18 @@
 import {useEffect, useState} from "react";
-import {Content} from "../components/Content.tsx";
+import {Content} from "../common/components/Content.tsx";
 import {Dashboard} from "./Dashboard.tsx";
 import {Directory} from "./Directory.tsx";
 import {Approvals} from "./Approvals.tsx";
-import {Sidebar} from "../components/Sidebar.tsx";
-import {MobileSideBar} from "../components/MobileSideBar.tsx";
+import {Sidebar} from "../common/components/Sidebar.tsx";
+import {MobileSideBar} from "../common/components/MobileSideBar.tsx";
 import {Attendance} from "./Attendance.tsx";
 import {Payroll} from "./Payroll.tsx";
 import {Recruitment} from "./Recruitment.tsx";
 import {Training} from "./Training.tsx";
+import {Performance} from "./performance/Performance.tsx";
+import {Notifications} from "./Notifications.tsx";
+import {Settings} from "./Settings.tsx";
+import {Reports} from "./reports/Reports.tsx";
 
 // 導航菜單配置
 const navItems = [
@@ -19,6 +23,10 @@ const navItems = [
     {id: "Payroll", icon: "💰", title: "薪資管理", label: "Payroll"},
     {id: "Recruitment", icon: "📋", title: "招聘管理", label: "Recruitment"},
     {id: "Training", icon: "🎓", title: "培訓管理", label: "Training"},
+    {id: "performance", icon: "🏆", title: "績效管理", label: "Performance"},
+    {id: "reports", icon: "📈", title: "報表中心", label: "Reports"},
+    {id: "notifications", icon: "🔔", title: "通知中心", label: "Notifications"},
+    {id: "settings", icon: "⚙️", title: "系統設置", label: "Settings"},
 ];
 
 // 主題模式類型：只能是 "light"（亮色）或 "dark"（暗色）
@@ -82,6 +90,14 @@ export const BaseLayout = () => {
                 return <Recruitment/>
             case 6:
                 return <Training/>
+            case 7:
+                return <Performance/>
+            case 8:
+                return <Reports/>
+            case 9:
+                return <Notifications/>
+            case 10:
+                return <Settings/>
             default:
                 return <Dashboard/>;
         }

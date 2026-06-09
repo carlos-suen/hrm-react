@@ -1,8 +1,8 @@
-import {ApprovalColumn} from "../components/ApprovalsColumn.tsx";
+import {ApprovalColumn} from "../common/components/ApprovalsColumn.tsx";
 import {useEffect, useState} from "react";
-import {CommonButton} from "../components/CommonButton.tsx";
+import {CommonButton} from "../common/components/CommonButton.tsx";
 import {approvalApi} from "../../server/lib/api.ts";
-import type {Approval} from "../components/ApprovalsDragableCard.tsx";
+import type {Approval} from "../common/components/ApprovalsDragableCard.tsx";
 
 const testPendingApprovalsData: Approval[] = [
     {
@@ -101,7 +101,7 @@ export const Approvals = () => {
         const newStatus = statusMap[targetColumn];
 
         try {
-            const data = await approvalApi.updateStatus(Number(cardId), { status: newStatus });
+            const data = await approvalApi.updateStatus(Number(cardId), {status: newStatus});
 
             switch (sourceColumn) {
                 case "pending":
@@ -178,7 +178,7 @@ export const Approvals = () => {
     const generatePendingApprovals = async () => {
         try {
             // 移除 id 字段，讓後端自動生成
-            const dataToInsert = testPendingApprovalsData.map(({ id, ...rest }) => rest);
+            const dataToInsert = testPendingApprovalsData.map(({id, ...rest}) => rest);
             const data = await approvalApi.generateApprovals(dataToInsert);
             setPendingApprovals(prev => [...data, ...prev]);
         } catch (err) {
@@ -190,7 +190,7 @@ export const Approvals = () => {
     //
     const updatePendingApprovalStatus = async (approvalId: number, newStatus: number) => {
         try {
-            const data = await approvalApi.updateStatus(approvalId, { status: newStatus });
+            const data = await approvalApi.updateStatus(approvalId, {status: newStatus});
 
             if (newStatus === 1) {
                 setApprovedApprovals(prev => [...prev, data]);

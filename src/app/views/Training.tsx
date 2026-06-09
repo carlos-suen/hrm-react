@@ -1,8 +1,8 @@
-import { CommonButton } from "../components/CommonButton.tsx";
-import { TrainingCard, type TrainingCourseInfo } from "../components/TrainingCard.tsx";
-import { InfoDialog } from "../components/InfoDialog.tsx";
-import { AddCourseForm } from "../components/AddCourseForm.tsx";
-import type { SelectOption } from "../components/ToolbarTextField.tsx";
+import { CommonButton } from "../common/components/CommonButton.tsx";
+import { TrainingCard, type TrainingCourseInfo } from "../common/components/TrainingCard.tsx";
+import { InfoDialog } from "../common/components/InfoDialog.tsx";
+import { AddCourseForm } from "../common/components/AddCourseForm.tsx";
+import type { SelectOption } from "../common/components/ToolbarTextField.tsx";
 import { useState, useEffect } from "react";
 import { trainingApi } from "../../server/lib/api.ts";
 

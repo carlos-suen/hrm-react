@@ -1,8 +1,8 @@
-import {RecruitmentColumn, type RecruitmentJob} from "../components/RecruitmentColumn.tsx";
-import {CommonButton} from "../components/CommonButton.tsx";
-import {InfoDialog} from "../components/InfoDialog.tsx";
-import {AddRecruitmentForm} from "../components/AddRecruitmentForm.tsx";
-import type {SelectOption} from "../components/ToolbarTextField.tsx";
+import {RecruitmentColumn, type RecruitmentJob} from "../common/components/RecruitmentColumn.tsx";
+import {CommonButton} from "../common/components/CommonButton.tsx";
+import {InfoDialog} from "../common/components/InfoDialog.tsx";
+import {AddRecruitmentForm} from "../common/components/AddRecruitmentForm.tsx";
+import type {SelectOption} from "../common/components/ToolbarTextField.tsx";
 import {useState, useEffect} from "react";
 import {departmentOptions} from "./Directory.tsx";
 import {recruitmentApi} from "../../server/lib/api.ts";

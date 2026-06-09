@@ -47,7 +47,7 @@ export const MobileSideBar = ({items, activeIndex, onIndexChange, theme, onToggl
 
             {/* 水平滾動的導航標籤欄 */}
             <nav
-                className="flex overflow-x-auto bg-white dark:bg-zinc-900 border-b border-slate-200 dark:border-zinc-800">
+                className="scrollbar-none flex overflow-x-auto bg-white dark:bg-zinc-900 border-b border-slate-200 dark:border-zinc-800">
                 {items.map((item, index) => (
                     <button
                         key={item.id}

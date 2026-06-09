@@ -1,6 +1,6 @@
-import {DataCard} from "../components/DataCard.tsx";
-import type {DataCardItem} from "../components/DataCard.tsx";
-import {ChartCard, type ChartData} from "../components/ChartCard.tsx";
+import {DataCard} from "../common/components/DataCard.tsx";
+import type {DataCardItem} from "../common/components/DataCard.tsx";
+import {ChartCard, type ChartData} from "../common/components/ChartCard.tsx";
 import {useState, useEffect} from "react";
 import {dashboardApi} from "../../server/lib/api.ts";
 

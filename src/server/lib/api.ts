@@ -1,4 +1,4 @@
-import type { ChartData } from "../../app/components/ChartCard.tsx"
+import type { ChartData } from "../../app/common/components/ChartCard.tsx"
 import { Hono } from "hono";
 
 interface Employee {

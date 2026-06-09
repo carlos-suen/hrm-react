@@ -1,4 +1,4 @@
-import {cardClasses} from "../common/themeClasses.tsx";
+import {cardClasses} from "../constants/themeClasses.tsx";
 import {CommonButton} from "./CommonButton.tsx";
 
 export interface JobCardProps {

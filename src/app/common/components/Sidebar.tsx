@@ -1,4 +1,6 @@
 // 導航項數據結構
+import {UserInfoPanel} from "./UserInfoPanel.tsx";
+
 interface NavItem {
     id: string;
     icon: string;
@@ -30,11 +32,15 @@ const themeLabelMap: Record<ThemeMode, string> = {
     dark: "暗色"
 };
 
+const headerClass = 'dark:text-slate-600 text-gray-400 text-sm mb-2';
+
 export const Sidebar = ({items, activeIndex, onIndexChange, theme, onToggleTheme}: SidebarProps) => {
 
     const basicNavItems: NavItem[] = items.slice(0, 3);
 
-    const highLevelNavItems: NavItem[] = items.slice(3);
+    const improvedFunNavItems: NavItem[] = items.slice(3, 7);
+
+    const higherLevelNavItems: NavItem[] = items.slice(7);
 
 
     return (
@@ -48,8 +54,8 @@ export const Sidebar = ({items, activeIndex, onIndexChange, theme, onToggleTheme
             </div>
 
             {/* 導航菜單列表 */}
-            <nav className="overflow-y-auto p-4 space-y-2">
-                <div className={'dark:text-slate-600 text-gray-400 text-sm mb-2'}>基礎模塊</div>
+            <nav className="p-4 space-y-2 overflow-y-auto flex-1">
+                <div className={`${headerClass}`}>基礎模塊</div>
                 {basicNavItems.map((item, index) => (
                     <button
                         key={item.id}
@@ -63,12 +69,9 @@ export const Sidebar = ({items, activeIndex, onIndexChange, theme, onToggleTheme
                         <span>{item.title}</span>
                     </button>
                 ))}
-            </nav>
 
-            {/* 進階模塊 */}
-            <nav className="flex-1 overflow-y-auto p-4 space-y-2">
-                <div className={'dark:text-slate-600 text-gray-400 text-sm mb-2'}>進階模塊</div>
-                {highLevelNavItems.map((item, index) => (
+                <div className={`${headerClass}`}>進階模塊</div>
+                {improvedFunNavItems.map((item, index) => (
                     <button
                         key={item.id}
                         onClick={() => onIndexChange(index + 3)}
@@ -81,23 +84,44 @@ export const Sidebar = ({items, activeIndex, onIndexChange, theme, onToggleTheme
                         <span>{item.title}</span>
                     </button>
                 ))}
+
+                <div className={`${headerClass}`}>高階模塊</div>
+                {higherLevelNavItems.map((item, index) => (
+                    <button
+                        key={item.id}
+                        onClick={() => onIndexChange(index + 7)}
+                        className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${activeIndex === index + 7
+                            ? "bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400"
+                            : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                        }`}
+                    >
+                        <span className="text-lg">{item.icon}</span>
+                        <span>{item.title}</span>
+
+                        <div className={`bg-red-500 text-white text-[8px] font-bold p-2 leading-1 rounded-sm`}>
+                            NEW
+                        </div>
+                    </button>
+                ))}
             </nav>
 
             {/* 主題切換按鈕 */}
-            <div className="relative p-4 border-t border-slate-200 dark:border-zinc-800">
+            <div className="p-4 border-t border-slate-200 dark:border-zinc-800 flex flex-col gap-y-2">
+                <UserInfoPanel />
                 <button
                     onClick={onToggleTheme}
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-lg"
                 >
+
                     {/* 左側：顯示當前主題的圖標和文字 */}
                     <span className="text-sm text-slate-600 dark:text-slate-400">
                         {themeIconMap[theme]} {themeLabelMap[theme]}
                     </span>
                     {/* 右側：Toggle 開關 */}
                     <div className="w-10 h-5 bg-slate-200 dark:bg-zinc-700 rounded-full relative">
-                        {/* 開關圓點：dark 模式時向右滑動 */}
+                        {/* 關閉按鈕 */}
                         <div
-                            className={`absolute top-0.5 w-4 h-4 bg-white rounded-full transition-transform ${theme === "dark" ? "translate-x-5" : "translate-x-0"}`}/>
+                            className={`translate-0.5 w-4 h-4 bg-white rounded-full transition-transform ${theme === "dark" ? "translate-x-5" : "translate-x-0"}`}/>
                     </div>
                 </button>
             </div>

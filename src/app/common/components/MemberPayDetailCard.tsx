@@ -1,4 +1,4 @@
-import { cardClasses } from "../common/themeClasses.tsx";
+import { cardClasses } from "../constants/themeClasses.tsx";
 import type { PayRecord } from "./PayMemberDetailTable.tsx";
 
 interface MemberPayDetailCardProps {

@@ -1,4 +1,4 @@
-import {cardClasses} from "../common/themeClasses.tsx";
+import {cardClasses} from "../constants/themeClasses.tsx";
 
 export type CalendarItemType = 'Normal' | 'Late' | "ELeave" | 'Absent' | 'OLeave' | 'Future' | 'Weekend';
 

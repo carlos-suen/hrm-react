@@ -1,5 +1,5 @@
-import {cardClasses} from "../common/themeClasses.tsx";
-import {departmentOptions, statusOptions} from "../views/Directory.tsx";
+import {cardClasses} from "../constants/themeClasses.tsx";
+import {departmentOptions, statusOptions} from "../../views/Directory.tsx";
 import {ToolbarTextField} from "./ToolbarTextField.tsx";
 import {CommonButton} from "./CommonButton.tsx";
 

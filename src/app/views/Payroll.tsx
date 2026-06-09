@@ -1,12 +1,12 @@
-import {DataCard, type DataCardItem} from "../components/DataCard.tsx";
-import {ChartCard} from "../components/ChartCard.tsx";
-import {cardClasses} from "../common/themeClasses.tsx";
-import {ToolbarTextField} from "../components/ToolbarTextField.tsx";
+import {DataCard, type DataCardItem} from "../common/components/DataCard.tsx";
+import {ChartCard} from "../common/components/ChartCard.tsx";
+import {cardClasses} from "../common/constants/themeClasses.tsx";
+import {ToolbarTextField} from "../common/components/ToolbarTextField.tsx";
 import {departmentOptions, statusOptions} from "./Directory.tsx";
-import {PayDetailTable, type PayRecord} from "../components/PayMemberDetailTable.tsx";
-import {MemberPayDetailCard} from "../components/MemberPayDetailCard.tsx";
+import {PayDetailTable, type PayRecord} from "../common/components/PayMemberDetailTable.tsx";
+import {MemberPayDetailCard} from "../common/components/MemberPayDetailCard.tsx";
 import {useState, useEffect} from "react";
-import {CommonButton} from "../components/CommonButton.tsx";
+import {CommonButton} from "../common/components/CommonButton.tsx";
 import {payrollApi} from "../../server/lib/api.ts";
 
 
@@ -85,7 +85,7 @@ export const Payroll = () => {
     // 確認單條記錄
     const handleConfirm = async (id: number) => {
         try {
-            const data = await payrollApi.updateStatus(id, { status: 'Confirmed' });
+            const data = await payrollApi.updateStatus(id, {status: 'Confirmed'});
             const formatted = formatPayRecord(data);
             setRecords(prev => prev.map(r => r.id === id ? formatted : r));
             if (selectedDetail?.id === id) {
@@ -136,14 +136,14 @@ export const Payroll = () => {
     return (
         <section>
             {/* 薪資 */}
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
                 {payRollData.map(item => (
                     <DataCard key={item.id} data={item}/>
                 ))}
             </div>
 
             {/* 圖表 */}
-            <div className={`flex w-full gap-4 my-6`}>
+            <div className={`flex w-full gap-4 my-6 md:flex-row flex-col`}>
                 <ChartCard data={deptAvgSalaryData} type="bar" title="部門平均薪資對比" className={`flex-1`}/>
                 <ChartCard data={salaryCompositionData} type="pie" title="薪資構成佔比" className={`flex-1`}/>
             </div>

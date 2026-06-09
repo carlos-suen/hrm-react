@@ -5,6 +5,7 @@ import {
     BarChart,
     CartesianGrid,
     Cell,
+    LabelList,
     Legend,
     Line,
     LineChart,
@@ -19,12 +20,13 @@ import {
 export interface ChartData {
     name: string;
     value?: number;
+    fill?: string;
     [key: string]: string | number | undefined;
 }
 
 interface ChartCardProps {
     data: ChartData[];
-    type?: "pie" | "bar" | "line" | "area";
+    type?: "pie" | "bar" | "line" | "area" | "horizontal-bar";
     className?: string;
     title?: string;
 }
@@ -73,12 +75,36 @@ export const ChartCard = ({ data, type = "bar", className, title }: ChartCardPro
                     {title && <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-4">{title}</h3>}
                     <ResponsiveContainer width="100%" height={300}>
                         <BarChart data={data}>
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="name" />
-                            <YAxis />
+                            <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                            <XAxis dataKey="name" tick={{ fontSize: 12 }} />
+                            <YAxis tick={{ fontSize: 12 }} />
                             <Tooltip />
-                            <Legend />
-                            <Bar dataKey="value" fill="#3b82f6" name="平均薪資" radius={[4, 4, 0, 0]} />
+                            <Bar dataKey="value" name="人數" radius={[4, 4, 0, 0]} minPointSize={0}>
+                                {data.map((entry, index) => (
+                                    <Cell key={index} fill={entry.fill || COLORS[index % COLORS.length]} />
+                                ))}
+                                <LabelList dataKey="value" position="top" fontSize={12} fill="#64748b" />
+                            </Bar>
+                        </BarChart>
+                    </ResponsiveContainer>
+                </div>
+            );
+        case "horizontal-bar":
+            return (
+                <div className={`${cardClasses} ${className}`}>
+                    {title && <h3 className="text-lg font-medium text-slate-900 dark:text-white mb-4">{title}</h3>}
+                    <ResponsiveContainer width="100%" height={300}>
+                        <BarChart data={data} layout="vertical" margin={{ left: 10, right: 40 }}>
+                            <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" horizontal={false} />
+                            <XAxis type="number" tick={{ fontSize: 12 }} hide />
+                            <YAxis type="category" dataKey="name" tick={{ fontSize: 14 }} width={90} axisLine={false} tickLine={false} tickMargin={10} />
+                            {/*<Tooltip />*/}
+                            <Bar dataKey="value" name="績效分" radius={[0, 4, 4, 0]} barSize={20}>
+                                {data.map((entry, index) => (
+                                    <Cell key={index} fill={entry.fill || `rgba(59, 130, 246, ${1 - index * 0.15})`} />
+                                ))}
+                                <LabelList dataKey="value" position="right" fontSize={12} fill="#64748b" />
+                            </Bar>
                         </BarChart>
                     </ResponsiveContainer>
                 </div>

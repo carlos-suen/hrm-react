@@ -1,7 +1,7 @@
-import {DataCard, type DataCardItem} from "../components/DataCard.tsx";
-import {ChartCard} from "../components/ChartCard.tsx";
-import {AttendanceCalendar} from "../components/AttendanceCalendar.tsx";
-import {AttendanceRecordTable, type AttendanceRecord} from "../components/AttendanceRecordTable.tsx";
+import {DataCard, type DataCardItem} from "../common/components/DataCard.tsx";
+import {ChartCard} from "../common/components/ChartCard.tsx";
+import {AttendanceCalendar} from "../common/components/AttendanceCalendar.tsx";
+import {AttendanceRecordTable, type AttendanceRecord} from "../common/components/AttendanceRecordTable.tsx";
 import {attendanceApi} from "../../server/lib/api.ts";
 import {useEffect, useState} from "react";
 

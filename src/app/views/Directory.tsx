@@ -1,10 +1,10 @@
-import { ToolbarTextField } from "../components/ToolbarTextField.tsx";
-import type { SelectOption } from "../components/ToolbarTextField.tsx";
-import { CommonButton } from "../components/CommonButton.tsx";
-import { InfoDialog } from "../components/InfoDialog.tsx";
+import { ToolbarTextField } from "../common/components/ToolbarTextField.tsx";
+import type { SelectOption } from "../common/components/ToolbarTextField.tsx";
+import { CommonButton } from "../common/components/CommonButton.tsx";
+import { InfoDialog } from "../common/components/InfoDialog.tsx";
 import { useState, useEffect } from "react";
 import { employeeApi } from "../../server/lib/api.ts";
-import { EditEmployeeForm } from "../components/EditEmployeeForm.tsx";
+import { EditEmployeeForm } from "../common/components/EditEmployeeForm.tsx";
 
 // 下拉測試數據
 export const departmentOptions: SelectOption[] = [
