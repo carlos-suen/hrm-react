@@ -2,6 +2,7 @@ import { ToolbarTextField } from "../common/components/ToolbarTextField.tsx";
 import type { SelectOption } from "../common/components/ToolbarTextField.tsx";
 import { CommonButton } from "../common/components/CommonButton.tsx";
 import { InfoDialog } from "../common/components/InfoDialog.tsx";
+import { EmptyHolder } from "../common/components/EmptyHolder.tsx";
 import { useState, useEffect } from "react";
 import { employeeApi } from "../../server/lib/api.ts";
 import { EditEmployeeForm } from "../common/components/EditEmployeeForm.tsx";
@@ -451,20 +452,11 @@ export const Directory = () => {
                                             </p>
                                         </div>
                                     ) : (
-                                        <div className="flex flex-col items-center justify-center py-16">
-                                            <span className="text-6xl mb-4">👥</span>
-                                            <p className="text-lg font-medium text-slate-900 dark:text-slate-50 mb-2">
-                                                還沒有員工記錄
-                                            </p>
-                                            <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">
-                                                點擊「添加員工」開始錄入
-                                            </p>
-                                            <CommonButton
-                                                title="+ 添加第一位員工"
-                                                bgColor="blue"
-                                                onPressed={() => setIsAddDialogOpen(true)}
-                                            />
-                                        </div>
+                                        <EmptyHolder
+                                            icon="👥"
+                                            title="還沒有員工記錄"
+                                            desc="點擊「添加員工」開始錄入"
+                                        />
                                     )}
                                 </td>
                             </tr>

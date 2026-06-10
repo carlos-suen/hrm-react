@@ -11,6 +11,7 @@ interface InfoDialogProps {
     onCancel?: () => void;
     className?: string;
     isDelete?: boolean;
+    maxWidth?: string;
 }
 
 
@@ -23,7 +24,8 @@ export const InfoDialog = ({
                                onConfirm,
                                onCancel,
                                isDelete = false,
-                               className
+                               className,
+                               maxWidth = 'max-w-lg'
                            }: InfoDialogProps) => {
     useEffect(() => {
         if (isOpen) {
@@ -56,7 +58,7 @@ export const InfoDialog = ({
             {/*    onClick={handleClose}*/}
             {/*/>*/}
             <div
-                className={`relative z-10 w-full max-w-lg mx-4 p-6 rounded-xl bg-white dark:bg-zinc-800 border border-slate-200 dark:border-slate-700 shadow-xl ${className}`}>
+                className={`relative z-10 w-full ${maxWidth} mx-4 p-6 rounded-xl bg-white dark:bg-zinc-800 border border-slate-200 dark:border-slate-700 shadow-xl ${className}`}>
                 <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-50 mb-2">{title}</h3>
                 {/* 這裡做判斷, 傳遞文字直接顯示文字, 傳遞組件直接顯示組件*/}
                 {typeof content === 'string' ?

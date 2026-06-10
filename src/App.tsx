@@ -1,11 +1,26 @@
 import { BaseLayout } from './app/views/BaseLayout.tsx'
 import { PerformanceDetail } from './app/views/performance/PerformanceDetail.tsx'
+import { EmployeeStatsView } from './app/views/reports/EmployeeStatsView.tsx'
+import { SalaryStatsView } from './app/views/reports/SalaryStatsView.tsx'
+import { NotificationSettingView } from './app/views/notifications/NotificationSettingView.tsx'
 
 function App() {
-  const isDetailPage = window.location.pathname === '/performance-detail';
+  const path = window.location.pathname;
 
-  if (isDetailPage) {
+  if (path === '/performance-detail') {
     return <PerformanceDetail />;
+  }
+
+  if (path === '/reports/employee-stats') {
+    return <EmployeeStatsView />;
+  }
+
+  if (path === '/reports/salary-stats') {
+    return <SalaryStatsView />;
+  }
+
+  if (path === '/notifications/settings') {
+    return <NotificationSettingView />;
   }
 
   return (

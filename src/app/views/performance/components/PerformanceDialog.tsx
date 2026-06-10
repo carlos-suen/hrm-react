@@ -12,11 +12,12 @@ interface PerformanceDialogProps {
 }
 
 interface PerformanceFormData {
-    employeeId: string;
-    period: string;
-    reviewerId: string;
-    scores: Record<string, number>;
-    comment: string;
+    name: string;
+    duration: string;
+    score: number;
+    level: string;
+    status: number;
+    monitor: string;
 }
 
 const defaultScores: DimensionScore[] = [
@@ -28,6 +29,9 @@ const defaultScores: DimensionScore[] = [
 ];
 
 export const PerformanceDialog = ({isOpen, onClose, onSubmit}: PerformanceDialogProps) => {
+    const [name, setName] = useState('');
+    const [duration, setDuration] = useState('2026 Q1');
+    const [monitor, setMonitor] = useState('');
     const [scores, setScores] = useState<Record<string, number>>(() =>
         Object.fromEntries(defaultScores.map(d => [d.label, d.value]))
     );
@@ -50,18 +54,37 @@ export const PerformanceDialog = ({isOpen, onClose, onSubmit}: PerformanceDialog
         setScores(prev => ({...prev, [label]: value}));
     };
 
+    const calcScore = () => {
+        const values = Object.values(scores);
+        return values.reduce((a, b) => a + b, 0) / values.length;
+    };
+
+    const calcLevel = (avg: number) => {
+        const floor = Math.floor(avg);
+        if (floor === 5) return 'S';
+        if (floor === 4) return 'A';
+        if (floor === 3) return 'B';
+        if (floor === 2) return 'C';
+        return 'D';
+    };
+
     const handleSubmit = () => {
+        const score = calcScore();
         onSubmit({
-            employeeId: '',
-            period: '2026-H1',
-            reviewerId: '',
-            scores,
-            comment,
+            name,
+            duration,
+            score,
+            level: calcLevel(score),
+            status: 0,
+            monitor,
         });
         onClose();
     };
 
     const handleClose = () => {
+        setName('');
+        setDuration('2026 Q1');
+        setMonitor('');
         setScores(Object.fromEntries(defaultScores.map(d => [d.label, d.value])));
         setComment('');
         onClose();
@@ -88,14 +111,18 @@ export const PerformanceDialog = ({isOpen, onClose, onSubmit}: PerformanceDialog
                     {/* 員工選擇 */}
                     <div>
                         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
-                            員工選擇 <span className="text-red-500">*</span>
+                            員工姓名 <span className="text-red-500">*</span>
                         </label>
-                        <select className="w-full px-4 py-2.5 rounded-lg border border-slate-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none">
-                            <option value="">選擇員工...</option>
-                        </select>
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={e => setName(e.target.value)}
+                            placeholder="輸入員工姓名..."
+                            className="w-full px-4 py-2.5 rounded-lg border border-slate-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-slate-900 dark:text-white text-sm placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                        />
                     </div>
 
-                    {/* 評估週期 + 評審人 */}
+                    {/* 評估週期 + 監管人 */}
                     <div className="grid grid-cols-2 gap-4">
                         <div>
                             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
@@ -103,17 +130,22 @@ export const PerformanceDialog = ({isOpen, onClose, onSubmit}: PerformanceDialog
                             </label>
                             <input
                                 type="text"
-                                defaultValue="2026-H1"
+                                value={duration}
+                                onChange={e => setDuration(e.target.value)}
                                 className="w-full px-4 py-2.5 rounded-lg border border-slate-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
                             />
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
-                                評審人 <span className="text-red-500">*</span>
+                                監管人 <span className="text-red-500">*</span>
                             </label>
-                            <select className="w-full px-4 py-2.5 rounded-lg border border-slate-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none">
-                                <option value="">選擇評審人...</option>
-                            </select>
+                            <input
+                                type="text"
+                                value={monitor}
+                                onChange={e => setMonitor(e.target.value)}
+                                placeholder="輸入監管人..."
+                                className="w-full px-4 py-2.5 rounded-lg border border-slate-300 dark:border-zinc-600 bg-white dark:bg-zinc-700 text-slate-900 dark:text-white text-sm placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                            />
                         </div>
                     </div>
 

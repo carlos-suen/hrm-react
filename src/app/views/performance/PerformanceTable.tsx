@@ -1,6 +1,7 @@
 import type {EmployeePerformanceData} from "../../common/models/EmployeePerformanceData.ts";
 import {tHeadClass} from "../../common/components/PayMemberDetailTable.tsx";
 import {ColoredAvatar} from "./components/ColoredAvatar.tsx";
+import {EmptyHolder} from "../../common/components/EmptyHolder.tsx";
 
 
 interface PerformanceTableProps {
@@ -47,7 +48,7 @@ export const PerformanceTable = ({heads, data, className}: PerformanceTableProps
 
             {/* 內容 */}
             <tbody>
-            {data.map((record) => (
+            {data.length > 0 ? data.map((record) => (
                 <tr key={record.id} className="border-b border-slate-100 dark:border-slate-800 last:border-0">
                     <td className="py-3 px-4">
                         <div className="flex items-center gap-3">
@@ -79,7 +80,13 @@ export const PerformanceTable = ({heads, data, className}: PerformanceTableProps
                         </button>
                     </td>
                 </tr>
-            ))}
+            )) : (
+                <tr>
+                    <td colSpan={heads.length}>
+                        <EmptyHolder icon={'😊'} title={'暫無相關數據'} desc={'點擊右上方按鈕開始添加數據吧!'} />
+                    </td>
+                </tr>
+            )}
             </tbody>
         </table>
     );

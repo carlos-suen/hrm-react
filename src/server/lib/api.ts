@@ -264,3 +264,47 @@ export const trainingApi = {
 }
 
 
+interface PerformanceRecord {
+  id: number;
+  name: string;
+  duration: string;
+  score: number;
+  level: string;
+  status: number;
+  monitor: string;
+  created_at: string;
+  updated_at: string;
+}
+
+
+export const performanceApi = {
+  getAll: () =>
+    request<PerformanceRecord[]>('/api/performance'),
+
+  add: (data: Omit<PerformanceRecord, 'id' | 'created_at' | 'updated_at'>) =>
+    request<PerformanceRecord>('/api/performance/add', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+
+  generateData: (data: Omit<PerformanceRecord, 'id' | 'created_at' | 'updated_at'>[]) =>
+    request<PerformanceRecord[]>('/api/performance/generateData', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+
+  deleteById: (id: number) =>
+    request<{ success: boolean }>(`/api/performance/${id}`, {
+      method: 'DELETE',
+    }),
+
+  deleteAll: () =>
+    request<{ success: boolean }>('/api/performance/deleteAll', {
+      method: 'DELETE',
+    }),
+
+  getById: (id: number) =>
+    request<PerformanceRecord>(`/api/performance/getById/${id}`),
+}
+
+

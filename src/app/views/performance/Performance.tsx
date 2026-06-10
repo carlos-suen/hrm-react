@@ -6,7 +6,8 @@ import {cardClasses} from "../../common/constants/themeClasses.tsx";
 import {PerformanceTable} from "./PerformanceTable.tsx";
 import type {EmployeePerformanceData} from "../../common/models/EmployeePerformanceData.ts";
 import {PerformanceDialog} from "./components/PerformanceDialog.tsx";
-import {useState} from "react";
+import {performanceApi} from "../../../server/lib/api.ts";
+import {useEffect, useState} from "react";
 
 
 const dataItems: DataCardItem[] = [
@@ -34,31 +35,83 @@ const deptPerformanceData: ChartData[] = [
 
 const tableHeads = ["員工", "週期", "總分", "評級", "狀態", "監管人", '操作'];
 
-const mockPerformanceData: EmployeePerformanceData[] = [
-    {id: 1, name: "王小明", duration: "2024 Q4", score: 92, level: "A", status: 2, monitor: "張經理"},
-    {id: 2, name: "李美玲", duration: "2024 Q4", score: 88, level: "A", status: 1, monitor: "陳總監"},
-    {id: 3, name: "陳志豪", duration: "2024 Q4", score: 75, level: "B", status: 2, monitor: "張經理"},
-    {id: 4, name: "林雅琪", duration: "2024 Q4", score: 68, level: "C", status: 0, monitor: "王主管"},
-    {id: 5, name: "張偉翔", duration: "2024 Q4", score: 95, level: "S", status: 2, monitor: "陳總監"},
-    {id: 6, name: "黃詩涵", duration: "2024 Q4", score: 82, level: "B", status: 1, monitor: "張經理"},
-    {id: 7, name: "吳承恩", duration: "2024 Q4", score: 55, level: "D", status: 0, monitor: "王主管"},
-    {id: 8, name: "劉家豪", duration: "2024 Q4", score: 85, level: "B", status: 2, monitor: "陳總監"},
+const mockTestData: Omit<EmployeePerformanceData, 'id'>[] = [
+    {name: "王小明", duration: "2026 Q1", score: 4, level: "A", status: 2, monitor: "陳總監"},
+    {name: "李小華", duration: "2026 Q1", score: 5, level: "S", status: 1, monitor: "張經理"},
+    {name: "張大偉", duration: "2026 Q1", score: 2, level: "C", status: 2, monitor: "王主管"},
+    {name: "趙小芳", duration: "2026 Q1", score: 1, level: "D", status: 0, monitor: "李總監"},
+    {name: "孫志強", duration: "2026 Q1", score: 1, level: "D", status: 1, monitor: "張經理"},
 ];
 
 
 export const Performance = () => {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [data, setData] = useState<EmployeePerformanceData[]>([]);
+    const [loading, setLoading] = useState(true);
 
-    const handleDialogSubmit = () => {
+    const fetchData = async () => {
+        try {
+            const result = await performanceApi.getAll();
+            setData(result);
+        } catch (e) {
+            console.error('Failed to fetch performance data:', e);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const handleDialogSubmit = async (formData: {
+        name?: string;
+        duration?: string;
+        score?: number;
+        level?: string;
+        status?: number;
+        monitor?: string
+    }) => {
+        try {
+            const payload = {
+                name: formData.name || '未知員工',
+                duration: formData.duration || '2026 Q1',
+                score: formData.score || 0,
+                level: formData.level || 'B',
+                status: formData.status ?? 0,
+                monitor: formData.monitor || '待分配',
+            };
+            await performanceApi.add(payload);
+            await fetchData();
+        } catch (e) {
+            console.error('Failed to add performance:', e);
+        }
         setIsDialogOpen(false);
+    };
+
+    const handleGenerateData = async () => {
+        try {
+            await performanceApi.generateData(mockTestData);
+            await fetchData();
+        } catch (e) {
+            console.error('Failed to generate test data:', e);
+        }
+    };
+
+    const handleDeleteAll = async () => {
+        try {
+            await performanceApi.deleteAll();
+            await fetchData();
+        } catch (e) {
+            console.error('Failed to delete all data:', e);
+        }
     };
 
     return (
         <section>
             {/* 卡片 */}
-            <div className={`grid grid-cols-2 md:grid-cols-4 gap-6`}>
+            <div className={`grid grid-cols-1 md:grid-cols-4 gap-6`}>
                 {dataItems.map(item => (<DataCard data={item} key={item.id} {...item} />))}
-
             </div>
 
             {/* 圖表區域 */}
@@ -67,32 +120,40 @@ export const Performance = () => {
                 <ChartCard data={deptPerformanceData} type="horizontal-bar" title="部門績效對比" className={`flex-1`}/>
             </div>
 
-            {/* 工具欄 */
-            }
-            <div className={`flex flex-row justify-between mb-6`}>
-                {/* 工具欄 */}
-                <div className={`flex gap-4`}>
+            {/* 工具欄 */}
+            <div className={`flex flex-col md:flex-row justify-between mb-6 gap-4`}>
+                <div className={`flex gap-4 flex-col md:flex-row`}>
                     <ToolbarTextField prefixIcon={'📅 週期'} type={'select'}/>
                     <ToolbarTextField prefixIcon={'🏢 部門'} type={'select'}/>
                     <ToolbarTextField prefixIcon={'🌟 等級'} type={'select'}/>
-                    <ToolbarTextField prefixIcon={'🌄 狀態'} type={'select'}/>
+                    <ToolbarTextField prefixIcon={' 狀態'} type={'select'}/>
                 </div>
-                <CommonButton title={`+ 新增評估`} onPressed={() => setIsDialogOpen(true)}/>
+                <div className="flex gap-3 flex-col md:flex-row">
+                    <CommonButton title={`+ 新增評估`} onPressed={() => setIsDialogOpen(true)}/>
+                    {data.length === 0 && (
+                        <CommonButton title={`生成測試數據`} onPressed={handleGenerateData} bgColor="purple"/>
+                    )}
+                    {data.length > 0 && (
+                        <CommonButton title={`刪除所有數據`} onPressed={handleDeleteAll} bgColor="red"/>
+                    )}
+                </div>
             </div>
 
-            {/* 表格 */
-            }
+            {/* 表格 */}
             <div className={`${cardClasses} overflow-x-auto`}>
-                <PerformanceTable heads={tableHeads} data={mockPerformanceData}/>
+                {loading ? (
+                    <div className="py-12 text-center text-slate-400">載入中...</div>
+                ) : (
+                    <PerformanceTable heads={tableHeads} data={data}/>
+                )}
             </div>
 
+            {/* 新增評估Dialog */}
             <PerformanceDialog
                 isOpen={isDialogOpen}
                 onClose={() => setIsDialogOpen(false)}
                 onSubmit={handleDialogSubmit}
             />
-
         </section>
-    )
-        ;
-}
+    );
+};

@@ -4,9 +4,11 @@ export interface ReportDataCardProps {
     desc: string;
     icon: string;
     color: string;
+    onViewReport: () => void;
+    buttonLabel?: string;
 }
 
-export const ReportDataCard = ({label, desc, icon, color}: ReportDataCardProps) => {
+export const ReportDataCard = ({label, desc, icon, color, onViewReport, buttonLabel = "查看報表"}: ReportDataCardProps) => {
     return (
         <div className="bg-white rounded-lg p-6 flex flex-col justify-between">
             <div>
@@ -16,8 +18,8 @@ export const ReportDataCard = ({label, desc, icon, color}: ReportDataCardProps) 
                 <h3 className="text-lg font-semibold text-gray-900">{label}</h3>
                 <p className="text-sm text-gray-500 mt-1">{desc}</p>
             </div>
-            <button className="text-blue-600 text-sm font-medium mt-4 hover:text-blue-700 text-left">
-                查看報表
+            <button onClick={onViewReport} className="text-blue-600 text-sm font-medium mt-4 hover:text-blue-700 text-left">
+                {buttonLabel}
             </button>
         </div>
     );

@@ -10,9 +10,9 @@ import {Payroll} from "./Payroll.tsx";
 import {Recruitment} from "./Recruitment.tsx";
 import {Training} from "./Training.tsx";
 import {Performance} from "./performance/Performance.tsx";
-import {Notifications} from "./Notifications.tsx";
-import {Settings} from "./Settings.tsx";
 import {Reports} from "./reports/Reports.tsx";
+import {NotificationView} from "./notifications/NotificationView.tsx";
+import {SettingView} from "./settings/SettingView.tsx";
 
 // 導航菜單配置
 const navItems = [
@@ -95,9 +95,9 @@ export const BaseLayout = () => {
             case 8:
                 return <Reports/>
             case 9:
-                return <Notifications/>
+                return <NotificationView/>
             case 10:
-                return <Settings/>
+                return <SettingView/>
             default:
                 return <Dashboard/>;
         }
