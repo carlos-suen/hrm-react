@@ -1,4 +1,5 @@
 import type { ChartData } from "../../app/common/components/ChartCard.tsx"
+import { useAuthStore, type AuthUser } from "../../app/common/stores/authStore.ts"
 
 interface Employee {
   id: string;
@@ -18,11 +19,22 @@ interface SearchFilters {
   status?: string;
 }
 
+// 統一請求函數：自動注入 Authorization header，401 自動登出
 async function request<T>(url: string, options?: RequestInit): Promise<T> {
-  const res = await fetch(url, {
-    headers: { 'Content-Type': 'application/json' },
-    ...options,
-  })
+  const token = useAuthStore.getState().token
+
+  const headers: Record<string, string> = { 'Content-Type': 'application/json' }
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`
+  }
+
+  const res = await fetch(url, { ...options, headers })
+
+  // 401：token 失效，清除登錄狀態
+  if (res.status === 401) {
+    useAuthStore.getState().logout()
+    throw new Error('登錄已過期，請重新登錄')
+  }
 
   if (!res.ok) {
     const error = await res.json().catch(() => ({ error: 'Unknown error' }))
@@ -40,6 +52,46 @@ async function request<T>(url: string, options?: RequestInit): Promise<T> {
   }
 
   return JSON.parse(text) as T
+}
+
+// 認證 API（不走 401 自動登出，由調用方處理）
+async function authRequest<T>(url: string, options?: RequestInit): Promise<T> {
+  const res = await fetch(url, {
+    headers: { 'Content-Type': 'application/json' },
+    ...options,
+  })
+
+  if (!res.ok) {
+    const error = await res.json().catch(() => ({ error: 'Unknown error' }))
+    throw new Error(error.error || `HTTP ${res.status}`)
+  }
+
+  return res.json() as Promise<T>
+}
+
+interface LoginResponse {
+  token: string
+  user: AuthUser
+}
+
+interface RegisterResponse {
+  user: AuthUser
+}
+
+export const authApi = {
+  login: (username: string, password: string) =>
+    authRequest<LoginResponse>('/api/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ username, password }),
+    }),
+
+  register: (username: string, password: string, nickname?: string) =>
+    authRequest<RegisterResponse>('/api/auth/register', {
+      method: 'POST',
+      body: JSON.stringify({ username, password, nickname }),
+    }),
+
+  getMe: () => request<{ user: AuthUser }>('/api/auth/me'),
 }
 
 

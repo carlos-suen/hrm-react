@@ -11,9 +11,12 @@ import payrollRouter from './routes/payroll'
 import recruitmentRouter from './routes/recruitment'
 import trainingRouter from './routes/training'
 import performanceRouter from './routes/performance'
+import authRouter from './routes/auth'
+import type { AuthPayload } from './lib/auth'
 
 type Variables = {
   supabaseAdmin: SupabaseClient
+  user: AuthPayload
 }
 
 const app = new Hono<{ Variables: Variables }>()
@@ -29,6 +32,7 @@ app.use('/api/*', async (c, next) => {
 
 app.get('/api/health', (c) => c.json({ status: 'ok', timestamp: new Date().toISOString() }))
 
+app.route('/api/auth', authRouter)
 app.route('/api/employees', employeesRouter)
 app.route('/api/approvals', approvalsRouter)
 app.route('/api/dashboard', dashboardRouter)

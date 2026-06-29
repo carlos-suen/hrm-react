@@ -118,7 +118,7 @@ export const Sidebar = ({items, activeIndex, onIndexChange, theme, onToggleTheme
                         {themeIconMap[theme]} {themeLabelMap[theme]}
                     </span>
                     {/* 右側：Toggle 開關 */}
-                    <div className="w-10 h-5 bg-slate-200 dark:bg-zinc-700 rounded-full relative">
+                    <div className={`w-10 h-5 bg-slate-200 dark:bg-zinc-700 rounded-full relative `}>
                         {/* 關閉按鈕 */}
                         <div
                             className={`translate-0.5 w-4 h-4 bg-white rounded-full transition-transform ${theme === "dark" ? "translate-x-5" : "translate-x-0"}`}/>

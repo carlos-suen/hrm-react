@@ -18,14 +18,17 @@
     "@dnd-kit/utilities": "^3.2.2",
     "@hono/node-server": "^2.0.4",
     "@supabase/supabase-js": "^2.106.2",
+    "bcryptjs": "^3.0.3",
     "hono": "^4.12.23",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "recharts": "^3.8.1"
+    "recharts": "^3.8.1",
+    "zustand": "^5.0.14"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@tailwindcss/vite": "^4.3.0",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^24.12.3",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

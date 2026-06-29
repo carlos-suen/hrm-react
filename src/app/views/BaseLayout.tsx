@@ -39,22 +39,22 @@ export const BaseLayout = () => {
     // 當前選中的導航標籤索引（0=數據大盤, 1=員工名冊, 2=請假審批）
     const [tabIndex, setTabIndex] = useState(0);
 
-    // 當前主題模式，默認為亮色
-    const [theme, setTheme] = useState<ThemeMode>("light");
+    // 當前主題模式，從 localStorage 讀取初始值，默認為亮色
+    const [theme, setTheme] = useState<ThemeMode>(() => {
+        return (localStorage.getItem("hrm-theme") as ThemeMode) || "light";
+    });
 
-    // 監聽 theme 狀態變化，自動更新 HTML 元素的 class
+    // 監聽 theme 狀態變化，持久化並同步 HTML 元素的 class
     useEffect(() => {
-        // document.documentElement 指向 <html> 標籤
         const root = document.documentElement;
 
         if (theme === "dark") {
-            // 添加 "dark" class → 觸發 Tailwind 的 dark: 樣式
             root.classList.add("dark");
         } else {
-            // 移除 "dark" class → 恢復默認亮色樣式
             root.classList.remove("dark");
         }
-    }, [theme]); // 依賴數組：只有 theme 變化時才執行
+        localStorage.setItem("hrm-theme", theme);
+    }, [theme]);
 
     // 切換主題：在亮色和暗色之間循環
     const toggleTheme = () => {

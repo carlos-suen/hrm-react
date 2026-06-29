@@ -1,4 +1,6 @@
 // 導航項數據結構
+import {UserInfoPanel} from "./UserInfoPanel.tsx";
+
 interface NavItem {
     id: string;
     icon: string;
@@ -27,12 +29,10 @@ const themeIconMap: Record<ThemeMode, string> = {
 export const MobileSideBar = ({items, activeIndex, onIndexChange, theme, onToggleTheme}: MobileSideBarProps) => {
     return (
         <div className="md:hidden">
-            {/* 頂部導航欄：漢堡菜單 + 標題 + 主題切換按鈕 */}
+            {/* 頂部導航欄：用戶信息 + 標題 + 主題切換按鈕 */}
             <header
                 className="flex items-center justify-between px-4 py-3 bg-white dark:bg-zinc-900 border-b border-slate-200 dark:border-zinc-800">
-                <button className="text-slate-600 dark:text-slate-400">
-                    ☰
-                </button>
+                <UserInfoPanel isMobile={true} />
                 <h1 className="text-lg font-bold text-slate-900 dark:text-slate-50">
                     HRM
                 </h1>
