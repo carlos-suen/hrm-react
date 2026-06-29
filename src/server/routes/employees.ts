@@ -1,5 +1,7 @@
-import {router} from "../lib/api";
+import {Hono} from "hono";
 import {getSupabaseAdmin} from "../lib/supabase";
+
+const router = new Hono();
 
 
 

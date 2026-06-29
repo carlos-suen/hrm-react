@@ -1,6 +1,6 @@
 import {cardClasses} from "../constants/themeClasses.tsx";
 
-export type PayStatus = 'Draft' | 'Confirmed';
+export type PayStatus = 'Draft' | 'Confirmed' | 'Paid';
 
 export interface PayRecord {
     id: number;
@@ -21,11 +21,13 @@ interface PayDetailTableProps {
     onToggleSelect: (id: number) => void;
     onToggleSelectAll: () => void;
     onConfirm: (id: number) => void;
+    onPay: (id: number) => void;
 }
 
 const statusBadgeClasses: Record<PayStatus, string> = {
     Draft: "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400",
     Confirmed: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
+    Paid: "bg-red-100 text-red-700 dark:bg-green-900/30 dark:text-green-400",
 };
 
 const avatarColors = ["bg-blue-500", "bg-indigo-500", "bg-purple-500", "bg-pink-500", "bg-cyan-500"];
@@ -33,7 +35,7 @@ const avatarColors = ["bg-blue-500", "bg-indigo-500", "bg-purple-500", "bg-pink-
 export const tHeadClass = 'text-left py-3 px-4 font-medium text-slate-500 dark:text-slate-400';
 
 
-export const PayDetailTable = ({data, selectedIds, onToggleSelect, onToggleSelectAll, onConfirm}: PayDetailTableProps) => {
+export const PayDetailTable = ({data, selectedIds, onToggleSelect, onToggleSelectAll, onConfirm, onPay}: PayDetailTableProps) => {
     const allSelected = data.length > 0 && selectedIds.length === data.length;
     const someSelected = selectedIds.length > 0 && selectedIds.length < data.length;
 
@@ -105,11 +107,16 @@ export const PayDetailTable = ({data, selectedIds, onToggleSelect, onToggleSelec
                                     className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 text-sm font-medium">
                                     確認
                                 </button>
-                            ) : (
+                            ) : record.status === 'Confirmed' ? (
                                 <button
+                                    onClick={() => onPay(record.id)}
                                     className="text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 text-sm font-medium">
                                     發放
                                 </button>
+                            ) : (
+                                <span className="text-slate-400 dark:text-slate-500 text-sm font-medium cursor-not-allowed">
+                                    已發放
+                                </span>
                             )}
                         </td>
                     </tr>

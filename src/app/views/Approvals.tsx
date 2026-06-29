@@ -189,13 +189,18 @@ export const Approvals = () => {
 
     //
     const updatePendingApprovalStatus = async (approvalId: number, newStatus: number) => {
+        const targetApproval = pendingApprovals.find(item => item.id === approvalId);
+        if (!targetApproval) return;
+
+        const updatedApproval = {...targetApproval, status: newStatus};
+
         try {
-            const data = await approvalApi.updateStatus(approvalId, {status: newStatus});
+            await approvalApi.updateStatus(approvalId, {status: newStatus});
 
             if (newStatus === 1) {
-                setApprovedApprovals(prev => [...prev, data]);
+                setApprovedApprovals(prev => [...prev, updatedApproval]);
             } else if (newStatus === 2) {
-                setRejectedApprovals(prev => [...prev, data]);
+                setRejectedApprovals(prev => [...prev, updatedApproval]);
             }
 
             setPendingApprovals(prev => prev.filter(item => item.id !== approvalId));

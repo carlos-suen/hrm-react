@@ -31,10 +31,10 @@ const routeMap: Record<string, string> = {
 
 export const Reports = () => {
     const reportItems = [
-        { id: "headcount", label: "人數統計", desc: "員工人數趨勢、部門分佈", icon: "", color: "bg-blue-100" },
+        { id: "headcount", label: "人數統計", desc: "員工人數趨勢、部門分佈", icon: "👥", color: "bg-blue-100" },
         { id: "turnover", label: "離職率分析", desc: "離職率趨勢、原因分析", icon: "📉", color: "bg-pink-100" },
         { id: "salary", label: "薪資分析", desc: "薪資分佈、部門對比", icon: "💰", color: "bg-green-100" },
-        { id: "attendance", label: "考勤統計", desc: "出勤率、遲到率趨勢", icon: "", color: "bg-yellow-100" },
+        { id: "attendance", label: "考勤統計", desc: "出勤率、遲到率趨勢", icon: "🕐", color: "bg-yellow-100" },
         { id: "performance", label: "績效分析", desc: "等級分佈、部門對比", icon: "🏆", color: "bg-purple-100" },
     ];
 

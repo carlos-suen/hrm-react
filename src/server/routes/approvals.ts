@@ -1,5 +1,7 @@
-import {router} from "../lib/api";
+import {Hono} from "hono";
 import {getSupabaseAdmin} from "../lib/supabase";
+
+const router = new Hono();
 
 
 /// 獲取所有待處理
@@ -43,21 +45,42 @@ router.get('/rejected', async (c) => {
 
 /// 更新審批狀態
 router.patch('/:id', async (c) => {
-    const supabaseAdmin = getSupabaseAdmin(c)
-    const id = c.req.param('id');
-    const body = await c.req.json();
+    try {
+        const supabaseAdmin = getSupabaseAdmin(c)
+        const id = c.req.param('id');
+        const body = await c.req.json();
 
-    const {data, error} = await supabaseAdmin
-        .from('approvals')
-        .update(body)
-        .eq('id', id)
-        .select();
+        console.log('[PATCH /approvals/:id] Request:', { id, body });
+        console.log('[PATCH /approvals/:id] Supabase client exists:', !!supabaseAdmin);
 
-    if (error) {
-        return c.json({error: error.message}, 400);
+        const {data, error, status, statusText} = await supabaseAdmin
+            .from('approvals')
+            .update(body)
+            .eq('id', id)
+            .select();
+
+        console.log('[PATCH /approvals/:id] Supabase response:', {
+            data,
+            error,
+            status,
+            statusText
+        });
+
+        if (error) {
+            console.error('[PATCH /approvals/:id] Supabase error:', error);
+            return c.json({error: error.message}, 400);
+        }
+
+        if (!data || data.length === 0) {
+            console.warn('[PATCH /approvals/:id] No data returned, id might not exist:', id);
+            return c.json({error: 'Approval not found'}, 404);
+        }
+
+        return c.json(data[0]);
+    } catch (err) {
+        console.error('[PATCH /approvals/:id] Unhandled error:', err);
+        return c.json({error: 'Internal server error'}, 500);
     }
-
-    return c.json(data[0]);
 });
 
 

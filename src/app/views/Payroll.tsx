@@ -3,7 +3,7 @@ import {ChartCard} from "../common/components/ChartCard.tsx";
 import {cardClasses} from "../common/constants/themeClasses.tsx";
 import {ToolbarTextField} from "../common/components/ToolbarTextField.tsx";
 import {departmentOptions, statusOptions} from "./Directory.tsx";
-import {PayDetailTable, type PayRecord} from "../common/components/PayMemberDetailTable.tsx";
+import {PayDetailTable, type PayRecord, type PayStatus} from "../common/components/PayMemberDetailTable.tsx";
 import {MemberPayDetailCard} from "../common/components/MemberPayDetailCard.tsx";
 import {useState, useEffect} from "react";
 import {CommonButton} from "../common/components/CommonButton.tsx";
@@ -43,7 +43,7 @@ const formatPayRecord = (item: any): PayRecord => ({
     bonus: `+¥${item.bonus.toLocaleString()}`,
     deduction: `-¥${item.deduction.toLocaleString()}`,
     netPay: `¥${item.asalary.toLocaleString()}`,
-    status: item.status === 'Draft' ? 'Draft' : 'Confirmed',
+    status: item.status as PayStatus,
 });
 
 const testPayrollData = [
@@ -93,6 +93,19 @@ export const Payroll = () => {
             }
         } catch (err) {
             console.error('確認失敗:', err);
+        }
+    };
+
+    const handlePay = async (id: number) => {
+        try {
+            const data = await payrollApi.updateStatus(id, {status: 'Paid'});
+            const formatted = formatPayRecord(data);
+            setRecords(prev => prev.map(r => r.id === id ? formatted : r));
+            if (selectedDetail?.id === id) {
+                setSelectedDetail(formatted);
+            }
+        } catch (err) {
+            console.error('發放失敗:', err);
         }
     };
 
@@ -185,6 +198,7 @@ export const Payroll = () => {
                         onToggleSelect={handleToggleSelect}
                         onToggleSelectAll={handleToggleSelectAll}
                         onConfirm={handleConfirm}
+                        onPay={handlePay}
                     />
                 ) : (
                     <div className={`${cardClasses} flex flex-col items-center justify-center py-16`}>
@@ -205,7 +219,7 @@ export const Payroll = () => {
                     record={selectedDetail}
                     onCollapse={handleCancelSelect}
                     onConfirm={() => handleConfirm(selectedDetail.id)}
-                    onPay={() => console.log("發放", selectedDetail.id)}
+                    onPay={() => handlePay(selectedDetail.id)}
                 />
             )}
 

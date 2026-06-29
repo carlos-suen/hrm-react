@@ -348,10 +348,10 @@ export const SettingView = () => {
     const [showPayrollDialog, setShowPayrollDialog] = useState(false);
 
     const settingItems = [
-        {id: "company", label: "公司信息", desc: "公司名稱、財年、工作時間", icon: "", color: "bg-blue-100"},
-        {id: "leave", label: "假期設置", desc: "年假天數、結轉限制、審批流程", icon: "", color: "bg-green-100"},
+        {id: "company", label: "公司信息", desc: "公司名稱、財年、工作時間", icon: "🏢", color: "bg-blue-100"},
+        {id: "leave", label: "假期設置", desc: "年假天數、結轉限制、審批流程", icon: "📉", color: "bg-green-100"},
         {id: "attendance", label: "考勤設置", desc: "遲到閾值、早退閾值、加班規則", icon: "🕐", color: "bg-orange-100"},
-        {id: "payroll", label: "薪資設置", desc: "發薪日、稅率表", icon: "", color: "bg-purple-100"},
+        {id: "payroll", label: "薪資設置", desc: "發薪日、稅率表", icon: "💰", color: "bg-purple-100"},
     ];
 
     const handleCardClick = (id: string) => {

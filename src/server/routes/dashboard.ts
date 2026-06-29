@@ -1,5 +1,7 @@
-import {router} from "../lib/api";
+import {Hono} from "hono";
 import {getSupabaseAdmin} from "../lib/supabase";
+// 每個模塊的路友需要分開, 不可共用一個
+const router = new Hono();
 
 
 /// 獲取部門人數統計（餅圖數據）

@@ -1,5 +1,4 @@
 import type { ChartData } from "../../app/common/components/ChartCard.tsx"
-import { Hono } from "hono";
 
 interface Employee {
   id: string;
@@ -30,10 +29,18 @@ async function request<T>(url: string, options?: RequestInit): Promise<T> {
     throw new Error(error.error || `HTTP ${res.status}`)
   }
 
-  return res.json()
-}
+  const contentType = res.headers.get('content-type')
+  if (!contentType || !contentType.includes('application/json')) {
+    return {} as T
+  }
 
-export const router = new Hono()
+  const text = await res.text()
+  if (!text) {
+    return {} as T
+  }
+
+  return JSON.parse(text) as T
+}
 
 
 export const employeeApi = {
