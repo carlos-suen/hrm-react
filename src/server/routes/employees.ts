@@ -16,7 +16,7 @@ router.get('/', async (c) => {
         .order('created_at', {ascending: false})
 
     if (name?.[0]) {
-        query = query.eq('name', name[0])
+        query = query.ilike('name', `%${name[0]}%`)
     }
     if (department?.[0] && department[0] !== 'all') {
         query = query.eq('department', department[0])

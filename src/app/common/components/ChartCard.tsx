@@ -29,6 +29,7 @@ interface ChartCardProps {
     type?: "pie" | "bar" | "line" | "area" | "horizontal-bar";
     className?: string;
     title?: string;
+    valueFormatter?: (value: number) => string;
 }
 
 const COLORS = ['#3b82f6', '#22c55e', '#eab308', '#ef4444', '#a855f7'];
@@ -38,7 +39,7 @@ const areaConfig = {
     late: { dataKey: "late", stroke: "#f59e0b", fill: "#f59e0b", name: "遲到" },
 };
 
-export const ChartCard = ({ data, type = "bar", className, title }: ChartCardProps) => {
+export const ChartCard = ({ data, type = "bar", className, title, valueFormatter }: ChartCardProps) => {
     const cardClasses = `bg-white dark:bg-zinc-800 rounded-xl p-6 shadow-sm dark:shadow-none border border-slate-200 
         dark:border-slate-700`;
 
@@ -77,13 +78,13 @@ export const ChartCard = ({ data, type = "bar", className, title }: ChartCardPro
                         <BarChart data={data}>
                             <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                             <XAxis dataKey="name" tick={{ fontSize: 12 }} />
-                            <YAxis tick={{ fontSize: 12 }} />
-                            <Tooltip />
-                            <Bar dataKey="value" name="人數" radius={[4, 4, 0, 0]} minPointSize={0}>
+                            <YAxis tick={{ fontSize: 12 }} tickFormatter={valueFormatter} />
+                            <Tooltip formatter={valueFormatter ? (value) => valueFormatter(Number(value)) : undefined} />
+                            <Bar dataKey="value" name="工資" radius={[4, 4, 0, 0]} minPointSize={0}>
                                 {data.map((entry, index) => (
                                     <Cell key={index} fill={entry.fill || COLORS[index % COLORS.length]} />
                                 ))}
-                                <LabelList dataKey="value" position="top" fontSize={12} fill="#64748b" />
+                                <LabelList dataKey="value" position="top" fontSize={12} fill="#64748b" formatter={valueFormatter ? (v) => valueFormatter(Number(v)) : undefined} />
                             </Bar>
                         </BarChart>
                     </ResponsiveContainer>

@@ -1,23 +1,23 @@
-import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 // 用戶信息（與後端 sanitizeUser 對齊）
 export interface AuthUser {
-  id: number
-  username: string
-  nickname: string
-  role: string
-  created_at: string
-  updated_at: string
+  id: number;
+  username: string;
+  nickname: string;
+  role: string;
+  created_at: string;
+  updated_at: string;
 }
 
 interface AuthState {
-  token: string | null
-  is_login: boolean
-  user: AuthUser | null
-  setAuth: (token: string, user: AuthUser) => void
-  setUser: (user: AuthUser) => void
-  logout: () => void
+  token: string | null;
+  is_login: boolean;
+  user: AuthUser | null;
+  setAuth: (token: string, user: AuthUser) => void;
+  setUser: (user: AuthUser) => void;
+  logout: () => void;
 }
 
 // 單 token 機制：持久化 token 與 is_login
@@ -32,13 +32,13 @@ export const useAuthStore = create<AuthState>()(
       logout: () => set({ token: null, user: null, is_login: false }),
     }),
     {
-      name: 'hrm-auth',
+      name: "hrm-auth",
       // 僅持久化必要欄位
       partialize: (state) => ({
         token: state.token,
         is_login: state.is_login,
         user: state.user,
       }),
-    }
-  )
-)
+    },
+  ),
+);

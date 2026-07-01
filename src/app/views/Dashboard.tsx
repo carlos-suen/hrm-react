@@ -1,7 +1,7 @@
 import {DataCard} from "../common/components/DataCard.tsx";
 import type {DataCardItem} from "../common/components/DataCard.tsx";
 import {ChartCard, type ChartData} from "../common/components/ChartCard.tsx";
-import {useState, useEffect} from "react";
+import {useState, useEffect, type ReactNode} from "react";
 import {dashboardApi} from "../../server/lib/api.ts";
 
 const dataItems: DataCardItem[] = [
@@ -11,41 +11,54 @@ const dataItems: DataCardItem[] = [
     {id: "pending-approvals", label: "待審批", icon: "⏰", value: "4", desc: "待處理"},
 ];
 
+const formatCurrency = (value: number) => `¥${value.toLocaleString('zh-CN')}`;
+
+const ChartPlaceholder = ({children, isError = false}: { children: string; isError?: boolean }) => (
+    <div className={`bg-white dark:bg-zinc-800 rounded-xl p-6 shadow-sm border border-slate-200 dark:border-slate-700
+        flex items-center justify-center h-[388px] ${isError ? 'text-red-500' : 'text-slate-400 animate-pulse'}`}>
+        {children}
+    </div>
+);
 
 export const Dashboard = () => {
-    // 餅圖相關數據（部門人數分佈）
     const [pieChartData, setPieChartData] = useState<ChartData[]>([]);
-
-    // 柱狀圖的相關數據（部門薪資對比）
     const [barChartData, setBarChartData] = useState<ChartData[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
-
-    // 獲取餅圖數據：按部門統計人數
-    const fetchPieChartData = async () => {
-        try {
-            const data = await dashboardApi.getDepartmentStats();
-            setPieChartData(data);
-        } catch (err) {
-            console.error('獲取部門數據失敗:', err);
-        }
-    };
-
-    // 獲取柱狀圖數據：按部門計算平均薪資
-    const fetchBarChartData = async () => {
-        try {
-            const data = await dashboardApi.getSalaryStats();
-            setBarChartData(data);
-        } catch (err) {
-            console.error('獲取薪資數據失敗:', err);
-        }
-    };
-
-    // 組件掛載時獲取數據
     useEffect(() => {
-        fetchPieChartData();
-        fetchBarChartData();
+        let cancelled = false;
+
+        const load = async () => {
+            setLoading(true);
+            setError(null);
+            try {
+                const [deptStats, salaryStats] = await Promise.all([
+                    dashboardApi.getDepartmentStats(),
+                    dashboardApi.getSalaryStats(),
+                ]);
+                if (cancelled) return;
+                setPieChartData(deptStats);
+                setBarChartData(salaryStats);
+            } catch (err) {
+                if (cancelled) return;
+                setError(err instanceof Error ? err.message : '數據載入失敗');
+            } finally {
+                if (!cancelled) setLoading(false);
+            }
+        };
+
+        load();
+        return () => {
+            cancelled = true;
+        };
     }, []);
 
+    const renderChartSlot = (chart: ReactNode) => {
+        if (loading) return <ChartPlaceholder>載入中...</ChartPlaceholder>;
+        if (error) return <ChartPlaceholder isError={true}>{error}</ChartPlaceholder>;
+        return chart;
+    };
 
     return (
         <section>
@@ -57,14 +70,12 @@ export const Dashboard = () => {
             </div>
 
             {/* 圖表區域 */}
-            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6`}>
-                <ChartCard type="pie" data={pieChartData}/>
-                <ChartCard data={barChartData}/>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+                {renderChartSlot(<ChartCard type="pie" data={pieChartData} title="部門人數分佈"/>)}
+                {renderChartSlot(
+                    <ChartCard data={barChartData} title="部門平均薪資" valueFormatter={formatCurrency}/>
+                )}
             </div>
         </section>
-
-
     );
 };
-
-
