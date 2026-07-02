@@ -1,3 +1,4 @@
+// 發佈新招聘職位的表單
 import type {SelectOption} from "./ToolbarTextField.tsx";
 
 interface RecruitmentFormData {

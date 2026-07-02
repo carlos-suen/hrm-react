@@ -1,3 +1,4 @@
+// 考勤日曆，格子裡標打卡狀態
 import {cardClasses} from "../constants/themeClasses.tsx";
 
 export type CalendarItemType = 'Normal' | 'Late' | "ELeave" | 'Absent' | 'OLeave' | 'Future' | 'Weekend';

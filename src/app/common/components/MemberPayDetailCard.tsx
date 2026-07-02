@@ -1,3 +1,4 @@
+// 選中某條後彈出的薪資明細看板
 import { cardClasses } from "../constants/themeClasses.tsx";
 import type { PayRecord } from "./PayMemberDetailTable.tsx";
 

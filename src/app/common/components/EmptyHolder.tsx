@@ -1,3 +1,4 @@
+// 空狀態佔位圖 / 文案
 interface EmptyHolderProps {
     icon?: string;
     title?: string;

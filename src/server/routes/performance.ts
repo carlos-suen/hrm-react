@@ -19,6 +19,7 @@ router.get('/', async (c) => {
 });
 
 
+// 拿單條績效詳情（按 id 查）
 router.get('/getById/:id', async (c) => {
     const supabaseAdmin = getSupabaseAdmin(c);
     const id = c.req.param('id');

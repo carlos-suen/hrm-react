@@ -1,3 +1,4 @@
+// 移動端的側邊欄（抽屜式）
 // 導航項數據結構
 import {UserInfoPanel} from "./UserInfoPanel.tsx";
 

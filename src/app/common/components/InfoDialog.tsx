@@ -1,3 +1,4 @@
+// 通用信息彈窗
 import {useEffect, type ReactNode} from "react";
 
 //

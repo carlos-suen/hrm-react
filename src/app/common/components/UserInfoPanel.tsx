@@ -1,3 +1,4 @@
+// 頂部用戶信息塊，點一下登出
 import { useAuthStore } from "../stores/authStore.ts";
 
 /// 用戶信息面板：顯示當前登錄用戶，點擊觸發登出

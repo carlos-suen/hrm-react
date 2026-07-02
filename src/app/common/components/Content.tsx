@@ -1,3 +1,4 @@
+// 主內容區容器，帶標題頭 + 滾動區
 import type {ReactNode} from "react";
 import {ContentHeader} from "./ContentHeader.tsx";
 

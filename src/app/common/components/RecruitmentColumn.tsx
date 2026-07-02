@@ -1,3 +1,4 @@
+// 招聘看板的一列
 import { JobCard } from "./JobCard.tsx";
 
 export type RecruitmentStatus = 'open' | 'paused' | 'closed';

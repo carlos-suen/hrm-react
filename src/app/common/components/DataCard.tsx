@@ -1,3 +1,4 @@
+// 數據指標卡片（總人數、在職率那種）
 export interface DataCardItem {
     id: string;
     label: string;

@@ -1,3 +1,4 @@
+// @deprecated 頂部導航欄，暫時沒用到，改用 Sidebar 佈局了
 interface NavBarItem {
     icon?: string;
     title: string;

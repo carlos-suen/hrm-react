@@ -1,3 +1,4 @@
+// 審批看板的一列（待處理 / 已批 / 已拒）
 import {ApprovalsDraggableCard, type Approval} from "./ApprovalsDragableCard.tsx";
 import {useState} from "react";
 import * as React from "react";

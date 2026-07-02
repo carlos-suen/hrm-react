@@ -1,3 +1,4 @@
+// 新增培訓課程的表單，填標題、時間、地點這些
 import type {SelectOption} from "./ToolbarTextField.tsx";
 
 interface CourseFormData {

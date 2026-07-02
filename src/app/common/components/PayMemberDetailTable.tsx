@@ -1,3 +1,4 @@
+// 薪資明細表格，支持勾選
 import {cardClasses} from "../constants/themeClasses.tsx";
 
 export type PayStatus = 'Draft' | 'Confirmed' | 'Paid';

@@ -1,3 +1,4 @@
+// 開關控件，用在通知設置那塊
 interface AppSwitchProps {
     label: string;
     enabled: boolean;

@@ -1,3 +1,4 @@
+// @deprecated 頭部輸入框，暫時沒用到，保留待後續搜索功能
 interface HeaderInputProps {
     headerText: string;
     hintText?: string;
