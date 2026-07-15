@@ -9,3 +9,4 @@ not_found_handling = "single-page-application"
 # 敏感變數用 wrangler secret 管理，不要寫在這裡
 # wrangler secret put SUPABASE_URL
 # wrangler secret put SUPABASE_SERVICE_ROLE_KEY
+# wrangler secret put JWT_SECRET

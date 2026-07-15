@@ -1,6 +1,7 @@
 import { Hono } from 'hono'
 import { sign } from 'hono/jwt'
 import bcrypt from 'bcryptjs'
+import type { Context } from 'hono'
 import { getSupabaseAdmin } from '../lib/supabase'
 import { authMiddleware, getCurrentUser, getJwtSecret, type AuthPayload } from '../lib/auth'
 
@@ -19,11 +20,11 @@ const sanitizeUser = (u: Record<string, unknown>) => ({
   updated_at: u.updated_at,
 })
 
-// 簽發 JWT
-const issueToken = (payload: Omit<AuthPayload, 'iat' | 'exp'>): Promise<string> => {
+// 簽發 JWT（需要 context 來取密鑰）
+const issueToken = (payload: Omit<AuthPayload, 'iat' | 'exp'>, c: Context): Promise<string> => {
   return sign(
     { ...payload, exp: Math.floor(Date.now() / 1000) + TOKEN_EXPIRES_IN_SECONDS },
-    getJwtSecret()
+    getJwtSecret(c)
   )
 }
 
@@ -109,7 +110,7 @@ router.post('/login', async (c) => {
     userId: data.id,
     username: data.username,
     role: data.role,
-  })
+  }, c)
 
   return c.json({ token, user: sanitizeUser(data) })
 })

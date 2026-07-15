@@ -17,6 +17,7 @@ import type { AuthPayload } from './lib/auth'
 type Variables = {
   supabaseAdmin: SupabaseClient
   user: AuthPayload
+  jwtSecret: string
 }
 
 const app = new Hono<{ Variables: Variables }>()
@@ -27,6 +28,7 @@ app.use('*', logger())
 // 注入 Supabase 客戶端到 context（本地開發用 process.env）
 app.use('/api/*', async (c, next) => {
   c.set('supabaseAdmin', createLocalSupabaseAdmin())
+  c.set('jwtSecret', process.env.JWT_SECRET || 'dev-only-secret-do-not-use-in-production')
   await next()
 })
 
