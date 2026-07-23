@@ -106,6 +106,8 @@ export const Login = () => {
                         />
                     )}
 
+                    <p className="text-sm text-blue-500 text-center">帳號:admin1, 密碼:111111</p>
+
                     {error && (
                         <p className="text-sm text-red-500 text-center">{error}</p>
                     )}

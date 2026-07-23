@@ -8,6 +8,8 @@
 
 **狀態**：該項目仍在開發中，已部署至 Cloudflare Workers。
 
+**演示地址**：https://hrm-react.hammersuen2002.workers.dev/
+
 ## 技術棧
 
 ### 前端框架

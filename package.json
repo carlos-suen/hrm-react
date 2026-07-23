@@ -4,9 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently -n web,api -c blue,green \"vite\" \"tsx watch --env-file=.env src/server/server.ts\"",
     "dev:server": "tsx watch --env-file=.env src/server/server.ts",
-    "dev:all": "concurrently \"npm run dev\" \"npm run dev:server\"",
     "build": "vite build",
     "deploy": "npm run build && wrangler deploy",
     "lint": "eslint .",
