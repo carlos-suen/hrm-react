@@ -61,7 +61,7 @@ export const ApprovalsDraggableCard = ({
         if (!data.id) return;
         setIsDragging(true);
         e.dataTransfer.effectAllowed = "move";
-        e.dataTransfer.setData("text/plain", data.id.toString());
+        e.dataTransfer.setData("text/plain", data.id!.toString());
     };
 
     const handleDragEnd = () => {

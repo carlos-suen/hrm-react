@@ -62,8 +62,6 @@ export const Approvals = () => {
     // 已拒絕
     const [rejectedApprovals, setRejectedApprovals] = useState<Approval[]>([]);
 
-    // const [isAddApprovalDialogOpen, setIsAddApprovalDialogOpen] = useState<boolean>(false);
-
     const handleDragEnd = async (cardId: string, targetColumn: "pending" | "approved" | "rejected") => {
         let draggedCard: Approval | undefined;
         let sourceColumn: "pending" | "approved" | "rejected" | null = null;
